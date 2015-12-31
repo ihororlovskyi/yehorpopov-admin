@@ -15,15 +15,15 @@ ReleaseSchema = new SimpleSchema({
     type: String,
     label: "Title"
   },
-  bandcampLink: {
+  bandcamp: {
     type: String,
-    label: "Bandcamp Link"
+    label: "Bandcamp"
   },
   released: {
     type: Date,
     label: "Released",
     autoValue: function(argument) {
-      return this.userId
+      return new Date()
     },
     autoform: {
       type: "hidden"
