@@ -1,17 +1,27 @@
-Releases = new Meteor.Collection('releases');
+Releases = new Mongo.Collection('releases');
+
+Releases.allow({
+  insert: function(userId, doc) {
+    return !!userId;
+  }
+});
 
 ReleaseSchema = new SimpleSchema({
-  name: {
+  artist: {
     type: String,
-    label: "Name"
+    label: "Artist"
   },
-  desc: {
+  title: {
     type: String,
-    label: "Description"
+    label: "Title"
   },
-  author: {
+  bandcampLink: {
     type: String,
-    label: "Author",
+    label: "Bandcamp Link"
+  },
+  released: {
+    type: Date,
+    label: "Released",
     autoValue: function(argument) {
       return this.userId
     },
@@ -19,11 +29,11 @@ ReleaseSchema = new SimpleSchema({
       type: "hidden"
     }
   },
-  createdAt: {
-    type: Date,
-    label: "Created At",
-    autoValue: function() {
-      return new Date()
+  author: {
+    type: String,
+    label: "Author",
+    autoValue: function(argument) {
+      return this.userId
     },
     autoform: {
       type: "hidden"
