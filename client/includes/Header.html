@@ -1,13 +1,11 @@
 <template name="Header">
   <header>
-    <h1>Sentimony Records</h1>
     <nav class="header-nav">
-      <ul>
-        <a href="/"><i class="fa fa-home"></i> Home</a>
-        <a href="/releases"><i class="fa fa-headphones"></i> Releases</a>
-        <a href="/artists"><i class="fa fa-users"></i> Artists</a>
-        <a href="/admin"><i class="fa fa-cogs"></i></a>
-      </ul>
+      <a href="/"><i class="fa fa-home"></i> Home</a>
+      <a href="/releases"><i class="fa fa-headphones"></i> Releases</a>
+      <a href="/artists"><i class="fa fa-users"></i> Artists</a>
+      <a href="/admin"><i class="fa fa-cogs"></i> Admin</a>
+      {{> loginButtons}}
     </nav>
   </header>
   <hr>

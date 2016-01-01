@@ -1,7 +1,8 @@
 Template.Release.onCreated(function() {
   var self = this;
   self.autorun(function() {
-    self.subscribe('releases');
+    var id = FlowRouter.getParam('id');
+    self.subscribe('singleRelease', id);
   })
 })
 
