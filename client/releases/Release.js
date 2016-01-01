@@ -8,6 +8,6 @@ Template.Release.onCreated(function() {
 Template.Release.helpers({
   release: ()=> {
     var id = FlowRouter.getParam('id');
-    return Releases.findOne({_id: id});
+    return Releases.findOne({slug: id});
   }
 });

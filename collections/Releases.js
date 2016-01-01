@@ -15,6 +15,10 @@ ReleaseSchema = new SimpleSchema({
     type: String,
     label: "Title"
   },
+  slug: {
+    type: String,
+    label: "Slug"
+  },
   bandcamp: {
     type: String,
     label: "Bandcamp"
