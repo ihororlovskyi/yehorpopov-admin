@@ -12,6 +12,14 @@ FlowRouter.route('/releases', {
   }
 });
 
+FlowRouter.route('/release/:id', {
+  name: 'release',
+  action() {
+    BlazeLayout.render('Default', {main: 'Release'});
+  }
+});
+
+
 FlowRouter.route('/artists', {
   name: 'artists',
   action() {

@@ -1,7 +1,7 @@
 <template name="Releases">
   <h2>Releases:</h2>
   {{#each releases}}
-    {{artist}} «{{title}}» | «{{released}}» | <a href="{{bandcamp}}" target="_blank">bandcamp</a>
+    <a href="release/{{_id}}">{{artist}} «{{title}}»</a> | «{{released}}» | <a href="{{bandcamp}}" target="_blank">bandcamp</a>
     <br>
   {{/each}}
 </template>

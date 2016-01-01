@@ -1,6 +1,10 @@
 <template name="Admin">
   <main>
-    <div><a href="/"><i class="fa fa-home"></i></a></div>
+    <div>
+      <a href="/"><i class="fa fa-home"></i></a>
+      <a href="releases"><i class="fa fa-headphones"></i></a>
+      <a href="artists"><i class="fa fa-users"></i></a>
+    </div>
     {{> loginButtons}}
     {{> Template.dynamic template=main}}
   </main>
