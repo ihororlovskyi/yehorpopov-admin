@@ -4,7 +4,7 @@ Template.Release.onCreated(function() {
     var id = FlowRouter.getParam('id');
     self.subscribe('singleRelease', id);
   })
-})
+});
 
 Template.Release.helpers({
   release: ()=> {

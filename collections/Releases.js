@@ -45,4 +45,10 @@ ReleaseSchema = new SimpleSchema({
   }
 });
 
+Meteor.methods({
+  deleteRelease: function(id) {
+    Releases.remove(id);
+  }
+});
+
 Releases.attachSchema( ReleaseSchema );

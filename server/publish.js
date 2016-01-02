@@ -1,6 +1,6 @@
 Meteor.publish('releases', function(){
-  // return Releases.find({author: this.userId});
-  return Releases.find({});
+  return Releases.find({author: this.userId});
+  // return Releases.find({});
 });
 
 Meteor.publish('singleRelease', function(id){

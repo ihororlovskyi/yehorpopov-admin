@@ -10,3 +10,12 @@ Template.Releases.helpers({
     return Releases.find({}, {sort: {released: -1}});
   }
 });
+
+Template.Releases.events({
+  'click #editRelease' : function() {
+    Session.set('editMode', !Session.get('editMode'));
+  },
+  'click #deleteRelease' : function() {
+    Meteor.call('deleteRelease', this._id);
+  }
+});

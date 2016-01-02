@@ -1,6 +1,12 @@
 <template name="Admin">
-  {{> Header}}
-  <main>
-    {{> Template.dynamic template=main}}
-  </main>
+  <h2><i class="fa fa-cogs"></i> Admin</h2>
+  <hr>
+
+  {{> Releases }}
+
+  <h3>Add new release:</h3>
+  {{> quickForm collection="Releases" id="insertReleaseForm" type="insert" class="new-release-form"}}
+
+  <hr>
+  <h3>Add new artist:</h3>
 </template>

@@ -1,8 +1,18 @@
+if (Meteor.isClient) {
+  Accounts.onLogin(function() {
+    FlowRouter.go('admin');
+  });
+
+  Accounts.onLogout(function() {
+    FlowRouter.go('home');
+  });
+}
+
 FlowRouter.route('/', {
   name: 'home',
   action() {
     GAnalytics.pageview();
-    BlazeLayout.render('Default');
+    BlazeLayout.render('Default', {main: 'Home'});
   }
 });
 
@@ -35,7 +45,7 @@ FlowRouter.route('/admin', {
   name: 'admin',
   action() {
     GAnalytics.pageview();
-    BlazeLayout.render('Admin', {main: 'AdminReleases'});
+    BlazeLayout.render('Default', {main: 'Admin'});
   }
 });
 
