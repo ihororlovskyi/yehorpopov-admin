@@ -17,5 +17,8 @@ Template.Releases.events({
   },
   'click #deleteRelease' : function() {
     Meteor.call('deleteRelease', this._id);
+  },
+  'click #new-release' : () => {
+    Session.set('newRelease', true);
   }
 });
