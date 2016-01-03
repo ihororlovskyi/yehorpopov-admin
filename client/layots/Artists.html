@@ -1,3 +1,20 @@
 <template name="Artists">
   <h2><i class="fa fa-users"></i> Artists</h2>
+
+  {{#if Template.subscriptionsReady}}
+    {{#each artists}}
+      <a href="/artist/{{slug}}">{{name}}</a>
+      <a id="editArtist"><i class="fa fa-pencil"></i> Edit</a> 
+    
+      {{#if $.Session.get 'editMode'}}
+        <a id="deleteArtist"><i class="fa fa-trash"></i> Delete</a>
+      {{/if}}
+
+      <br>
+    {{/each}}
+
+  {{else}}
+    <div>Loading . . .</div>
+  {{/if}}
+
 </template>

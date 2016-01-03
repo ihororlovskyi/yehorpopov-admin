@@ -2,13 +2,20 @@
   <h2><i class="fa fa-cogs"></i> Admin</h2>
   <hr>
 
-  <button id="new-release">New Release</button>
+  <button id="new-release"><i class="fa fa-plus"></i> New Release</button>
   <i class="fa fa-close"></i>
 
-  {{> quickForm collection="Releases" id="insertReleaseForm" type="insert" class="new-release-form"}}
+  {{> quickForm collection="Releases" id="insertReleaseForm" type="insert" class="AddNewRelease"}}
 
   {{> Releases }}
 
   <hr>
-  <h3>Add new artist:</h3>
+
+  <button id="new-artist"><i class="fa fa-plus"></i> New Artist</button>
+  <i class="fa fa-close"></i>
+
+  {{> quickForm collection="Artists" id="insertArtistForm" type="insert" class="AddNewArtist"}}
+
+  {{> Artists }}
+
 </template>

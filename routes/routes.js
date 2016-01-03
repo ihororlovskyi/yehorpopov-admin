@@ -16,6 +16,14 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/admin', {
+  name: 'admin',
+  action() {
+    GAnalytics.pageview();
+    BlazeLayout.render('Default', {main: 'Admin'});
+  }
+});
+
 FlowRouter.route('/releases', {
   name: 'releases',
   action() {
@@ -32,7 +40,6 @@ FlowRouter.route('/release/:id', {
   }
 });
 
-
 FlowRouter.route('/artists', {
   name: 'artists',
   action() {
@@ -41,11 +48,11 @@ FlowRouter.route('/artists', {
   }
 });
 
-FlowRouter.route('/admin', {
-  name: 'admin',
+FlowRouter.route('/artist/:id', {
+  name: 'artist',
   action() {
     GAnalytics.pageview();
-    BlazeLayout.render('Default', {main: 'Admin'});
+    BlazeLayout.render('Default', {main: 'Artist'});
   }
 });
 

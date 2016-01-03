@@ -7,7 +7,7 @@ Template.Releases.onCreated(function() {
 
 Template.Releases.helpers({
   releases: ()=> {
-    return Releases.find({}, {sort: {released: -1}});
+    return Releases.find({}, {sort: {dateCreated: -1}});
   }
 });
 

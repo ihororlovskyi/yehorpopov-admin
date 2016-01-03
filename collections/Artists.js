@@ -1,27 +1,19 @@
-Releases = new Mongo.Collection('releases');
+Artists = new Mongo.Collection('artists');
 
-Releases.allow({
+Artists.allow({
   insert: function(userId, doc) {
     return !!userId;
   }
 });
 
-ReleaseSchema = new SimpleSchema({
-  artist: {
+ArtistSchema = new SimpleSchema({
+  name: {
     type: String,
-    label: "Artist"
-  },
-  title: {
-    type: String,
-    label: "Title"
+    label: "Name"
   },
   slug: {
     type: String,
     label: "Slug"
-  },
-  bandcamp: {
-    type: String,
-    label: "Bandcamp"
   },
   dateCreated: {
     type: Date,
@@ -46,9 +38,9 @@ ReleaseSchema = new SimpleSchema({
 });
 
 Meteor.methods({
-  deleteRelease: function(id) {
-    Releases.remove(id);
+  deleteArtist: function(id) {
+    Artists.remove(id);
   }
 });
 
-Releases.attachSchema( ReleaseSchema );
+Artists.attachSchema( ArtistSchema );
