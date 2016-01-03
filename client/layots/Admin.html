@@ -2,12 +2,10 @@
   <h2><i class="fa fa-cogs"></i> Admin</h2>
   <hr>
 
-  {{#if $.Session.get 'newRelease'}}
-    <i class="fa fa-close"></i>
-    {{> quickForm collection="Releases" id="insertReleaseForm" type="insert" class="new-release-form"}}
-  {{else}}
-    <button id="new-release">New Release</button>
-  {{/if}}
+  <button id="new-release">New Release</button>
+  <i class="fa fa-close"></i>
+
+  {{> quickForm collection="Releases" id="insertReleaseForm" type="insert" class="new-release-form"}}
 
   {{> Releases }}
 
