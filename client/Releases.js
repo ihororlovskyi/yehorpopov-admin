@@ -3,7 +3,7 @@ Template.Releases.onCreated(function() {
   self.autorun(function() {
     self.subscribe('releases');
   })
-})
+});
 
 Template.Releases.helpers({
   releases: ()=> {

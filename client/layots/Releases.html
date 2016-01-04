@@ -4,10 +4,12 @@
   {{#if Template.subscriptionsReady}}
     {{#each releases}}
       <a href="/release/{{slug}}">{{artist}} «{{title}}»</a>
-      <a id="editRelease"><i class="fa fa-pencil"></i> Edit</a> 
-    
-      {{#if $.Session.get 'editMode'}}
-        <a id="deleteRelease"><i class="fa fa-trash"></i> Delete</a>
+
+      {{#if currentUser }}
+        <a id="editRelease"><i class="fa fa-pencil"></i> Edit</a> 
+        {{#if $.Session.get 'editMode'}}
+          <a id="deleteRelease"><i class="fa fa-trash"></i> Delete</a>
+        {{/if}}
       {{/if}}
 
       <br>

@@ -1,13 +1,16 @@
 <template name="Admin">
   <h2><i class="fa fa-cogs"></i> Admin</h2>
-  <hr>
+  {{> loginButtons}}
 
-  {{> quickForm collection="Releases" id="insertReleaseForm" type="insert" class="AddNewRelease"}}
-  {{> Releases }}
+  {{#if currentUser }}
+    <hr>
 
-  <hr>
+    {{> quickForm collection="Releases" id="insertReleaseForm" type="insert" class="AddNewRelease"}}
+    {{> Releases }}
 
-  {{> quickForm collection="Artists" id="insertArtistForm" type="insert" class="AddNewArtist"}}
-  {{> Artists }}
+    <hr>
 
+    {{> quickForm collection="Artists" id="insertArtistForm" type="insert" class="AddNewArtist"}}
+    {{> Artists }}
+  {{/if}}
 </template>

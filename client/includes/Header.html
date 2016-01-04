@@ -8,10 +8,11 @@
       <a href="/releases"><i class="fa fa-headphones"></i> Releases</a>
       <a href="/artists"><i class="fa fa-users"></i> Artists</a>
 
-      <span style="float:right;">
-        <a href="/admin"><i class="fa fa-cogs"></i> Admin</a>
-        {{> loginButtons}}
-      </span>
+      {{#if currentUser }}
+        <span style="float:right;">
+          <a href="/admin"><i class="fa fa-cogs"></i> Admin</a>
+        </span>
+      {{/if}}
     </nav>
   </header>
   <hr>

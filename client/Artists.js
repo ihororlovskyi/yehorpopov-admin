@@ -3,11 +3,11 @@ Template.Artists.onCreated(function() {
   self.autorun(function() {
     self.subscribe('artists');
   })
-})
+});
 
 Template.Artists.helpers({
   artists: ()=> {
-    return Artists.find({}, {sort: {dateCreated: -1}});
+    return Artists.find({}, {sort: {name: 1}});
   }
 });
 
