@@ -1,6 +1,5 @@
 <template name="Admin">
   <h2><i class="fa fa-cogs"></i> Admin</h2>
-  {{> loginButtons}}
 
   {{#if currentUser }}
     <hr>
@@ -12,5 +11,7 @@
 
     {{> quickForm collection="Artists" id="insertArtistForm" type="insert" class="AddNewArtist"}}
     {{> Artists }}
+
   {{/if}}
 </template>
+
