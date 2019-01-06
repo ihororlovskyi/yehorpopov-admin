@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="editTicketDialog" max-width="440" @keydown.enter="onSaveChanges">
+  <v-dialog v-model="editTicketDialog" max-width="660" @keydown.enter="onSaveChanges">
 
     <v-tooltip top slot="activator" color="warning" open-delay="0">
       <v-btn
@@ -46,18 +46,42 @@
           label="Price"
           v-model="editedPrice"
         />
-        <!-- <v-text-field
-          name="imageUrl"
-          id="imageUrl"
-          label="Image Url"
-          v-model="editedImageUrl"
+        <v-text-field
+          name="homeTopImg"
+          id="homeTopImg"
+          label="homeTopImg"
+          v-model="editedHomeTopImg"
         />
         <img
-          v-if="editedImageUrl"
-          :src="editedImageUrl"
+          v-if="editedHomeTopImg"
+          :src="editedHomeTopImg"
           class="d-block"
           width="150"
-        /> -->
+        />
+        <v-text-field
+          name="imgSlider"
+          id="imgSlider"
+          label="imgSlider"
+          v-model="editedImgSlider"
+        />
+        <img
+          v-if="editedImgSlider"
+          :src="editedImgSlider"
+          class="d-block"
+          width="150"
+        />
+        <v-text-field
+          name="imgSlim"
+          id="imgSlim"
+          label="imgSlim"
+          v-model="editedImgSlim"
+        />
+        <img
+          v-if="editedImgSlim"
+          :src="editedImgSlim"
+          class="d-block"
+          width="150"
+        />
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -81,7 +105,9 @@
         editedShorttitle: this.item.shorttitle,
         editedDescription: this.item.description,
         editedPrice: this.item.price,
-        editedImageUrl: this.item.imageUrl
+        editedHomeTopImg: this.item.homeTopImg,
+        editedImgSlider: this.item.imgSlider,
+        editedImgSlim: this.item.imgSlim
       }
     },
     methods: {
@@ -94,7 +120,9 @@
           shorttitle: this.editedShorttitle,
           description: this.editedDescription,
           price: this.editedPrice,
-          imageUrl: this.editedImageUrl
+          homeTopImg: this.editedHomeTopImg,
+          imgSlider: this.editedImgSlider,
+          imgSlim: this.editedImgSlim
         })
       }
     }

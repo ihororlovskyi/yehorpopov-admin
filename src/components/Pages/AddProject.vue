@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs12 sm8 offset-sm2 lg6 offset-lg3>
+  <v-flex xs12>
     <v-card>
       <v-card-text>
         <h1>Add Project</h1>
@@ -22,7 +22,6 @@
             label="Short Title"
             id="shorttitle"
             v-model="shorttitle"
-            required
           />
           <v-text-field
             name="description"
@@ -37,33 +36,83 @@
             id="price"
             v-model="price"
           />
-          <!-- <v-text-field
-            name="imageUrl"
-            label="Image Url"
-            id="imageUrl"
-            v-model="imageUrl"
+          <div>
+            <croppa
+              v-model="croppa"
+              :width="250"
+              :height="460"
+              :quality="2"
+              :accept="'image/*'"
+              :canvas-color="'#ccc'"
+              initial-size="cover"
+              :zoom-speed="2"
+              :placeholder="'homeTopImg 250x460'"
+              :placeholder-font-size="16"
+              :placeholder-color="'rgba(0,0,0,.54)'"
+              :remove-button-size="40"
+              @file-type-mismatch="onFileTypeMismatch"
+              @file-choose="onFilePicked"
+            />
+          </div>
+          <!-- <div>
+            <croppa
+              v-model="croppa_imgSlider"
+              :width="800"
+              :height="600"
+              :quality="2"
+              :accept="'image/*'"
+              :canvas-color="'#ccc'"
+              initial-size="contain"
+              :zoom-speed="2"
+              :placeholder="'imgSlider 800x600'"
+              :placeholder-font-size="16"
+              :placeholder-color="'rgba(0,0,0,.54)'"
+              :remove-button-size="40"
+              @file-type-mismatch="onFileTypeMismatch"
+              @file-choose="onFilePicked"
+            />
+          </div> -->
+          <v-text-field
+            name="imgSlider"
+            label="imgSlider"
+            id="imgSlider"
+            v-model="imgSlider"
           />
           <img
-            v-if="imageUrl"
-            :src="imageUrl"
+            v-if="imgSlider"
+            :src="imgSlider"
             class="d-block"
             width="150"
-          /> -->
-          <croppa
-            v-model="croppa"
-            :width="540"
-            :height="338"
-            :quality="2"
-            :accept="'image/*'"
-            :canvas-color="'#ccc'"
-            initial-size="contain"
-            :zoom-speed="1"
-            :placeholder="'Select or drag image'"
-            :placeholder-font-size="16"
-            :placeholder-color="'rgba(0,0,0,.54)'"
-            :remove-button-size="40"
-            @file-type-mismatch="onFileTypeMismatch"
-            @file-choose="onFilePicked"
+          />
+          <!-- <div>
+            <croppa
+              v-model="croppa_imgSlim"
+              :width="1200"
+              :height="300"
+              :quality="2"
+              :accept="'image/*'"
+              :canvas-color="'#ccc'"
+              initial-size="contain"
+              :zoom-speed="2"
+              :placeholder="'imgSlim 1200x300'"
+              :placeholder-font-size="16"
+              :placeholder-color="'rgba(0,0,0,.54)'"
+              :remove-button-size="40"
+              @file-type-mismatch="onFileTypeMismatch"
+              @file-choose="onFilePicked"
+            />
+          </div> -->
+          <v-text-field
+            name="imgSlim"
+            label="imgSlim"
+            id="imgSlim"
+            v-model="imgSlim"
+          />
+          <img
+            v-if="imgSlim"
+            :src="imgSlim"
+            class="d-block"
+            width="150"
           />
           <v-btn
             class="ml-0"
@@ -90,9 +139,11 @@
         shorttitle: '',
         description: '',
         price: '',
-        imageUrl: '',
-        filePicked: false,
+        homeTopImg: '',
+        imgSlider: '',
+        imgSlim: '',
         image: null,
+        filePicked: false,
         croppa: {}
       }
     },
@@ -128,6 +179,8 @@
             description: this.description,
             price: this.price,
             image: file,
+            imgSlider: this.imgSlider,
+            imgSlim: this.imgSlim,
             date: new Date()
           }
           this.$store.dispatch('createProject', itemData)

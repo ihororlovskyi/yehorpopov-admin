@@ -26,32 +26,38 @@
         />
       </v-card-title>
 
-      <v-card-media
+      <!-- <v-card-media
         height="500"
         :src="item.imageUrl"
-      />
+      /> -->
 
       <v-card-text>
 
-        <!--<div class="ticket__winners">-->
-        <!--</div>-->
+        <p><b>shorttitle:</b> {{ item.shorttitle }}</p>
+        <p><b>slug:</b> {{ item.slug }}</p>
+        <p><b>description:</b> <span v-html="item.description"/></p>
+        <p><b>price:</b> {{ item.price }}</p>
 
-        <!--<div class="ticket__edit text-xs-right" v-if="userIsAdmin">-->
-        <!--</div>-->
+        <img
+          v-if="item.homeTopImg"
+          :src="item.homeTopImg"
+          width="150"
+        />
 
-        <!--<div class="ticket__thumd text-xs-center">-->
-          <!--<img-->
-            <!--v-if="item.imageUrl"-->
-            <!--class="ticket__img-yes"-->
-            <!--:src="item.imageUrl"-->
-          <!--/>-->
-          <!--<div v-else class="ticket__img-no">-->
-            <!--Похоже, у билета нет картинки<br>-->
-            <!--Создайте новый билет, а этот удалите-->
-          <!--</div>-->
-        <!--</div>-->
+        <img
+          v-if="item.imgSlider"
+          :src="item.imgSlider"
+          width="150"
+        />
 
-        <p><i>{{ item.date | date }}</i></p>
+        <img
+          v-if="item.imgSlim"
+          :src="item.imgSlim"
+          width="150"
+        />
+
+        <p><b>date:</b> {{ item.date | date }}</p>
+
       </v-card-text>
     </v-card>
 

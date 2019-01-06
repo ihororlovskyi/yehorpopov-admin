@@ -6,25 +6,11 @@
         style="cursor: pointer"
         @click="onLoadProject(i.id)"
         v-ripple
-        :src="i.imageUrl"
-      >
-        <!--<img class="list-item__img" :src="i.imageUrl">-->
-
-        <div class="list-item__winners">
-
-        </div>
-
-        <v-spacer v-if="userIsAdmin"/>
-
-        <div class="list-item__status" v-if="userIsAdmin">
-
-        </div>
-
-      </v-card-media>
+        :src="i.imgSlider"
+      />
       <v-card-text class="pa-2" style="font-size: 12px">
-        <b><span v-if="i.artist">{{ i.artist }} - </span>{{ i.title }}</b>
-        <br>
-        <i>{{ i.date | date }}</i>
+        <b>{{ i.title }}</b><br>
+        <i>{{ i.price }}</i>
       </v-card-text>
     </v-card>
   </v-flex>
