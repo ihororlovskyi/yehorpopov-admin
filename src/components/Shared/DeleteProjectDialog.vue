@@ -50,10 +50,11 @@
         this.deleteTicketDialog = false
       },
       onRemove () {
-        this.$store.dispatch('removeTicketData', {
-          id: this.item.id
+        this.$store.dispatch('removeProject', {
+          id: this.item.id,
+          imageUrl: this.item.imageUrl
         })
-        this.$router.push('/')
+        this.$router.push('/projects')
       }
     }
   }

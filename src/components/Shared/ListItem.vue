@@ -4,7 +4,7 @@
       <v-card-media
         height="200"
         style="cursor: pointer"
-        @click="onLoadItem(i.id)"
+        @click="onLoadProject(i.id)"
         v-ripple
         :src="i.imageUrl"
       >
@@ -58,8 +58,8 @@
       }
     },
     methods: {
-      onLoadItem (id) {
-        this.$router.push('/track/' + id)
+      onLoadProject (id) {
+        this.$router.push('/project/' + id)
       }
     }
   }

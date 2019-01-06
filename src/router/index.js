@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Tracks from '@/components/Contest/Tracks'
-import AddTrack from '@/components/Admin/AddTrack'
-import Item from '@/components/Contest/Item'
-import Register from '@/components/User/Register'
-import Login from '@/components/User/Login'
-import Profile from '@/components/User/Profile'
-import MainAdmin from '@/components/Admin/MainAdmin'
+import Home from '@/components/Pages/Home'
+import AddProject from '@/components/Pages/AddProject'
+import Project from '@/components/Pages/Project'
+import Register from '@/components/Pages/Register'
+import Login from '@/components/Pages/Login'
+import Profile from '@/components/Pages/Profile'
+import Projects from '@/components/Pages/Projects'
 import AuthGuard from './auth-guard'
-// import AdminGuard from './admin-guard'
 
 Vue.use(Router)
 
@@ -19,29 +17,18 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
-      // beforeEnter: function (to, from, next) {
-      //   if (to.name === 'Home') {
-      //     this.a.app.$store.dispatch('loadItems')
-      //   }
-      //   next()
-      // }.bind(this)
-    },
-    {
-      path: '/tracks',
-      name: 'Tracks',
-      component: Tracks
-    },
-    {
-      path: '/admin/add-track',
-      name: 'AddTrack',
-      component: AddTrack,
+      component: Home,
       beforeEnter: AuthGuard
     },
     {
-      path: '/track/:id',
-      name: 'Item',
-      component: Item,
+      path: '/admin/add-project',
+      name: 'AddProject',
+      component: AddProject
+    },
+    {
+      path: '/project/:id',
+      name: 'Project',
+      component: Project,
       props: true
     },
     {
@@ -58,14 +45,11 @@ export default new Router({
       path: '/user/profile',
       name: 'Profile',
       component: Profile
-      // beforeEnter: AuthGuard
     },
     {
-      path: '/admin',
-      name: 'MainAdmin',
-      component: MainAdmin
-      // beforeEnter: AuthGuard
-      // beforeEnter: AdminGuard
+      path: '/projects',
+      name: 'Projects',
+      component: Projects
     }
   ],
   scrollBehavior (to, from, savedPosition) {
