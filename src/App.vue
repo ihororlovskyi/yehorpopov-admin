@@ -136,7 +136,7 @@
         <v-container>
           <v-layout wrap>
             <v-flex xs12 sm6>
-              <div>Irukanji &copy; {{ new Date().getFullYear() }} All Rights Reserved</div>
+              <div>Yehor Popov Studio &copy; {{ new Date().getFullYear() }} All Rights Reserved</div>
               <Network/>
             </v-flex>
           </v-layout>
@@ -157,7 +157,7 @@
     data () {
       return {
         sideNav: null,
-        homeBtn: {title: 'Irukanji', icon: 'mdi-cannabis', url: '/'},
+        homeBtn: {title: 'Yehor Popov', icon: 'mdi-firebase', url: '/'},
         discographyBtn: {title: 'Discography', icon: 'mdi-music', url: '/discography'},
         tracksBtn: {title: 'Tracks', icon: 'mdi-music-note', url: '/tracks'},
         profileBtn: {title: 'Profile', icon: 'mdi-account', url: '/user/profile'},
@@ -177,7 +177,7 @@
         return this.$store.getters.user.id
       },
       userIsAdmin () {
-        if (this.currentUserId === 'Gmq5awFPniRGMbUoRqmdtCDcmnH3') {
+        if (this.currentUserId === '665sv19j78V9ian4OP3Uvy9hraF3') {
           return true
         }
       }

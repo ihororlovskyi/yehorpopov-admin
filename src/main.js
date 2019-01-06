@@ -31,11 +31,11 @@ new Vue({
   template: '<App/>',
   created () {
     firebase.initializeApp({
-      apiKey: 'AIzaSyAyVD0EMF-h2vVUR_k6uNHpuNu_lruhHmE',
-      authDomain: 'irukanji-db.firebaseapp.com',
-      databaseURL: 'https://irukanji-db.firebaseio.com',
-      projectId: 'irukanji-db',
-      storageBucket: 'irukanji-db.appspot.com'
+      apiKey: 'AIzaSyD1sTHBnX8x-0HfD8ak7yTZJFcZ_O_lf1M',
+      authDomain: 'yehorpopov-db.firebaseapp.com',
+      databaseURL: 'https://yehorpopov-db.firebaseio.com',
+      projectId: 'yehorpopov-db',
+      storageBucket: 'yehorpopov-db.appspot.com'
     })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
