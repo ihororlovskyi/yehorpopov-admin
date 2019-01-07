@@ -3,8 +3,8 @@
     <v-card>
       <v-card-text>
 
-        <v-container grid-list-md>
-          <v-layout wrap>
+        <v-container>
+          <v-layout row wrap>
 
             <v-flex xs12>
               <h1>Projects</h1>
@@ -14,23 +14,33 @@
               <btn-add-project/>
             </v-flex>
 
-            <v-flex xs12 v-if="loading">
+            <v-flex xs12>
 
-              <v-progress-circular
-                indeterminate
-                :size="150"
-                color="amber"
-              />
-
+              <v-layout row wrap>
+                <v-flex xs12 v-if="loading">
+                  <v-progress-circular
+                    indeterminate
+                    :size="60"
+                    color="black"
+                  />
+                </v-flex>
+                <v-flex v-else xs12 sm6 md3 v-for="i in projects" :key="i.id">
+                  <v-card tile>
+                    <v-card-media
+                      height="200"
+                      style="cursor: pointer"
+                      @click="onLoadProject(i.id)"
+                      v-ripple
+                      :src="i.imgSlider"
+                    />
+                    <v-card-text class="pa-2" style="font-size: 12px">
+                      <b>{{ i.title }}</b><br>
+                      <i>{{ i.price }}</i>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-layout>
             </v-flex>
-
-            <v-layout wrap v-else>
-              <list-item
-                v-for="i in projects"
-                :i="i"
-                :key="i.id"
-              />
-            </v-layout>
 
           </v-layout>
         </v-container>
@@ -49,19 +59,13 @@
       projects () {
         return this.$store.getters.loadedProjectsSortedByDate
       },
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      currentUserId () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id
-      },
       userIsAdmin () {
-        if (this.currentUserId === '665sv19j78V9ian4OP3Uvy9hraF3') {
-          return true
-        }
+        return this.$store.getters.userIsAdmin
+      }
+    },
+    methods: {
+      onLoadProject (id) {
+        this.$router.push('/project/' + id)
       }
     }
   }

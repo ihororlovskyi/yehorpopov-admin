@@ -11,7 +11,6 @@ import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import EditProjectDialog from './components/Shared/EditProjectDialog'
 import DeleteProjectDialog from './components/Shared/DeleteProjectDialog'
-import ListItem from './components/Shared/ListItem'
 import BtnAddProject from './components/Shared/BtnAddProject'
 
 Vue.use(Vuetify)
@@ -22,7 +21,6 @@ Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('edit-project-dialog', EditProjectDialog)
 Vue.component('delete-project-dialog', DeleteProjectDialog)
-Vue.component('list-item', ListItem)
 Vue.component('btn-add-project', BtnAddProject)
 
 /* eslint-disable no-new */

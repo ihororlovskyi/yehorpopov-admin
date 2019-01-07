@@ -74,19 +74,8 @@
       item () {
         return this.$store.getters.loadedProject(this.id)
       },
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      currentUserId () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id
-      },
       userIsAdmin () {
-        if (this.currentUserId === '665sv19j78V9ian4OP3Uvy9hraF3') {
-          return true
-        }
+        return this.$store.getters.userIsAdmin
       }
     }
   }

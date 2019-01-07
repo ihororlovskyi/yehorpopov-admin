@@ -3,7 +3,12 @@ import * as firebase from 'firebase'
 export default {
 
   state: {
-    user: null
+    user: null,
+    admins: [
+      '665sv19j78V9ian4OP3Uvy9hraF3',
+      'XHKP3OEJKJRFLy5NgddjnZRlUIA3',
+      'o0G1xy1OJsSLqk6qAX45lxQz4Zh2'
+    ]
   },
 
   mutations: {
@@ -72,6 +77,23 @@ export default {
   getters: {
     user (state) {
       return state.user
+    },
+    userIsAuthenticated (state, getters) {
+      return !!getters.user
+    },
+    currentUserId (state, getters) {
+      if (!getters.userIsAuthenticated) {
+        return false
+      }
+      return getters.user && getters.user.id
+    },
+    userIsAdmin (state, getters) {
+      if (state.admins.findIndex((admin) => {
+        return admin === getters.currentUserId
+      }) === -1) {
+        return false
+      }
+      return true
     }
   }
 

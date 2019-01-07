@@ -47,7 +47,10 @@
   export default {
     data () {
       return {
-        logoutBtn: {title: 'Exit', icon: 'mdi-exit-to-app'}
+        logoutBtn: {
+          title: 'Exit',
+          icon: 'mdi-exit-to-app'
+        }
       }
     },
     computed: {
