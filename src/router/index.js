@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Pages/Home'
 import AddProject from '@/components/Pages/AddProject'
-import Project from '@/components/Pages/Project'
+import EditProject from '@/components/Pages/EditProject'
 import Register from '@/components/Pages/Register'
 import Login from '@/components/Pages/Login'
 import Profile from '@/components/Pages/Profile'
@@ -27,8 +27,8 @@ export default new Router({
     },
     {
       path: '/project/:id',
-      name: 'Project',
-      component: Project,
+      name: 'EditProject',
+      component: EditProject,
       props: true
     },
     {

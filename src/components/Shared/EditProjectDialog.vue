@@ -1,11 +1,17 @@
 <template>
   <v-dialog v-model="editTicketDialog" max-width="660" @keydown.enter="onSaveChanges">
 
-    <v-tooltip top slot="activator" color="warning" open-delay="0">
+    <v-tooltip
+      top
+      slot="activator"
+      color="warning"
+      open-delay="0"
+    >
       <v-btn
         fab
         color="warning"
         slot="activator"
+        small
       >
         <v-icon>mdi-pencil</v-icon>
       </v-btn>

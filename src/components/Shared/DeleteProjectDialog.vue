@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="deleteTicketDialog" max-width="330">
+  <v-dialog v-model="deleteTicketDialog" max-width="440">
 
     <v-tooltip
       top
@@ -11,6 +11,7 @@
         fab
         color="error"
         slot="activator"
+        small
       >
         <v-icon>mdi-delete</v-icon>
       </v-btn>
@@ -20,10 +21,7 @@
     <v-card>
       <v-container pa-1>
 
-        <v-card-text pa-1>
-          Билет будет удален безвозвратно.<br>
-          Вы уверены, что хотите удалить этот билет?
-        </v-card-text>
+        <v-card-text pa-1>{{ text }}</v-card-text>
 
         <v-card-actions>
           <v-spacer/>
@@ -42,6 +40,7 @@
     props: ['item'],
     data () {
       return {
+        text: 'The project will be deleted permanently.<br>Are you sure you want to delete this project?',
         deleteTicketDialog: false
       }
     },

@@ -3,15 +3,15 @@
     <v-card>
       <v-card-text>
 
-        <v-container grid-list-md>
-          <v-layout wrap>
+        <!-- <v-container> -->
+          <v-layout row wrap>
 
             <v-flex xs12>
-              <h1>Profile</h1>
+              <h1 class="mb-2">Profile</h1>
             </v-flex>
 
           </v-layout>
-        </v-container>
+        <!-- </v-container> -->
 
         <v-progress-circular
           v-if="loading"
@@ -20,8 +20,8 @@
           color="amber"
         />
 
-        <v-container grid-list-md v-else>
-          <v-layout wrap>
+        <!-- <v-container v-else> -->
+          <v-layout row wrap v-else>
 
             <v-flex xs12>
               <h4>Your ID</h4>
@@ -36,7 +36,7 @@
             </v-flex>
 
           </v-layout>
-        </v-container>
+        <!-- </v-container> -->
 
       </v-card-text>
     </v-card>

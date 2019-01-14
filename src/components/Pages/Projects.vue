@@ -3,11 +3,11 @@
     <v-card>
       <v-card-text>
 
-        <v-container>
+        <!-- <v-container> -->
           <v-layout row wrap>
 
             <v-flex xs12>
-              <h1>Projects</h1>
+              <h1 class="mb-2">Projects</h1>
             </v-flex>
 
             <v-flex xs12 v-if="userIsAdmin" class="mb-2">
@@ -44,7 +44,7 @@
             </v-flex>
 
           </v-layout>
-        </v-container>
+        <!-- </v-container> -->
 
       </v-card-text>
     </v-card>

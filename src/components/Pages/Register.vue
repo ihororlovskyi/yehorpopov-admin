@@ -4,7 +4,7 @@
     <v-card>
       <v-card-text>
 
-        <h1>Registration</h1>
+        <h1 class="mb-2">Registration</h1>
 
         <form @submit.prevent="onSignup">
           <v-text-field

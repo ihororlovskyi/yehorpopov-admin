@@ -1,11 +1,11 @@
 <template>
   <v-flex xs12>
-    <v-card>
-      <v-card-text>
-        <h1 class="mb-4">Add Project</h1>
-        <form @submit.prevent="onCreateProject">
+    <form @submit.prevent="onCreateProject">
+      <v-card>
+        <v-card-text>
           <v-layout row wrap>
             <v-flex xs4>
+              <h1 class="mb-2">Add Project</h1>
               <v-text-field
                 name="title"
                 label="Title"
@@ -34,17 +34,14 @@
                 v-model="price"
                 prepend-icon="mdi-currency-usd"
               />
-              <v-textarea
-                name="description"
-                label="Description"
-                id="description"
-                v-model="description"
-              />
               <v-checkbox
                 v-model="atHero"
                 :label="`Show at hero?: ${atHero.toString()}`"
               />
-              <div>imgCover 800x600</div>
+              <div>
+                <v-icon left>mdi-image</v-icon>
+                imgCover 800x600
+              </div>
               <croppa
                 v-model="croppa"
                 :width="800"
@@ -55,7 +52,7 @@
                 initial-size="cover"
                 :zoom-speed="2"
                 :placeholder="'imgCover 800x600'"
-                :placeholder-font-size="16"
+                :placeholder-font-size="32"
                 :placeholder-color="'rgba(0,0,0,.54)'"
                 :remove-button-size="40"
                 @file-type-mismatch="onFileTypeMismatch"
@@ -79,12 +76,18 @@
                   @file-choose="onFilePicked"
                 />
               </div> -->
+              <v-textarea
+                name="description"
+                label="Description"
+                id="description"
+                v-model="description"
+              />
               <v-text-field
                 name="imgSlider"
                 label="imgSlider"
                 id="imgSlider"
                 v-model="imgSlider"
-                outline
+                prepend-icon="mdi-image"
               />
               <img
                 v-if="imgSlider"
@@ -115,7 +118,7 @@
                 label="imgSlim"
                 id="imgSlim"
                 v-model="imgSlim"
-                outline
+                prepend-icon="mdi-image"
               />
               <img
                 v-if="imgSlim"
@@ -125,23 +128,31 @@
               />
             </v-flex>
             <v-flex xs8>
-            </v-flex>
-            <v-flex xs12 class="text-xs-right">
-              <v-btn
-                class="mx-0"
-                color="success"
-                large
-                :disabled="!formIsValid"
-                type="submit"
-              >
-                <v-icon left>mdi-plus-box</v-icon>
-                <span>Add Project</span>
-              </v-btn>
+              <!-- <v-carousel>
+                <v-carousel-item
+                  v-for="(item,i) in items"
+                  :key="i"
+                  :src="item.src"
+                />
+              </v-carousel> -->
             </v-flex>
           </v-layout>
-        </form>
-      </v-card-text>
-    </v-card>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer/>
+          <v-btn
+            class="mx-0"
+            color="success"
+            large
+            :disabled="!formIsValid"
+            type="submit"
+          >
+            <v-icon left>mdi-plus-box</v-icon>
+            <span>Add Project</span>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </form>
   </v-flex>
 </template>
 
@@ -160,6 +171,20 @@
         image: null,
         filePicked: false,
         croppa: {}
+        // items: [
+        //   {
+        //     src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        //   },
+        //   {
+        //     src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+        //   },
+        //   {
+        //     src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+        //   },
+        //   {
+        //     src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+        //   }
+        // ]
       }
     },
     computed: {

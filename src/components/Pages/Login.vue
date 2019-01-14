@@ -4,7 +4,7 @@
     <v-card>
       <v-card-text>
 
-        <h1>Login</h1>
+        <h1 class="mb-2">Login</h1>
 
         <form @submit.prevent="onSignin">
           <v-text-field
