@@ -26,7 +26,7 @@
         </v-card-text>
 
         <v-card-actions>
-          <v-spacer></v-spacer>
+          <v-spacer/>
           <v-btn @click.stop="deleteTicketDialog=false">Отмена</v-btn>
           <v-btn color="error" @click="onRemove">Удалить</v-btn>
         </v-card-actions>
@@ -52,7 +52,7 @@
       onRemove () {
         this.$store.dispatch('removeProject', {
           id: this.item.id,
-          imageUrl: this.item.imageUrl
+          imgCover: this.item.imgCover
         })
         this.$router.push('/projects')
       }

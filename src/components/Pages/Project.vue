@@ -11,7 +11,8 @@
     <v-card v-else>
 
       <v-card-title>
-        <h1><span v-if="item.artist">{{ item.artist }} - </span>{{ item.title }}</h1>
+
+        <h1>{{ item.title }}</h1>
 
         <v-spacer/>
 
@@ -37,24 +38,39 @@
         <p><b>slug:</b> {{ item.slug }}</p>
         <p><b>description:</b> <span v-html="item.description"/></p>
         <p><b>price:</b> {{ item.price }}</p>
+        <p><b>Show at hero?:</b> {{ `${item.atHero.toString()}` }}</p>
 
-        <img
-          v-if="item.homeTopImg"
-          :src="item.homeTopImg"
-          width="150"
-        />
+        <v-layout row wrap>
+          <v-flex xs4>
+            <div>imgCover:</div>
+            <img
+              v-if="item.imgCover"
+              :src="item.imgCover"
+              width="150"
+              class="d-block"
+            />
+          </v-flex>
 
-        <img
-          v-if="item.imgSlider"
-          :src="item.imgSlider"
-          width="150"
-        />
+          <v-flex xs4>
+            <div>imgSlider:</div>
+            <img
+              v-if="item.imgSlider"
+              :src="item.imgSlider"
+              width="150"
+              class="d-block"
+            />
+          </v-flex>
 
-        <img
-          v-if="item.imgSlim"
-          :src="item.imgSlim"
-          width="150"
-        />
+          <v-flex xs4>
+            <div>imgSlim:</div>
+            <img
+              v-if="item.imgSlim"
+              :src="item.imgSlim"
+              width="150"
+              class="d-block"
+            />
+          </v-flex>
+        </v-layout>
 
         <p><b>date:</b> {{ item.date | date }}</p>
 

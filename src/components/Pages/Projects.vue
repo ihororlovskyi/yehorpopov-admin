@@ -10,7 +10,7 @@
               <h1>Projects</h1>
             </v-flex>
 
-            <v-flex xs12 v-if="userIsAdmin">
+            <v-flex xs12 v-if="userIsAdmin" class="mb-2">
               <btn-add-project/>
             </v-flex>
 
@@ -24,14 +24,15 @@
                     color="black"
                   />
                 </v-flex>
-                <v-flex v-else xs12 sm6 md3 v-for="i in projects" :key="i.id">
+                <v-flex v-else xs12 sm6 lg3 v-for="i in projects" :key="i.id">
                   <v-card tile>
                     <v-card-media
+                      v-if="i.imgCover"
                       height="200"
                       style="cursor: pointer"
                       @click="onLoadProject(i.id)"
                       v-ripple
-                      :src="i.imgSlider"
+                      :src="i.imgCover"
                     />
                     <v-card-text class="pa-2" style="font-size: 12px">
                       <b>{{ i.title }}</b><br>

@@ -22,7 +22,8 @@ export default {
       item.shorttitle = payload.shorttitle
       item.description = payload.description
       item.price = payload.price
-      item.homeTopImg = payload.homeTopImg
+      item.atHero = payload.atHero
+      item.imgCover = payload.imgCover
       item.imgSlider = payload.imgSlider
       item.imgSlim = payload.imgSlim
     },
@@ -51,7 +52,8 @@ export default {
               shorttitle: obj[key].shorttitle,
               description: obj[key].description,
               price: obj[key].price,
-              homeTopImg: obj[key].homeTopImg,
+              atHero: obj[key].atHero,
+              imgCover: obj[key].imgCover,
               imgSlider: obj[key].imgSlider,
               imgSlim: obj[key].imgSlim,
               date: obj[key].date
@@ -74,11 +76,12 @@ export default {
         shorttitle: payload.shorttitle,
         description: payload.description,
         price: payload.price,
+        atHero: payload.atHero,
         imgSlider: payload.imgSlider,
         imgSlim: payload.imgSlim,
         date: payload.date.toISOString()
       }
-      let homeTopImg
+      let imgCover
       let key
       firebase.database().ref('projects2').push(item)
         .then((data) => {
@@ -88,16 +91,16 @@ export default {
         .then(key => {
           const filename = payload.image.name
           const ext = filename.slice(filename.lastIndexOf('.'))
-          return firebase.storage().ref('projects/' + key + '/homeTopImg' + ext).put(payload.image)
+          return firebase.storage().ref('projects/' + key + '/imgCover' + ext).put(payload.image)
         })
         .then(fileData => {
-          homeTopImg = fileData.metadata.downloadURLs[0]
-          return firebase.database().ref('projects2').child(key).update({ homeTopImg: homeTopImg })
+          imgCover = fileData.metadata.downloadURLs[0]
+          return firebase.database().ref('projects2').child(key).update({ imgCover: imgCover })
         })
         .then(() => {
           commit('createProject', {
             ...item,
-            homeTopImg: homeTopImg,
+            imgCover: imgCover,
             id: key
           })
         })
@@ -113,7 +116,8 @@ export default {
       updateObj.shorttitle = payload.shorttitle
       updateObj.description = payload.description
       updateObj.price = payload.price
-      updateObj.homeTopImg = payload.homeTopImg
+      updateObj.atHero = payload.atHero
+      updateObj.imgCover = payload.imgCover
       updateObj.imgSlider = payload.imgSlider
       updateObj.imgSlim = payload.imgSlim
       firebase.database().ref('projects2').child(payload.id).update(updateObj)
@@ -130,10 +134,10 @@ export default {
       // commit('setLoading', true)
       firebase.database().ref('projects2').child(payload.id).remove()
         .then(() => {
-          const homeTopImg = payload.homeTopImg
-          const extWithMeta = homeTopImg.slice(homeTopImg.lastIndexOf('.'))
+          const imgCover = payload.imgCover
+          const extWithMeta = imgCover.slice(imgCover.lastIndexOf('.'))
           const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
-          return firebase.storage().ref('projects/' + payload.id + '/homeTopImg' + ext).delete()
+          return firebase.storage().ref('projects/' + payload.id + '/imgCover' + ext).delete()
         })
         .then(() => {
           commit('removeProject', payload.id)

@@ -46,15 +46,19 @@
           label="Price"
           v-model="editedPrice"
         />
+        <v-checkbox
+          v-model="editedAtHero"
+          :label="`Show at hero?: ${editedAtHero.toString()}`"
+        />
         <v-text-field
-          name="homeTopImg"
-          id="homeTopImg"
-          label="homeTopImg"
-          v-model="editedHomeTopImg"
+          name="imgCover"
+          id="imgCover"
+          label="imgCover"
+          v-model="editedImgCover"
         />
         <img
-          v-if="editedHomeTopImg"
-          :src="editedHomeTopImg"
+          v-if="editedImgCover"
+          :src="editedImgCover"
           class="d-block"
           width="150"
         />
@@ -84,7 +88,7 @@
         />
       </v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
+        <v-spacer/>
         <v-btn @click.stop="editTicketDialog=false">Отмена</v-btn>
         <v-btn color="warning" @click="onSaveChanges">Сохранить</v-btn>
       </v-card-actions>
@@ -105,7 +109,8 @@
         editedShorttitle: this.item.shorttitle,
         editedDescription: this.item.description,
         editedPrice: this.item.price,
-        editedHomeTopImg: this.item.homeTopImg,
+        editedAtHero: this.item.atHero,
+        editedImgCover: this.item.imgCover,
         editedImgSlider: this.item.imgSlider,
         editedImgSlim: this.item.imgSlim
       }
@@ -120,7 +125,8 @@
           shorttitle: this.editedShorttitle,
           description: this.editedDescription,
           price: this.editedPrice,
-          homeTopImg: this.editedHomeTopImg,
+          atHero: this.editedAtHero,
+          imgCover: this.editedImgCover,
           imgSlider: this.editedImgSlider,
           imgSlim: this.editedImgSlim
         })
