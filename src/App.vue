@@ -68,7 +68,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="userIsAdmin" :to="btnList.projects.url">
+        <v-list-tile v-if="userIsAuthenticated" :to="btnList.projects.url">
           <v-list-tile-action>
             <v-icon>{{ btnList.projects.icon }}</v-icon>
           </v-list-tile-action>
@@ -149,6 +149,11 @@
             icon: 'mdi-cannabis',
             url: '/projects'
           },
+          features: {
+            title: 'Features',
+            icon: 'mdi-cannabis',
+            url: '/features'
+          },
           login: {
             title: 'Sign In',
             icon: 'mdi-key',
@@ -165,17 +170,17 @@
     computed: {
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      currentUserId () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id
-      },
-      userIsAdmin () {
-        if (this.currentUserId === '665sv19j78V9ian4OP3Uvy9hraF3') {
-          return true
-        }
+      // },
+      // currentUserId () {
+      //   if (!this.userIsAuthenticated) {
+      //     return false
+      //   }
+      //   return this.$store.getters.user.id
+      // },
+      // userIsAdmin () {
+      //   if (this.currentUserId === '665sv19j78V9ian4OP3Uvy9hraF3') {
+      //     return true
+      //   }
       }
     }
   }
