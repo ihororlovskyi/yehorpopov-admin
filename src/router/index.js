@@ -23,13 +23,15 @@ export default new Router({
     {
       path: '/admin/add-project',
       name: 'AddProject',
-      component: AddProject
+      component: AddProject,
+      beforeEnter: AuthGuard
     },
     {
       path: '/project/:id',
       name: 'EditProject',
       component: EditProject,
-      props: true
+      props: true,
+      beforeEnter: AuthGuard
     },
     {
       path: '/user/register',
@@ -44,12 +46,14 @@ export default new Router({
     {
       path: '/user/profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
+      beforeEnter: AuthGuard
     },
     {
       path: '/projects',
       name: 'Projects',
-      component: Projects
+      component: Projects,
+      beforeEnter: AuthGuard
     }
   ],
   scrollBehavior (to, from, savedPosition) {
