@@ -3,18 +3,20 @@
 
     <v-toolbar dark class="black">
 
-      <v-toolbar-items class="hidden-xs-only">
-
+      <v-toolbar-items>
         <v-btn flat :to="btnList.home.url" exact>
           <v-icon>{{ btnList.home.icon }}</v-icon>
           <v-toolbar-title>{{ btnList.home.title }}</v-toolbar-title>
         </v-btn>
+      </v-toolbar-items>
 
+      <v-spacer/>
+
+      <v-toolbar-items class="hidden-xs-only">
         <v-btn flat :to="btnList.projects.url">
           <v-icon left>{{ btnList.projects.icon }}</v-icon>
           <span>{{ btnList.projects.title }}</span>
         </v-btn>
-
       </v-toolbar-items>
 
       <v-spacer/>
@@ -133,7 +135,7 @@
     data () {
       return {
         sideNav: null,
-        btnList: {
+        headerMenu: {
           home: {
             title: 'Yehor Popov',
             icon: 'mdi-firebase',
@@ -151,25 +153,32 @@
           },
           features: {
             title: 'Features',
-            icon: 'mdi-cannabis',
+            icon: 'mdi-alien',
             url: '/features'
+            userIsAuthenticated: true
           },
           login: {
             title: 'Sign In',
             icon: 'mdi-key',
-            url: '/user/login'
+            url: '/user/login',
+            userIsAuthenticated: false
           },
           register: {
             title: 'Registration',
             icon: 'mdi-account-plus',
-            url: '/user/register'
+            url: '/user/register',
+            userIsAuthenticated: false
           }
         }
       }
     },
     computed: {
+      // userIsAuthenticated () {
+      //   return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      // },
       userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+        return this.$store.getters.userIsAuthenticated
+      }
       // },
       // currentUserId () {
       //   if (!this.userIsAuthenticated) {
@@ -181,7 +190,7 @@
       //   if (this.currentUserId === '665sv19j78V9ian4OP3Uvy9hraF3') {
       //     return true
       //   }
-      }
+      // }
     }
   }
 </script>
