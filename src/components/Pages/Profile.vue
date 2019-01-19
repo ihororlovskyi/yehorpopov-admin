@@ -1,52 +1,43 @@
 <template>
-  <v-flex xs12>
-    <v-card>
-      <v-card-text>
-
-        <!-- <v-container> -->
-          <v-layout row wrap>
-
-            <v-flex xs12>
-              <h1 class="mb-2">Profile</h1>
-            </v-flex>
-
-          </v-layout>
-        <!-- </v-container> -->
-
-        <v-progress-circular
-          v-if="loading"
-          indeterminate
-          :size="150"
-          color="amber"
-        />
-
-        <!-- <v-container v-else> -->
-          <v-layout row wrap v-else>
-
-            <v-flex xs12>
-              <h4>Your ID</h4>
-              <p><i>{{ $store.getters.user.id }}</i></p>
-            </v-flex>
-
-            <v-flex xs12 class="text-xs-right">
+  <section>
+    <v-container>
+      <v-layout>
+        <v-flex xs12>
+          <v-card>
+            <v-card-title class="primary">
+              <h1 class="white--text">{{ pageTitle }}</h1>
+            </v-card-title>
+            <v-card-text>
+              <v-progress-circular
+                v-if="loading"
+                indeterminate
+                :size="150"
+                color="amber"
+              />
+              <div v-else>
+                <h4>Your ID</h4>
+                <p><i>{{ $store.getters.user.id }}</i></p>
+              </div>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer/>
               <v-btn flat class="mx-0" @click="onLogout">
                 <v-icon left>{{ logoutBtn.icon }}</v-icon>
                 {{ logoutBtn.title }}
               </v-btn>
-            </v-flex>
-
-          </v-layout>
-        <!-- </v-container> -->
-
-      </v-card-text>
-    </v-card>
-  </v-flex>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </section>
 </template>
 
 <script>
   export default {
     data () {
       return {
+        pageTitle: 'Profile',
         logoutBtn: {
           title: 'Exit',
           icon: 'mdi-exit-to-app'

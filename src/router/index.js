@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Pages/Home'
-import AddProject from '@/components/Pages/AddProject'
-import EditProject from '@/components/Pages/EditProject'
 import Register from '@/components/Pages/Register'
 import Login from '@/components/Pages/Login'
 import Profile from '@/components/Pages/Profile'
 import Projects from '@/components/Pages/Projects'
+import AddProject from '@/components/Pages/AddProject'
+import EditProject from '@/components/Pages/EditProject'
+import Features from '@/components/Pages/Features'
 import AuthGuard from './auth-guard'
 
 Vue.use(Router)
@@ -18,19 +19,6 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home,
-      beforeEnter: AuthGuard
-    },
-    {
-      path: '/admin/add-project',
-      name: 'AddProject',
-      component: AddProject,
-      beforeEnter: AuthGuard
-    },
-    {
-      path: '/project/:id',
-      name: 'EditProject',
-      component: EditProject,
-      props: true,
       beforeEnter: AuthGuard
     },
     {
@@ -53,6 +41,25 @@ export default new Router({
       path: '/projects',
       name: 'Projects',
       component: Projects,
+      beforeEnter: AuthGuard
+    },
+    {
+      path: '/admin/add-project',
+      name: 'AddProject',
+      component: AddProject,
+      beforeEnter: AuthGuard
+    },
+    {
+      path: '/project/:id',
+      name: 'EditProject',
+      component: EditProject,
+      props: true,
+      beforeEnter: AuthGuard
+    },
+    {
+      path: '/features',
+      name: 'Features',
+      component: Features,
       beforeEnter: AuthGuard
     }
   ],
