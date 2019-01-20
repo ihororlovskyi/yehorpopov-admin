@@ -1,5 +1,8 @@
 <template>
-  <section>
+  <section
+    @keydown.esc="onCancelChanges"
+    @keydown.enter="onSaveChanges"
+  >
     <v-container>
       <v-layout>
         <v-flex xs12>
@@ -7,6 +10,8 @@
           <v-card>
             <v-card-title class="primary">
               <h1 class="white--text">{{ pageTitle }}</h1>
+              <v-spacer/>
+              <delete-project-dialog :item="item"/>
             </v-card-title>
 
             <!-- <v-card-title>
@@ -29,7 +34,7 @@
                     v-model="item.title"
                     prepend-icon="mdi-format-title"
                   />
-                  <v-text-field
+                  <!-- <v-text-field
                     name="shorttitle"
                     label="Short Title"
                     id="shorttitle"
@@ -42,7 +47,7 @@
                     id="slug"
                     v-model="item.slug"
                     prepend-icon="mdi-link"
-                  />
+                  /> -->
                   <v-text-field
                     name="price"
                     label="Price"
@@ -53,6 +58,13 @@
                   <v-checkbox
                     v-model="item.atHero"
                     :label="`Show at hero?: ${item.atHero.toString()}`"
+                  />
+                  <v-text-field
+                    name="heroColor"
+                    label="Hero Color"
+                    id="heroColor"
+                    v-model="item.heroColor"
+                    prepend-icon="mdi-palette"
                   />
                   <v-textarea
                     name="description"
@@ -67,7 +79,7 @@
                     v-model="item.imgCover"
                     prepend-icon="mdi-image"
                   />
-                  <v-text-field
+                  <!-- <v-text-field
                     name="imgSlider"
                     label="imgSlider"
                     id="imgSlider"
@@ -80,7 +92,7 @@
                     id="imgSlim"
                     v-model="item.imgSlim"
                     prepend-icon="mdi-image"
-                  />
+                  /> -->
                 </v-flex>
                 <v-flex xs8>
 
@@ -98,8 +110,8 @@
                   :item="item"
                 /> -->
 
-                <p><b>shorttitle:</b> {{ item.shorttitle }}</p>
-                <p><b>slug:</b> {{ item.slug }}</p>
+                <!-- <p><b>shorttitle:</b> {{ item.shorttitle }}</p> -->
+                <!-- <p><b>slug:</b> {{ item.slug }}</p> -->
                 <p><b>description:</b> <span v-html="item.description"/></p>
                 <p><b>price:</b> {{ item.price }}</p>
                 <p><b>Show at hero?:</b> {{ `${item.atHero.toString()}` }}</p>
@@ -113,9 +125,10 @@
                       width="150"
                       class="d-block"
                     />
+                    <edit-project-img-cover-dialog :item="item"/>
                   </v-flex>
 
-                  <v-flex xs4>
+                  <!-- <v-flex xs4>
                     <div>imgSlider:</div>
                     <img
                       v-if="item.imgSlider"
@@ -133,7 +146,7 @@
                       width="150"
                       class="d-block"
                     />
-                  </v-flex>
+                  </v-flex> -->
                 </v-layout>
 
                 <p><b>date:</b> {{ item.date | date }}</p>
@@ -144,13 +157,19 @@
             <v-card-actions>
               <v-spacer/>
               <v-btn
-                class="mx-0"
-                color="warning"
+                large
+                @click="onCancelChanges"
+              >
+                <!-- <v-icon left>mdi-cancel</v-icon> -->
+                <span>Cancel</span>
+              </v-btn>
+              <v-btn
+                color="primary"
                 large
                 @click="onSaveChanges"
               >
-                <v-icon left>mdi-pen</v-icon>
-                <span>Edit Project</span>
+                <!-- <v-icon left>mdi-pen</v-icon> -->
+                <span>Save</span>
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -181,19 +200,24 @@
       }
     },
     methods: {
+      onCancelChanges () {
+        this.$router.push('/projects')
+      },
       onSaveChanges () {
         this.$store.dispatch('updateProjectData', {
           id: this.item.id,
           title: this.item.title,
-          slug: this.item.slug,
-          shorttitle: this.item.shorttitle,
+          // slug: this.item.slug,
+          // shorttitle: this.item.shorttitle,
           description: this.item.description,
           price: this.item.price,
           atHero: this.item.atHero,
-          imgCover: this.item.imgCover,
-          imgSlider: this.item.imgSlider,
-          imgSlim: this.item.imgSlim
+          heroColor: this.item.heroColor,
+          imgCover: this.item.imgCover
+          // imgSlider: this.item.imgSlider,
+          // imgSlim: this.item.imgSlim
         })
+        this.$router.push('/projects')
       }
     }
   }

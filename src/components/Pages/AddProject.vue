@@ -3,7 +3,11 @@
     <v-container>
       <v-layout>
         <v-flex xs12>
-          <form @submit.prevent="onCreateProject">
+          <form
+            @submit.prevent="onCreateProject"
+            @keydown.esc="onCancelProject"
+            @keydown.enter="onCreateProject"
+          >
             <v-card>
               <v-card-title class="primary">
                 <h1 class="white--text">{{ pageTitle }}</h1>
@@ -18,7 +22,7 @@
                       v-model="title"
                       prepend-icon="mdi-format-title"
                     />
-                    <v-text-field
+                    <!-- <v-text-field
                       name="shorttitle"
                       label="Short Title"
                       id="shorttitle"
@@ -31,7 +35,7 @@
                       id="slug"
                       v-model="slug"
                       prepend-icon="mdi-link"
-                    />
+                    /> -->
                     <v-text-field
                       name="price"
                       label="Price"
@@ -42,6 +46,13 @@
                     <v-checkbox
                       v-model="atHero"
                       :label="`Show at hero?: ${atHero.toString()}`"
+                    />
+                    <v-text-field
+                      name="heroColor"
+                      label="Hero Color"
+                      id="heroColor"
+                      v-model="heroColor"
+                      prepend-icon="mdi-palette"
                     />
                     <div>
                       <v-icon left>mdi-image</v-icon>
@@ -59,6 +70,7 @@
                       :placeholder="'imgCover 800x600'"
                       :placeholder-font-size="32"
                       :placeholder-color="'rgba(0,0,0,.54)'"
+                      :prevent-white-space="true"
                       :remove-button-size="40"
                       @file-type-mismatch="onFileTypeMismatch"
                       @file-choose="onFilePicked"
@@ -87,7 +99,7 @@
                       id="description"
                       v-model="description"
                     />
-                    <v-text-field
+                    <!-- <v-text-field
                       name="imgSlider"
                       label="imgSlider"
                       id="imgSlider"
@@ -99,7 +111,7 @@
                       :src="imgSlider"
                       class="d-block"
                       width="150"
-                    />
+                    /> -->
                     <!-- <div>
                       <croppa
                         v-model="croppa_imgSlim"
@@ -118,7 +130,7 @@
                         @file-choose="onFilePicked"
                       />
                     </div> -->
-                    <v-text-field
+                    <!-- <v-text-field
                       name="imgSlim"
                       label="imgSlim"
                       id="imgSlim"
@@ -130,7 +142,7 @@
                       :src="imgSlim"
                       class="d-block"
                       width="150"
-                    />
+                    /> -->
                   </v-flex>
                   <v-flex xs8>
                     <!-- <v-carousel>
@@ -146,13 +158,19 @@
               <v-card-actions>
                 <v-spacer/>
                 <v-btn
-                  class="mx-0"
+                  large
+                  @click="onCancelProject"
+                >
+                  <!-- <v-icon left>mdi-cancel</v-icon> -->
+                  <span>Cancel</span>
+                </v-btn>
+                <v-btn
                   color="success"
                   large
                   :disabled="!formIsValid"
                   type="submit"
                 >
-                  <v-icon left>mdi-plus-box</v-icon>
+                  <!-- <v-icon left>mdi-plus-box</v-icon> -->
                   <span>Add Project</span>
                 </v-btn>
               </v-card-actions>
@@ -170,13 +188,14 @@
       return {
         pageTitle: 'Add Project',
         title: '',
-        slug: '',
-        shorttitle: '',
+        // slug: '',
+        // shorttitle: '',
         description: '',
         price: '',
         atHero: false,
-        imgSlider: '',
-        imgSlim: '',
+        heroColor: '#f2f2f2',
+        // imgSlider: '',
+        // imgSlim: '',
         image: null,
         filePicked: false,
         croppa: {}
@@ -208,6 +227,9 @@
       onFileTypeMismatch (file) {
         alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил jpg/jpeg/png.')
       },
+      onCancelProject () {
+        this.$router.push('/projects')
+      },
       onCreateProject () {
         if (!this.formIsValid) {
           return
@@ -223,14 +245,15 @@
           })
           const itemData = {
             title: this.title,
-            slug: this.slug,
-            shorttitle: this.shorttitle,
+            // slug: this.slug,
+            // shorttitle: this.shorttitle,
             description: this.description,
             price: this.price,
             atHero: this.atHero,
+            heroColor: this.heroColor,
             image: file,
-            imgSlider: this.imgSlider,
-            imgSlim: this.imgSlim,
+            // imgSlider: this.imgSlider,
+            // imgSlim: this.imgSlim,
             date: new Date()
           }
           this.$store.dispatch('createProject', itemData)

@@ -13,59 +13,60 @@
       <v-toolbar flat class="transparent" dense>
         <v-list>
 
-          <v-list-tile v-if="userIsAuthenticated" exact :to="headerMenu.home.url" v-ripple>
+          <v-list-tile v-if="userIsAuthenticated" exact :to="home.url" v-ripple>
             <v-list-tile-action>
-              <v-icon>{{ headerMenu.home.icon }}</v-icon>
+              <v-icon>{{ home.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ headerMenu.home.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <v-list-tile v-if="userIsAuthenticated" :to="headerMenu.projects.url" v-ripple>
-            <v-list-tile-action>
-              <v-icon>{{ headerMenu.projects.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ headerMenu.projects.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <v-list-tile v-if="userIsAuthenticated" :to="headerMenu.features.url" v-ripple>
-            <v-list-tile-action>
-              <v-icon>{{ headerMenu.features.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ headerMenu.features.title }}</v-list-tile-title>
+              <v-list-tile-title>{{ home.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
           <v-divider v-if="userIsAuthenticated"/>
 
-          <v-list-tile v-if="userIsAuthenticated" :to="headerMenu.profile.url" v-ripple>
+          <v-subheader v-if="userIsAuthenticated">Widgets</v-subheader>
+
+          <v-list-tile
+            v-if="userIsAuthenticated"
+            v-for="i in widgets"
+            :key="i.url"
+            :to="i.url"
+            v-ripple
+          >
             <v-list-tile-action>
-              <v-icon>{{ headerMenu.profile.icon }}</v-icon>
+              <v-icon>{{ i.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ headerMenu.profile.title }}</v-list-tile-title>
+              <v-list-tile-title>{{ i.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-list-tile v-if="!userIsAuthenticated" :to="headerMenu.login.url" v-ripple>
+          <v-divider v-if="userIsAuthenticated"/>
+
+          <v-list-tile v-if="userIsAuthenticated" :to="userMenu.profile.url" v-ripple>
             <v-list-tile-action>
-              <v-icon>{{ headerMenu.login.icon }}</v-icon>
+              <v-icon>{{ userMenu.profile.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ headerMenu.login.title }}</v-list-tile-title>
+              <v-list-tile-title>{{ userMenu.profile.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
-          <v-list-tile v-if="!userIsAuthenticated" :to="headerMenu.register.url" v-ripple>
+          <v-list-tile v-if="!userIsAuthenticated" :to="userMenu.login.url" v-ripple>
             <v-list-tile-action>
-              <v-icon>{{ headerMenu.register.icon }}</v-icon>
+              <v-icon>{{ userMenu.login.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ headerMenu.register.title }}</v-list-tile-title>
+              <v-list-tile-title>{{ userMenu.login.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile v-if="!userIsAuthenticated" :to="userMenu.register.url" v-ripple>
+            <v-list-tile-action>
+              <v-icon>{{ userMenu.register.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ userMenu.register.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -75,124 +76,15 @@
 
     <v-toolbar dense app dark class="blue-grey darken-4">
 
-      <!-- <v-toolbar-items>
-        <v-btn flat :to="headerMenu.home.url" exact>
-          <v-icon>{{ headerMenu.home.icon }}</v-icon>
-          <v-toolbar-title>{{ headerMenu.home.title }}</v-toolbar-title>
-        </v-btn>
-      </v-toolbar-items>
-
-      <v-spacer/>
-
-      <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat :to="headerMenu.projects.url">
-          <v-icon left>{{ headerMenu.projects.icon }}</v-icon>
-          <span>{{ headerMenu.projects.title }}</span>
-        </v-btn>
-      </v-toolbar-items>
-
-      <v-spacer/> -->
-
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-lg-and-up">
         <v-icon>mdi-menu</v-icon>
       </v-toolbar-side-icon>
 
-      <!-- <v-toolbar-items class="hidden-xs-only">
-
-        <v-btn flat v-if="userIsAuthenticated" :to="headerMenu.profile.url">
-          <v-icon left>{{ headerMenu.profile.icon }}</v-icon>
-          <span>{{ headerMenu.profile.title }}</span>
-        </v-btn>
-
-        <v-btn flat v-if="!userIsAuthenticated" :to="headerMenu.login.url">
-          <v-icon left>{{ headerMenu.login.icon }}</v-icon>
-          <span>{{ headerMenu.login.title }}</span>
-        </v-btn>
-
-        <v-btn flat v-if="!userIsAuthenticated" :to="headerMenu.register.url">
-          <v-icon left>{{ headerMenu.register.icon }}</v-icon>
-          <span>{{ headerMenu.register.title }}</span>
-        </v-btn>
-
-      </v-toolbar-items> -->
     </v-toolbar>
 
     <v-content>
-      <!-- <v-container>
-        <v-layout> -->
-          <router-view/>
-        <!-- </v-layout>
-      </v-container> -->
+      <router-view/>
     </v-content>
-
-    <!-- <v-navigation-drawer
-      fixed
-      temporary
-      left
-      v-model="sideNav"
-    >
-      <v-list dense class="pt-0">
-
-        <v-list-tile :to="headerMenu.home.url">
-          <v-list-tile-action>
-            <v-icon>{{ headerMenu.home.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ headerMenu.home.title }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile v-if="userIsAuthenticated" :to="headerMenu.projects.url">
-          <v-list-tile-action>
-            <v-icon>{{ headerMenu.projects.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ headerMenu.projects.title }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile v-if="userIsAuthenticated" :to="headerMenu.profile.url">
-          <v-list-tile-action>
-            <v-icon>{{ headerMenu.profile.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ headerMenu.profile.title }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile v-if="!userIsAuthenticated" :to="headerMenu.login.url">
-          <v-list-tile-action>
-            <v-icon>{{ headerMenu.login.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ headerMenu.login.title }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile v-if="!userIsAuthenticated" :to="headerMenu.register.url">
-          <v-list-tile-action>
-            <v-icon>{{ headerMenu.register.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ headerMenu.register.title }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-      </v-list>
-    </v-navigation-drawer> -->
-
-    <!-- <v-card flat tile dark class="grey darken-4">
-      <v-card-text>
-        <v-container>
-          <v-layout wrap>
-            <v-flex xs12 sm6>
-              <div>Yehor Popov Studio &copy; {{ new Date().getFullYear() }} All Rights Reserved</div>
-              <Network/>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-card-text>
-    </v-card> -->
 
   </v-app>
 </template>
@@ -207,14 +99,12 @@
     data () {
       return {
         drawer: true,
-        // miniVariant: false,
-        // sideNav: null,
-        headerMenu: {
-          home: {
-            title: 'Yehor Popov',
-            icon: 'mdi-circle',
-            url: '/'
-          },
+        home: {
+          title: 'Yehor Popov',
+          icon: 'mdi-circle',
+          url: '/'
+        },
+        userMenu: {
           login: {
             title: 'Sign In',
             icon: 'mdi-key',
@@ -229,16 +119,43 @@
             title: 'Profile',
             icon: 'mdi-account',
             url: '/user/profile'
-          },
-          projects: {
-            title: 'Projects',
-            icon: 'mdi-cannabis',
-            url: '/projects'
+          }
+        },
+        widgets: {
+          hero: {
+            title: 'Hero',
+            icon: 'mdi-bat',
+            url: '/hero'
           },
           features: {
             title: 'Features',
-            icon: 'mdi-alien',
+            icon: 'mdi-star',
             url: '/features'
+          },
+          projects: {
+            title: 'Projects',
+            icon: 'mdi-floor-plan',
+            url: '/projects'
+          },
+          howItWorks: {
+            title: 'How It Works',
+            icon: 'mdi-format-list-numbered',
+            url: '/how-it-works'
+          },
+          works: {
+            title: 'Works',
+            icon: 'mdi-instagram',
+            url: '/works'
+          },
+          team: {
+            title: 'Team',
+            icon: 'mdi-account-group',
+            url: '/team'
+          },
+          contacts: {
+            title: 'Contacts',
+            icon: 'mdi-google-maps',
+            url: '/contacts'
           }
         }
       }

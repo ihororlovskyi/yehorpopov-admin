@@ -12,21 +12,22 @@
         color="error"
         slot="activator"
         small
+        class="ma-0"
       >
         <v-icon>mdi-delete</v-icon>
       </v-btn>
-      <span>Удалить</span>
+      <span>Delete</span>
     </v-tooltip>
 
     <v-card>
       <v-container pa-1>
 
-        <v-card-text pa-1>{{ text }}</v-card-text>
+        <v-card-text pa-1 v-html="text"/>
 
         <v-card-actions>
           <v-spacer/>
-          <v-btn @click.stop="deleteTicketDialog=false">Отмена</v-btn>
-          <v-btn color="error" @click="onRemove">Удалить</v-btn>
+          <v-btn @click.stop="deleteTicketDialog=false">Cancel</v-btn>
+          <v-btn color="error" @click="onRemove">Delete</v-btn>
         </v-card-actions>
 
       </v-container>
