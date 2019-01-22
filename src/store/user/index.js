@@ -7,7 +7,8 @@ export default {
     admins: [
       '665sv19j78V9ian4OP3Uvy9hraF3',
       'XHKP3OEJKJRFLy5NgddjnZRlUIA3',
-      'o0G1xy1OJsSLqk6qAX45lxQz4Zh2'
+      'o0G1xy1OJsSLqk6qAX45lxQz4Zh2',
+      'vbGH5rkitURNtuDn97ghAPxGZK23'
     ]
   },
 
