@@ -12,6 +12,8 @@ import EditProject from '@/components/Pages/EditProject'
 import HowItWorks from '@/components/Pages/HowItWorks'
 import Works from '@/components/Pages/Works'
 import Team from '@/components/Pages/Team'
+import AddTeamMember from '@/components/Pages/AddTeamMember'
+import EditTeamMember from '@/components/Pages/EditTeamMember'
 import Contacts from '@/components/Pages/Contacts'
 import AuthGuard from './auth-guard'
 
@@ -61,13 +63,13 @@ export default new Router({
       beforeEnter: AuthGuard
     },
     {
-      path: '/admin/add-project',
+      path: '/projects/add-project',
       name: 'AddProject',
       component: AddProject,
       beforeEnter: AuthGuard
     },
     {
-      path: '/project/:id',
+      path: '/projects/:id',
       name: 'EditProject',
       component: EditProject,
       props: true,
@@ -90,6 +92,19 @@ export default new Router({
       name: 'Team',
       component: Team,
       beforeEnter: AuthGuard
+    },
+    {
+      path: '/team/add-team-member',
+      name: 'AddTeamMember',
+      component: AddTeamMember,
+      beforeEnter: AuthGuard
+    },
+    {
+      path: '/team/:id',
+      name: 'EditTeamMember',
+      component: EditTeamMember,
+      props: true
+      // beforeEnter: AuthGuard
     },
     {
       path: '/contacts',

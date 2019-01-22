@@ -171,7 +171,7 @@
                   type="submit"
                 >
                   <!-- <v-icon left>mdi-plus-box</v-icon> -->
-                  <span>Add Project</span>
+                  <span>Save</span>
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -225,7 +225,7 @@
         this.filePicked = true
       },
       onFileTypeMismatch (file) {
-        alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил jpg/jpeg/png.')
+        alert('This file is not valid. Please upload a valid file jpg/jpeg/png.')
       },
       onCancelProject () {
         this.$router.push('/projects')

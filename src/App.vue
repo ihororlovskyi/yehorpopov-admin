@@ -4,7 +4,6 @@
     <v-navigation-drawer
       width="250"
       dark
-      persistent
       v-model="drawer"
       fixed
       app

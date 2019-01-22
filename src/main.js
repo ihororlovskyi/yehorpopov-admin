@@ -11,7 +11,6 @@ import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import DeleteProjectDialog from './components/Shared/DeleteProjectDialog'
 import EditProjectImgCoverDialog from './components/Shared/EditProjectImgCoverDialog'
-import BtnAddProject from './components/Shared/BtnAddProject'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
@@ -21,7 +20,6 @@ Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('delete-project-dialog', DeleteProjectDialog)
 Vue.component('edit-project-img-cover-dialog', EditProjectImgCoverDialog)
-Vue.component('btn-add-project', BtnAddProject)
 
 /* eslint-disable no-new */
 new Vue({
@@ -44,5 +42,6 @@ new Vue({
       }
     })
     this.$store.dispatch('loadProjects')
+    this.$store.dispatch('loadTeamMembers')
   }
 })

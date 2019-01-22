@@ -5,12 +5,39 @@
         <v-flex xs12>
           <v-card>
             <v-card-title class="primary">
-              <h1 class="white--text">{{ pageTitle }}</h1>
+              <h1 class="white--text">
+                <v-icon class="white--text">{{ pageIcon }}</v-icon>
+                {{ pageTitle }}
+              </h1>
             </v-card-title>
             <v-card-text>
               <v-layout row wrap>
+
+                <v-flex xs12 v-if="userIsAdmin" class="mb-2">
+                  <v-btn large color="success" class="mx-0" :to="addTeamMemberBtn.url">
+                    <v-icon left>{{ addTeamMemberBtn.icon }}</v-icon>
+                    {{ addTeamMemberBtn.title }}
+                  </v-btn>
+                </v-flex>
                 <v-flex xs12>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                  <v-list two-line>
+                    <v-list-tile
+                      v-for="i in loadedTeamMembersSortedByOld"
+                      @click="onLoadTeamMember(i.id)"
+                      :key="i.id"
+                      v-ripple
+                    >
+                      <v-list-tile-avatar>
+                        <img :src="i.photo">
+                      </v-list-tile-avatar>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ i.name }}</v-list-tile-title>
+                        <v-list-tile-sub-title>{{ i.position }}</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </v-list>
+
                 </v-flex>
               </v-layout>
             </v-card-text>
@@ -25,25 +52,28 @@
   export default {
     data () {
       return {
-        pageTitle: 'Team'
+        pageTitle: 'Team',
+        pageIcon: 'mdi-account-group',
+        addTeamMemberBtn: {
+          title: 'Add Team Member',
+          icon: 'mdi-account-plus',
+          url: '/team/add-team-member'
+        }
+      }
+    },
+    computed: {
+      loadedTeamMembersSortedByOld () {
+        return this.$store.getters.loadedTeamMembersSortedByOld
+      },
+      userIsAdmin () {
+        return this.$store.getters.userIsAdmin
+      }
+    },
+    methods: {
+      onLoadTeamMember (id) {
+        this.$router.push('/team/' + id)
       }
     }
-    // computed: {
-    //   loading () {
-    //     return this.$store.getters.loading
-    //   },
-    //   projects () {
-    //     return this.$store.getters.loadedProjectsSortedByDate
-    //   },
-    //   userIsAdmin () {
-    //     return this.$store.getters.userIsAdmin
-    //   }
-    // },
-    // methods: {
-    //   onLoadProject (id) {
-    //     this.$router.push('/project/' + id)
-    //   }
-    // }
   }
 </script>
 

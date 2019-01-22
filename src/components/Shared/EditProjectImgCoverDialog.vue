@@ -88,7 +88,7 @@
         this.imageUrlIsVisible = false
       },
       onFileTypeMismatch (file) {
-        alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил jpg/jpeg/png.')
+        alert('This file is not valid. Please upload a valid file jpg/jpeg/png.')
       },
       // onDraw: function (ctx) {
       //   ctx.save()
@@ -132,9 +132,9 @@
   .edit-lottery-dialog__image-url-container img {
     position: absolute;
     top: 0;
-    /* right: left; */
+    left: 0;
     z-index: 10;
-    max-width: 100%;
+    width: 100%;
     height: auto;
   }
   .btn--remoove-image-url {
