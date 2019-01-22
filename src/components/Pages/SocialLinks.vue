@@ -24,8 +24,8 @@
     data () {
       return {
         page: {
-          title: 'Works',
-          icon: 'mdi-instagram'
+          title: 'Social Links',
+          icon: 'mdi-facebook'
         }
       }
     }

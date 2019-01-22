@@ -4,9 +4,7 @@
       <v-layout>
         <v-flex xs12>
           <v-card>
-            <v-card-title class="primary">
-              <h1 class="white--text">{{ pageTitle }}</h1>
-            </v-card-title>
+            <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
                 <v-flex xs12>
@@ -25,25 +23,12 @@
   export default {
     data () {
       return {
-        pageTitle: 'Contacts'
+        page: {
+          title: 'Contacts',
+          icon: 'mdi-google-maps'
+        }
       }
     }
-    // computed: {
-    //   loading () {
-    //     return this.$store.getters.loading
-    //   },
-    //   projects () {
-    //     return this.$store.getters.loadedProjectsSortedByDate
-    //   },
-    //   userIsAdmin () {
-    //     return this.$store.getters.userIsAdmin
-    //   }
-    // },
-    // methods: {
-    //   onLoadProject (id) {
-    //     this.$router.push('/project/' + id)
-    //   }
-    // }
   }
 </script>
 

@@ -15,7 +15,13 @@ import Team from '@/components/Pages/Team'
 import AddTeamMember from '@/components/Pages/AddTeamMember'
 import EditTeamMember from '@/components/Pages/EditTeamMember'
 import Contacts from '@/components/Pages/Contacts'
+
+import SocialLinks from '@/components/Pages/SocialLinks'
+import PopupContact from '@/components/Pages/PopupContact'
+import PopupThanks from '@/components/Pages/PopupThanks'
+
 import AuthGuard from './auth-guard'
+import AdminGuard from './admin-guard'
 
 Vue.use(Router)
 
@@ -48,69 +54,87 @@ export default new Router({
       path: '/hero',
       name: 'Hero',
       component: Hero,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/features',
       name: 'Features',
       component: Features,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/projects',
       name: 'Projects',
       component: Projects,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/projects/add-project',
       name: 'AddProject',
       component: AddProject,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/projects/:id',
       name: 'EditProject',
       component: EditProject,
       props: true,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/how-it-works',
       name: 'HowItWorks',
       component: HowItWorks,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/works',
       name: 'Works',
       component: Works,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/team',
       name: 'Team',
       component: Team,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/team/add-team-member',
       name: 'AddTeamMember',
       component: AddTeamMember,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
     },
     {
       path: '/team/:id',
       name: 'EditTeamMember',
       component: EditTeamMember,
-      props: true
-      // beforeEnter: AuthGuard
+      props: true,
+      beforeEnter: AdminGuard
     },
     {
       path: '/contacts',
       name: 'Contacts',
       component: Contacts,
-      beforeEnter: AuthGuard
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/social-links',
+      name: 'SocialLinks',
+      component: SocialLinks,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/popup-contact',
+      name: 'PopupContact',
+      component: PopupContact,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/popup-thanks',
+      name: 'PopupThanks',
+      component: PopupThanks,
+      beforeEnter: AdminGuard
     }
   ],
   scrollBehavior (to, from, savedPosition) {

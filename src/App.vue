@@ -20,13 +20,32 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-divider v-if="userIsAuthenticated"/>
+        <v-divider v-if="userIsAdmin"/>
 
-        <v-subheader v-if="userIsAuthenticated">Widgets</v-subheader>
+        <v-subheader v-if="userIsAdmin">Widgets</v-subheader>
 
         <v-list-tile
-          v-if="userIsAuthenticated"
+          v-if="userIsAdmin"
           v-for="i in widgets"
+          :key="i.url"
+          :to="i.url"
+          v-ripple
+        >
+          <v-list-tile-action>
+            <v-icon>{{ i.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-divider v-if="userIsAdmin"/>
+
+        <v-subheader v-if="userIsAdmin">Components</v-subheader>
+
+        <v-list-tile
+          v-if="userIsAdmin"
+          v-for="i in components"
           :key="i.url"
           :to="i.url"
           v-ripple
@@ -85,18 +104,13 @@
 </template>
 
 <script>
-  import Network from './components/Shared/Network.vue'
-
   export default {
-    components: {
-      Network
-    },
     data () {
       return {
         drawer: true,
         home: {
-          title: 'Yehor Popov',
-          icon: 'mdi-circle',
+          title: 'Admin',
+          icon: 'mdi-security',
           url: '/'
         },
         userMenu: {
@@ -129,7 +143,7 @@
           },
           projects: {
             title: 'Projects',
-            icon: 'mdi-floor-plan',
+            icon: 'mdi-cannabis',
             url: '/projects'
           },
           howItWorks: {
@@ -152,12 +166,32 @@
             icon: 'mdi-google-maps',
             url: '/contacts'
           }
+        },
+        components: {
+          socialLinks: {
+            title: 'Social Links',
+            icon: 'mdi-facebook',
+            url: '/social-links'
+          },
+          popupContact: {
+            title: 'Popup Contact',
+            icon: 'mdi-barley',
+            url: '/popup-contact'
+          },
+          popupThanks: {
+            title: 'Popup Thanks',
+            icon: 'mdi-heart',
+            url: '/popup-thanks'
+          }
         }
       }
     },
     computed: {
       userIsAuthenticated () {
         return this.$store.getters.userIsAuthenticated
+      },
+      userIsAdmin () {
+        return this.$store.getters.userIsAdmin
       }
     }
   }

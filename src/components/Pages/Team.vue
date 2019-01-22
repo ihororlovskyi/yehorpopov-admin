@@ -4,12 +4,7 @@
       <v-layout>
         <v-flex xs12>
           <v-card>
-            <v-card-title class="primary">
-              <h1 class="white--text">
-                <v-icon class="white--text">{{ pageIcon }}</v-icon>
-                {{ pageTitle }}
-              </h1>
-            </v-card-title>
+            <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
 
@@ -52,8 +47,10 @@
   export default {
     data () {
       return {
-        pageTitle: 'Team',
-        pageIcon: 'mdi-account-group',
+        page: {
+          title: 'Team',
+          icon: 'mdi-account-group'
+        },
         addTeamMemberBtn: {
           title: 'Add Team Member',
           icon: 'mdi-account-plus',

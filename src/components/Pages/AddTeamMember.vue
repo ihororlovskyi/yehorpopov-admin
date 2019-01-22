@@ -9,12 +9,7 @@
             @keydown.enter="onPublish"
           >
             <v-card>
-              <v-card-title class="primary">
-                <h1 class="white--text">
-                  <v-icon class="white--text">{{ pageIcon }}</v-icon>
-                  {{ pageTitle }}
-                </h1>
-              </v-card-title>
+              <page-title :icon="page.icon" :title="page.title"/>
               <v-card-text>
                 <v-layout row wrap>
                   <v-flex xs12 sm6>
@@ -122,8 +117,10 @@
   export default {
     data () {
       return {
-        pageTitle: 'Add Team Member',
-        pageIcon: 'mdi-account-plus',
+        page: {
+          title: 'Add Team Member',
+          icon: 'mdi-account-plus'
+        },
         nameIcon: 'mdi-account-card-details',
         positionIcon: 'mdi-android-studio',
         photoIcon: 'mdi-image',

@@ -8,22 +8,7 @@
         <v-flex xs12>
 
           <v-card>
-            <v-card-title class="primary">
-              <h1 class="white--text">{{ pageTitle }}</h1>
-              <v-spacer/>
-              <delete-project-dialog :item="item"/>
-            </v-card-title>
-
-            <!-- <v-card-title>
-
-            </v-card-title> -->
-
-            <!-- <v-card-media
-              height="500"
-              :src="item.imageUrl"
-            /> -->
-
-
+            <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
                 <v-flex xs4>
@@ -185,13 +170,13 @@
     props: ['id'],
     data () {
       return {
-        pageTitle: 'Edit Project'
+        page: {
+          title: 'Edit Project',
+          icon: 'mdi-account-plus'
+        }
       }
     },
     computed: {
-      // loading () {
-      //   return this.$store.getters.loading
-      // },
       item () {
         return this.$store.getters.loadedProject(this.id)
       },

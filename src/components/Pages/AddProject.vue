@@ -9,9 +9,7 @@
             @keydown.enter="onCreateProject"
           >
             <v-card>
-              <v-card-title class="primary">
-                <h1 class="white--text">{{ pageTitle }}</h1>
-              </v-card-title>
+              <page-title :icon="page.icon" :title="page.title"/>
               <v-card-text>
                 <v-layout row wrap>
                   <v-flex xs4>
@@ -186,7 +184,10 @@
   export default {
     data () {
       return {
-        pageTitle: 'Add Project',
+        page: {
+          title: 'Add Project',
+          icon: 'mdi-account-plus'
+        },
         title: '',
         // slug: '',
         // shorttitle: '',

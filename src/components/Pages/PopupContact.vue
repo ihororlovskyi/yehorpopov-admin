@@ -24,8 +24,8 @@
     data () {
       return {
         page: {
-          title: 'Works',
-          icon: 'mdi-instagram'
+          title: 'Popup Contact',
+          icon: 'mdi-barley'
         }
       }
     }

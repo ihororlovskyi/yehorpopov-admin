@@ -4,9 +4,7 @@
       <v-layout>
         <v-flex xs12>
           <v-card>
-            <v-card-title class="primary">
-              <h1 class="white--text">{{ pageTitle }}</h1>
-            </v-card-title>
+            <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-progress-circular
                 v-if="loading"
@@ -37,7 +35,10 @@
   export default {
     data () {
       return {
-        pageTitle: 'Profile',
+        page: {
+          title: 'Profile',
+          icon: 'mdi-account'
+        },
         logoutBtn: {
           title: 'Exit',
           icon: 'mdi-exit-to-app'

@@ -4,9 +4,7 @@
       <v-layout>
         <v-flex xs12>
           <v-card>
-            <v-card-title class="primary">
-              <h1 class="white--text">{{ pageTitle }}</h1>
-            </v-card-title>
+            <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
                 <v-flex xs12>
@@ -26,7 +24,10 @@
   export default {
     data () {
       return {
-        pageTitle: 'Admin'
+        page: {
+          title: 'Admin',
+          icon: 'mdi-security'
+        }
       }
     },
     computed: {

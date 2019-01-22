@@ -4,9 +4,7 @@
       <v-layout>
         <v-flex xs12>
           <v-card>
-            <v-card-title class="primary">
-              <h1 class="white--text">{{ pageTitle }}</h1>
-            </v-card-title>
+            <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
                 <v-flex xs12 v-if="userIsAdmin" class="mb-2">
@@ -50,7 +48,10 @@
   export default {
     data () {
       return {
-        pageTitle: 'Projects',
+        page: {
+          title: 'Projects',
+          icon: 'mdi-cannabis'
+        },
         addProjectBtn: {
           title: 'Add Project',
           icon: 'mdi-plus-box',
@@ -59,9 +60,6 @@
       }
     },
     computed: {
-      // loading () {
-      //   return this.$store.getters.loading
-      // },
       loadedProjectsSortedByDate () {
         return this.$store.getters.loadedProjectsSortedByDate
       },

@@ -8,45 +8,7 @@
         <v-flex xs12>
 
           <v-card>
-            <v-card-title class="primary">
-              <h1 class="white--text">
-                <v-icon class="white--text">{{ pageIcon }}</v-icon>
-                {{ pageTitle }}
-              </h1>
-              <v-spacer/>
-
-              <v-dialog v-model="deleteTicketDialog" max-width="440">
-                <v-tooltip
-                  top
-                  slot="activator"
-                  color="error"
-                  open-delay="0"
-                >
-                  <v-btn
-                    fab
-                    color="error"
-                    slot="activator"
-                    small
-                    class="ma-0"
-                  >
-                    <v-icon>mdi-delete</v-icon>
-                  </v-btn>
-                  <span>Delete</span>
-                </v-tooltip>
-                <v-card>
-                  <v-container pa-1>
-                    <v-card-text pa-1 v-html="deleteText"/>
-                    <v-card-actions>
-                      <v-spacer/>
-                      <v-btn @click.stop="deleteTicketDialog=false">Cancel</v-btn>
-                      <v-btn color="error" @click="onDelete">Delete</v-btn>
-                    </v-card-actions>
-                  </v-container>
-                </v-card>
-              </v-dialog>
-
-            </v-card-title>
-
+            <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
                 <v-flex xs12 sm6>
@@ -89,6 +51,36 @@
                           <v-icon class="white--text">{{ nameIcon }}</v-icon>
                           {{ item.name }}
                         </h1>
+                        <v-spacer/>
+                        <v-dialog v-model="deleteTicketDialog" max-width="440">
+                          <v-tooltip
+                            top
+                            slot="activator"
+                            color="error"
+                            open-delay="0"
+                          >
+                            <v-btn
+                              fab
+                              color="error"
+                              slot="activator"
+                              small
+                              class="ma-0"
+                            >
+                              <v-icon>mdi-delete</v-icon>
+                            </v-btn>
+                            <span>Delete</span>
+                          </v-tooltip>
+                          <v-card>
+                            <v-container pa-1>
+                              <v-card-text pa-1 v-html="deleteText"/>
+                              <v-card-actions>
+                                <v-spacer/>
+                                <v-btn @click.stop="deleteTicketDialog=false">Cancel</v-btn>
+                                <v-btn color="error" @click="onDelete">Delete</v-btn>
+                              </v-card-actions>
+                            </v-container>
+                          </v-card>
+                        </v-dialog>
                       </v-card-title>
                       <v-card-text>
 
@@ -166,8 +158,10 @@
     props: ['id'],
     data () {
       return {
-        pageTitle: 'Edit Team Member',
-        pageIcon: 'mdi-clipboard-account',
+        page: {
+          title: 'Edit Team Member',
+          icon: 'mdi-clipboard-account'
+        },
         deleteText: 'This Team Member will be deleted permanently.<br>Are you sure you want to delete this Team Member?',
         deleteTicketDialog: false,
         nameIcon: 'mdi-account-card-details',

@@ -11,6 +11,7 @@ import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import DeleteProjectDialog from './components/Shared/DeleteProjectDialog'
 import EditProjectImgCoverDialog from './components/Shared/EditProjectImgCoverDialog'
+import PageTitle from './components/Shared/PageTitle'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
@@ -18,6 +19,7 @@ Vue.use(Croppa)
 
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
+Vue.component('page-title', PageTitle)
 Vue.component('delete-project-dialog', DeleteProjectDialog)
 Vue.component('edit-project-img-cover-dialog', EditProjectImgCoverDialog)
 

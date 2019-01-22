@@ -6,10 +6,7 @@
           <app-alert v-if="error" @dismissed="onDismissed" :text="error.message"/>
           <form @submit.prevent="onSignup">
             <v-card>
-              <v-card-title class="primary">
-                <h1 class="white--text">{{ pageTitle }}</h1>
-              </v-card-title>
-
+              <page-title :icon="page.icon" :title="page.title"/>
               <v-card-text>
                 <v-text-field
                   name="email"
@@ -66,7 +63,10 @@
   export default {
     data () {
       return {
-        pageTitle: 'Registration',
+        page: {
+          title: 'Registration',
+          icon: 'mdi-account-plus'
+        },
         email: '',
         password: '',
         confirmPassword: ''
