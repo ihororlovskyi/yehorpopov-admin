@@ -28,19 +28,7 @@
                         v-model="position"
                         :prepend-icon="positionIcon"
                       />
-                      <!-- <v-layout>
-                        <v-checkbox v-model="photo" hide-details class="shrink mr-2"/>
-                        <v-text-field
-                          name="photo"
-                          label="Photo"
-                          id="photo"
-                          v-model="photo"
-                          :disabled="!photo"
-                          :prepend-icon="photoIcon"
-                        />
-                      </v-layout> -->
                       <v-layout>
-                        <!-- <v-checkbox v-model="quote" hide-details class="shrink mr-2"/> -->
                         <v-textarea
                           name="quote"
                           label="Quote (HTML)"
@@ -179,12 +167,6 @@
 </script>
 
 <style>
-  .croppa-container,
-  .croppa-container canvas {
-    width: 100% !important;
-    height: auto !important;
-  }
-
   .ImageContainer {
     max-width: 200px;
     position: relative;
@@ -193,5 +175,9 @@
     display: block;
     width: 100%;
     height: auto;
+  }
+  .ImageContainer .croppa-container canvas {
+    width: 100% !important;
+    height: auto !important;
   }
 </style>

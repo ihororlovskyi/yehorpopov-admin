@@ -4,152 +4,95 @@
       <v-layout>
         <v-flex xs12>
           <form
-            @submit.prevent="onCreateProject"
-            @keydown.esc="onCancelProject"
-            @keydown.enter="onCreateProject"
+            @submit.prevent="onPublish"
+            @keydown.esc="onCancel"
+            @keydown.enter="onPublish"
           >
             <v-card>
               <page-title :icon="page.icon" :title="page.title"/>
               <v-card-text>
                 <v-layout row wrap>
-                  <v-flex xs4>
-                    <v-text-field
-                      name="title"
-                      label="Title"
-                      id="title"
-                      v-model="title"
-                      prepend-icon="mdi-format-title"
-                    />
-                    <!-- <v-text-field
-                      name="shorttitle"
-                      label="Short Title"
-                      id="shorttitle"
-                      v-model="shorttitle"
-                      prepend-icon="mdi-alpha-t"
-                    />
-                    <v-text-field
-                      name="slug"
-                      label="Slug"
-                      id="slug"
-                      v-model="slug"
-                      prepend-icon="mdi-link"
-                    /> -->
-                    <v-text-field
-                      name="price"
-                      label="Price"
-                      id="price"
-                      v-model="price"
-                      prepend-icon="mdi-currency-usd"
-                    />
-                    <v-checkbox
-                      v-model="atHero"
-                      :label="`Show at hero?: ${atHero.toString()}`"
-                    />
-                    <v-text-field
-                      name="heroColor"
-                      label="Hero Color"
-                      id="heroColor"
-                      v-model="heroColor"
-                      prepend-icon="mdi-palette"
-                    />
-                    <div>
-                      <v-icon left>mdi-image</v-icon>
-                      imgCover 800x600
+                  <v-flex xs12 sm6>
+                    <div class="pr-4">
+                      <v-text-field
+                        name="title"
+                        label="Title"
+                        id="title"
+                        v-model="title"
+                        :prepend-icon="titleIcon"
+                      />
+                      <v-text-field
+                        name="price"
+                        label="Price"
+                        id="price"
+                        v-model="price"
+                        :prepend-icon="priceIcon"
+                      />
+                      <v-layout row wrap>
+                        <v-flex xs12 sm6>
+                          <v-checkbox
+                            v-model="atHero"
+                            :label="`Show at Hero?: ${atHero.toString()}`"
+                            :prepend-icon="atHeroIcon"
+                          />
+                        </v-flex>
+                        <v-flex xs12 sm6 v-if="atHero">
+                          <v-text-field
+                            name="heroColor"
+                            label="Hero Color"
+                            id="heroColor"
+                            v-model="heroColor"
+                            :prepend-icon="heroColorIcon"
+                          />
+                        </v-flex>
+                      </v-layout>
+                      <v-textarea
+                        name="description"
+                        label="Description"
+                        id="description"
+                        v-model="description"
+                        :prepend-icon="descriptionIcon"
+                      />
                     </div>
-                    <croppa
-                      v-model="croppa"
-                      :width="800"
-                      :height="600"
-                      :quality="2"
-                      :accept="'image/*'"
-                      :canvas-color="'#ccc'"
-                      initial-size="cover"
-                      :zoom-speed="2"
-                      :placeholder="'imgCover 800x600'"
-                      :placeholder-font-size="32"
-                      :placeholder-color="'rgba(0,0,0,.54)'"
-                      :prevent-white-space="true"
-                      :remove-button-size="40"
-                      @file-type-mismatch="onFileTypeMismatch"
-                      @file-choose="onFilePicked"
-                    />
-                    <!-- <div>
-                      <croppa
-                        v-model="croppa_imgSlider"
-                        :width="800"
-                        :height="600"
-                        :quality="2"
-                        :accept="'image/*'"
-                        :canvas-color="'#ccc'"
-                        initial-size="contain"
-                        :zoom-speed="2"
-                        :placeholder="'imgSlider 800x600'"
-                        :placeholder-font-size="16"
-                        :placeholder-color="'rgba(0,0,0,.54)'"
-                        :remove-button-size="40"
-                        @file-type-mismatch="onFileTypeMismatch"
-                        @file-choose="onFilePicked"
-                      />
-                    </div> -->
-                    <v-textarea
-                      name="description"
-                      label="Description"
-                      id="description"
-                      v-model="description"
-                    />
-                    <!-- <v-text-field
-                      name="imgSlider"
-                      label="imgSlider"
-                      id="imgSlider"
-                      v-model="imgSlider"
-                      prepend-icon="mdi-image"
-                    />
-                    <img
-                      v-if="imgSlider"
-                      :src="imgSlider"
-                      class="d-block"
-                      width="150"
-                    /> -->
-                    <!-- <div>
-                      <croppa
-                        v-model="croppa_imgSlim"
-                        :width="1200"
-                        :height="300"
-                        :quality="2"
-                        :accept="'image/*'"
-                        :canvas-color="'#ccc'"
-                        initial-size="contain"
-                        :zoom-speed="2"
-                        :placeholder="'imgSlim 1200x300'"
-                        :placeholder-font-size="16"
-                        :placeholder-color="'rgba(0,0,0,.54)'"
-                        :remove-button-size="40"
-                        @file-type-mismatch="onFileTypeMismatch"
-                        @file-choose="onFilePicked"
-                      />
-                    </div> -->
-                    <!-- <v-text-field
-                      name="imgSlim"
-                      label="imgSlim"
-                      id="imgSlim"
-                      v-model="imgSlim"
-                      prepend-icon="mdi-image"
-                    />
-                    <img
-                      v-if="imgSlim"
-                      :src="imgSlim"
-                      class="d-block"
-                      width="150"
-                    /> -->
                   </v-flex>
-                  <v-flex xs8>
-                    <!-- <v-carousel>
-                      <v-carousel-item
-                        v-for="(item,i) in items"
-                        :key="i"
-                        :src="item.src"
-                      />
-                    </v-carousel> -->
+                  <v-flex xs12 sm6>
+                    <v-card>
+                      <v-card-title class="light-blue lighten-1" v-if="title">
+                        <h1 class="white--text">
+                          <v-icon class="white--text">{{ titleIcon }}</v-icon>
+                          {{ title }}
+                        </h1>
+                      </v-card-title>
+                      <v-card-text>
+                        <p v-if="price">
+                          <v-icon>{{ priceIcon }}</v-icon>
+                          {{ price }}
+                        </p>
+                        <p class="ImageContainer">
+                          <croppa
+                            v-model="croppa"
+                            :width="800"
+                            :height="600"
+                            :quality="2"
+                            :accept="'image/*'"
+                            :canvas-color="'#ccc'"
+                            initial-size="cover"
+                            :zoom-speed="2"
+                            :placeholder="'imgCover 800x600'"
+                            :placeholder-font-size="64"
+                            :placeholder-color="'rgba(0,0,0,.54)'"
+                            :prevent-white-space="true"
+                            :remove-button-size="40"
+                            @file-type-mismatch="onFileTypeMismatch"
+                            @file-choose="onFilePicked"
+                          />
+                        </p>
+                        <p v-if="description">
+                          <v-icon>{{ descriptionIcon }}</v-icon>
+                          <span v-html="description"/>
+                        </p>
+                      </v-card-text>
+                    </v-card>
                   </v-flex>
                 </v-layout>
               </v-card-text>
@@ -157,20 +100,14 @@
                 <v-spacer/>
                 <v-btn
                   large
-                  @click="onCancelProject"
-                >
-                  <!-- <v-icon left>mdi-cancel</v-icon> -->
-                  <span>Cancel</span>
-                </v-btn>
+                  @click="onCancel"
+                >Cancel</v-btn>
                 <v-btn
                   color="success"
                   large
                   :disabled="!formIsValid"
                   type="submit"
-                >
-                  <!-- <v-icon left>mdi-plus-box</v-icon> -->
-                  <span>Save</span>
-                </v-btn>
+                >Publish</v-btn>
               </v-card-actions>
             </v-card>
           </form>
@@ -186,39 +123,26 @@
       return {
         page: {
           title: 'Add Project',
-          icon: 'mdi-account-plus'
+          icon: 'mdi-plus'
         },
+        titleIcon: 'mdi-format-title',
+        priceIcon: 'mdi-currency-usd',
+        atHeroIcon: 'mdi-bat',
+        heroColorIcon: 'mdi-palette',
+        descriptionIcon: 'mdi-text-subject',
         title: '',
-        // slug: '',
-        // shorttitle: '',
         description: '',
         price: '',
         atHero: false,
         heroColor: '#f2f2f2',
-        // imgSlider: '',
-        // imgSlim: '',
         image: null,
         filePicked: false,
         croppa: {}
-        // items: [
-        //   {
-        //     src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
-        //   },
-        //   {
-        //     src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
-        //   },
-        //   {
-        //     src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
-        //   },
-        //   {
-        //     src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
-        //   }
-        // ]
       }
     },
     computed: {
       formIsValid () {
-        return this.title !== ''
+        return this.title !== '' && this.croppa.hasImage()
       }
     },
     methods: {
@@ -228,17 +152,17 @@
       onFileTypeMismatch (file) {
         alert('This file is not valid. Please upload a valid file jpg/jpeg/png.')
       },
-      onCancelProject () {
+      onCancel () {
         this.$router.push('/projects')
       },
-      onCreateProject () {
+      onPublish () {
         if (!this.formIsValid) {
           return
         }
-        // if (!this.croppa.hasImage()) {
-        //   alert('No image to upload')
-        //   return
-        // }
+        if (!this.croppa.hasImage()) {
+          alert('No image to upload')
+          return
+        }
         this.croppa.generateBlob((blob) => {
           var file = new File([blob], 'name.jpeg', {
             lastModifiedDate: new Date(),
@@ -246,15 +170,11 @@
           })
           const itemData = {
             title: this.title,
-            // slug: this.slug,
-            // shorttitle: this.shorttitle,
             description: this.description,
             price: this.price,
             atHero: this.atHero,
             heroColor: this.heroColor,
             image: file,
-            // imgSlider: this.imgSlider,
-            // imgSlim: this.imgSlim,
             date: new Date()
           }
           this.$store.dispatch('createProject', itemData)
@@ -266,8 +186,16 @@
 </script>
 
 <style>
-  .croppa-container,
-  .croppa-container canvas {
+  .ImageContainer {
+    max-width: 200px;
+    position: relative;
+  }
+  .ImageContainer img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .ImageContainer .croppa-container canvas {
     width: 100% !important;
     height: auto !important;
   }

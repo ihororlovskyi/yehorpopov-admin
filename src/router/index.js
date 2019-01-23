@@ -6,17 +6,24 @@ import Login from '@/components/Pages/Login'
 import Profile from '@/components/Pages/Profile'
 import Hero from '@/components/Pages/Hero'
 import Features from '@/components/Pages/Features'
+
 import Projects from '@/components/Pages/Projects'
 import AddProject from '@/components/Pages/AddProject'
 import EditProject from '@/components/Pages/EditProject'
+
 import HowItWorks from '@/components/Pages/HowItWorks'
 import Works from '@/components/Pages/Works'
+
 import Team from '@/components/Pages/Team'
 import AddTeamMember from '@/components/Pages/AddTeamMember'
 import EditTeamMember from '@/components/Pages/EditTeamMember'
+
 import Contacts from '@/components/Pages/Contacts'
 
 import SocialLinks from '@/components/Pages/SocialLinks'
+import AddSocialLink from '@/components/Pages/AddSocialLink'
+import EditSocialLink from '@/components/Pages/EditSocialLink'
+
 import PopupContact from '@/components/Pages/PopupContact'
 import PopupThanks from '@/components/Pages/PopupThanks'
 
@@ -119,9 +126,22 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/social-links',
+      path: '/social',
       name: 'SocialLinks',
       component: SocialLinks,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/social/add-social-link',
+      name: 'AddSocialLink',
+      component: AddSocialLink,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/social/:id',
+      name: 'EditSocialLink',
+      props: true,
+      component: EditSocialLink,
       beforeEnter: AdminGuard
     },
     {

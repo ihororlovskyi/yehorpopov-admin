@@ -4,6 +4,8 @@
       <v-icon class="white--text">{{ icon }}</v-icon>
       {{ title }}
     </h1>
+    <!-- <v-spacer/>
+    <delete-project-dialog :item="item"/> -->
   </v-card-title>
 </template>
 

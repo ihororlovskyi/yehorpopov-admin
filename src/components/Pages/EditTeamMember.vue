@@ -6,7 +6,6 @@
     <v-container>
       <v-layout>
         <v-flex xs12>
-
           <v-card>
             <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
@@ -44,92 +43,87 @@
                   </div>
                 </v-flex>
                 <v-flex xs12 sm6>
-
-                    <v-card>
-                      <v-card-title class="light-blue lighten-1">
-                        <h1 class="white--text">
-                          <v-icon class="white--text">{{ nameIcon }}</v-icon>
-                          {{ item.name }}
-                        </h1>
-                        <v-spacer/>
-                        <v-dialog v-model="deleteTicketDialog" max-width="440">
-                          <v-tooltip
-                            top
-                            slot="activator"
+                  <v-card>
+                    <v-card-title class="light-blue lighten-1">
+                      <h1 class="white--text">
+                        <v-icon class="white--text">{{ nameIcon }}</v-icon>
+                        {{ item.name }}
+                      </h1>
+                      <v-spacer/>
+                      <v-dialog v-model="deleteTicketDialog" max-width="440">
+                        <v-tooltip
+                          top
+                          slot="activator"
+                          color="error"
+                          open-delay="0"
+                        >
+                          <v-btn
+                            fab
                             color="error"
-                            open-delay="0"
+                            slot="activator"
+                            small
+                            class="ma-0"
                           >
+                            <v-icon>mdi-delete</v-icon>
+                          </v-btn>
+                          <span>Delete</span>
+                        </v-tooltip>
+                        <v-card>
+                          <v-container pa-1>
+                            <v-card-text pa-1 v-html="deleteText"/>
+                            <v-card-actions>
+                              <v-spacer/>
+                              <v-btn @click.stop="deleteTicketDialog=false">Cancel</v-btn>
+                              <v-btn color="error" @click="onDelete">Delete</v-btn>
+                            </v-card-actions>
+                          </v-container>
+                        </v-card>
+                      </v-dialog>
+                    </v-card-title>
+                    <v-card-text>
+                      <p>
+                        <v-icon>{{ positionIcon }}</v-icon>
+                        {{ item.position }}
+                      </p>
+                      <p>
+                        <div class="ImageContainer">
+                          <div v-if="photoIsVisible">
+                            <v-img :src="item.photo"/>
                             <v-btn
-                              fab
-                              color="error"
-                              slot="activator"
                               small
-                              class="ma-0"
+                              fab
+                              class="error BtnClosePhoto"
+                              @click="onClosePhoto"
                             >
-                              <v-icon>mdi-delete</v-icon>
+                              <v-icon large>mdi-close</v-icon>
                             </v-btn>
-                            <span>Delete</span>
-                          </v-tooltip>
-                          <v-card>
-                            <v-container pa-1>
-                              <v-card-text pa-1 v-html="deleteText"/>
-                              <v-card-actions>
-                                <v-spacer/>
-                                <v-btn @click.stop="deleteTicketDialog=false">Cancel</v-btn>
-                                <v-btn color="error" @click="onDelete">Delete</v-btn>
-                              </v-card-actions>
-                            </v-container>
-                          </v-card>
-                        </v-dialog>
-                      </v-card-title>
-                      <v-card-text>
-
-                        <p>
-                          <v-icon>{{ positionIcon }}</v-icon>
-                          {{ item.position }}
-                        </p>
-                        <p>
-                          <div class="ImageContainer">
-                            <div v-if="photoIsVisible">
-                              <v-img :src="item.photo"/>
-                              <v-btn
-                                small
-                                fab
-                                class="error BtnClosePhoto"
-                                @click="onClosePhoto"
-                              >
-                                <v-icon large>mdi-close</v-icon>
-                              </v-btn>
-                            </div>
-                            <div v-else>
-                              <croppa
-                                v-model="croppa"
-                                :width="240"
-                                :height="360"
-                                :quality="2"
-                                :accept="'image/*'"
-                                :canvas-color="'#ccc'"
-                                initial-size="cover"
-                                :zoom-speed="2"
-                                :placeholder="'photo 240x360'"
-                                :placeholder-font-size="16"
-                                :placeholder-color="'rgba(0,0,0,.54)'"
-                                :prevent-white-space="true"
-                                :remove-button-size="40"
-                                @file-type-mismatch="onFileTypeMismatch"
-                              />
-                            </div>
                           </div>
-
-                        </p>
-                        <p>
-                          <v-icon>{{ quoteIcon }}</v-icon>
-                          <span v-html="item.quote"/>
-                        </p>
-                      </v-card-text>
-
-                    </v-card>
-
+                          <div v-else>
+                            <croppa
+                              v-model="croppa"
+                              :width="240"
+                              :height="360"
+                              :quality="2"
+                              :accept="'image/*'"
+                              :canvas-color="'#ccc'"
+                              initial-size="cover"
+                              :zoom-speed="2"
+                              :placeholder="'photo 240x360'"
+                              :placeholder-font-size="16"
+                              :placeholder-color="'rgba(0,0,0,.54)'"
+                              :prevent-white-space="true"
+                              :remove-button-size="40"
+                              @file-type-mismatch="onFileTypeMismatch"
+                            />
+                          </div>
+                        </div>
+                      </p>
+                      <p>
+                        <v-icon>{{ quoteIcon }}</v-icon>
+                        <span v-html="item.quote"/>
+                      </p>
+                    </v-card-text>
+                  </v-card>
                 </v-flex>
               </v-layout>
             </v-card-text>
@@ -254,7 +248,7 @@
     z-index: 20;
   }
   .ImageContainer .croppa-container canvas {
-    max-width: 100% !important;
+    width: 100% !important;
     height: auto !important;
   }
 </style>

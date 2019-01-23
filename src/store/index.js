@@ -6,6 +6,7 @@ import error from './error'
 import features from './features'
 import projects from './projects'
 import team from './team'
+import social from './social'
 import loading from './loading'
 
 Vue.use(Vuex)
@@ -18,6 +19,7 @@ export const store = new Vuex.Store({
     error: error,
     projects: projects,
     team: team,
+    social: social,
     loading: loading
   }
 

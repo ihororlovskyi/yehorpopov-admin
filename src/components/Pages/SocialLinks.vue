@@ -7,8 +7,31 @@
             <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
+                <v-flex xs12 v-if="userIsAdmin" class="mb-2">
+                  <v-btn large color="success" class="mx-0" :to="addSocialLinkBtn.url">
+                    <v-icon left>{{ addSocialLinkBtn.icon }}</v-icon>
+                    {{ addSocialLinkBtn.title }}
+                  </v-btn>
+                </v-flex>
                 <v-flex xs12>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                  <v-list two-line>
+                    <v-list-tile
+                      v-for="i in loadedSocialLinksSortedByOld"
+                      @click="onLoadSocialLink(i.id)"
+                      :key="i.id"
+                      v-ripple
+                    >
+                      <v-list-tile-avatar>
+                        <v-icon>{{ i.icon }}</v-icon>
+                      </v-list-tile-avatar>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+                        <v-list-tile-sub-title>{{ i.link }}</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </v-list>
+
                 </v-flex>
               </v-layout>
             </v-card-text>
@@ -26,7 +49,25 @@
         page: {
           title: 'Social Links',
           icon: 'mdi-facebook'
+        },
+        addSocialLinkBtn: {
+          title: 'Add Social Link',
+          icon: 'mdi-plus',
+          url: '/social/add-social-link'
         }
+      }
+    },
+    computed: {
+      loadedSocialLinksSortedByOld () {
+        return this.$store.getters.loadedSocialLinksSortedByOld
+      },
+      userIsAdmin () {
+        return this.$store.getters.userIsAdmin
+      }
+    },
+    methods: {
+      onLoadSocialLink (id) {
+        this.$router.push('/social/' + id)
       }
     }
   }

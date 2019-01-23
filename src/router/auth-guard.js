@@ -6,4 +6,7 @@ export default (to, from, next) => {
   } else {
     next('/user/login')
   }
+
+  // if (process.env.NODE_ENV = 'production') {
+  // }
 }

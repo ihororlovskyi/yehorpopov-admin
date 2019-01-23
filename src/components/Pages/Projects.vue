@@ -19,7 +19,7 @@
 
                   <v-list two-line>
                     <v-list-tile
-                      v-for="i in loadedProjectsSortedByDate"
+                      v-for="i in loadedProjectsSortedByOld"
                       @click="onLoadProject(i.id)"
                       :key="i.id"
                       v-ripple
@@ -54,14 +54,14 @@
         },
         addProjectBtn: {
           title: 'Add Project',
-          icon: 'mdi-plus-box',
+          icon: 'mdi-plus',
           url: '/projects/add-project'
         }
       }
     },
     computed: {
-      loadedProjectsSortedByDate () {
-        return this.$store.getters.loadedProjectsSortedByDate
+      loadedProjectsSortedByOld () {
+        return this.$store.getters.loadedProjectsSortedByOld
       },
       userIsAdmin () {
         return this.$store.getters.userIsAdmin

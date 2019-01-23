@@ -171,7 +171,7 @@
           socialLinks: {
             title: 'Social Links',
             icon: 'mdi-facebook',
-            url: '/social-links'
+            url: '/social'
           },
           popupContact: {
             title: 'Popup Contact',
