@@ -23,6 +23,7 @@ export default {
       item.atHero = payload.atHero
       item.heroColor = payload.heroColor
       item.imgCover = payload.imgCover
+      item.isPublished = payload.isPublished
     },
     deleteProject (state, payload) {
       const index = state.loadedProjects.findIndex(item => {
@@ -50,6 +51,7 @@ export default {
               atHero: obj[key].atHero,
               heroColor: obj[key].heroColor,
               imgCover: obj[key].imgCover,
+              isPublished: obj[key].isPublished,
               date: obj[key].date
             })
           }
@@ -70,6 +72,7 @@ export default {
         price: payload.price,
         atHero: payload.atHero,
         heroColor: payload.heroColor,
+        isPublished: payload.isPublished,
         date: payload.date.toISOString()
       }
       let imgCover
@@ -102,10 +105,11 @@ export default {
     updateProject ({ commit }, payload) {
       const updateObj = {}
       updateObj.title = payload.title
+      updateObj.description = payload.description
       updateObj.price = payload.price
       updateObj.atHero = payload.atHero
       updateObj.heroColor = payload.heroColor
-      updateObj.description = payload.description
+      updateObj.isPublished = payload.isPublished
       let imgCover
       let key
       firebase.database().ref('projects').child(payload.id).update(updateObj)

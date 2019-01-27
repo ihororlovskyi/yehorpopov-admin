@@ -58,6 +58,11 @@
                       v-model="item.description"
                       :prepend-icon="descriptionIcon"
                     />
+                    <v-checkbox
+                      v-model="item.isPublished"
+                      :label="`Is Published?: ${item.isPublished.toString()}`"
+                      :prepend-icon="isPublishedIcon"
+                    />
                   </div>
                 </v-flex>
                 <v-flex xs12 sm6>
@@ -181,6 +186,7 @@
         atHeroIcon: 'mdi-bat',
         heroColorIcon: 'mdi-palette',
         descriptionIcon: 'mdi-text-subject',
+        isPublishedIcon: 'mdi-eye-check-outline',
         imgCoverIcon: 'mdi-image',
         photoIsVisible: true,
         image: null,
@@ -213,6 +219,7 @@
             price: this.item.price,
             atHero: this.item.atHero,
             heroColor: this.item.heroColor,
+            isPublished: this.item.isPublished,
             imgCover: this.item.imgCover,
             description: this.item.description
           })
@@ -233,6 +240,7 @@
                 price: this.item.price,
                 atHero: this.item.atHero,
                 heroColor: this.item.heroColor,
+                isPublished: this.item.isPublished,
                 imgCover: this.item.imgCover,
                 description: this.item.description,
                 image: file,
