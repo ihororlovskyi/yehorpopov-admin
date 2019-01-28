@@ -24,7 +24,7 @@
                       v-ripple
                     >
                       <v-list-tile-avatar>
-                        <img :src="i.photo">
+                        <v-img :src="i.photo" :alt="i.name"/>
                       </v-list-tile-avatar>
                       <v-list-tile-content>
                         <v-list-tile-title>{{ i.name }}</v-list-tile-title>
