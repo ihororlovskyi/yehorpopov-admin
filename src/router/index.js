@@ -5,7 +5,6 @@ import Register from '@/components/Pages/Register'
 import Login from '@/components/Pages/Login'
 import Profile from '@/components/Pages/Profile'
 import Hero from '@/components/Pages/Hero'
-import Features from '@/components/Pages/Features'
 
 import Projects from '@/components/Pages/Projects'
 import AddProject from '@/components/Pages/AddProject'
@@ -23,6 +22,10 @@ import Contacts from '@/components/Pages/Contacts'
 import SocialLinks from '@/components/Pages/SocialLinks'
 import AddSocialLink from '@/components/Pages/AddSocialLink'
 import EditSocialLink from '@/components/Pages/EditSocialLink'
+
+import Features from '@/components/Pages/Features'
+import AddFeature from '@/components/Pages/AddFeature'
+import EditFeature from '@/components/Pages/EditFeature'
 
 import PopupContact from '@/components/Pages/PopupContact'
 import PopupThanks from '@/components/Pages/PopupThanks'
@@ -61,12 +64,6 @@ export default new Router({
       path: '/hero',
       name: 'Hero',
       component: Hero,
-      beforeEnter: AdminGuard
-    },
-    {
-      path: '/features',
-      name: 'Features',
-      component: Features,
       beforeEnter: AdminGuard
     },
     {
@@ -142,6 +139,25 @@ export default new Router({
       name: 'EditSocialLink',
       props: true,
       component: EditSocialLink,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/features',
+      name: 'Features',
+      component: Features,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/features/add-feature',
+      name: 'AddFeature',
+      component: AddFeature,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/features/:id',
+      name: 'EditFeature',
+      props: true,
+      component: EditFeature,
       beforeEnter: AdminGuard
     },
     {

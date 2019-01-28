@@ -21,6 +21,11 @@
                         v-model="title"
                         :prepend-icon="titleIcon"
                       />
+                      <v-checkbox
+                        v-model="isPublished"
+                        :label="`Is Published?: ${isPublished.toString()}`"
+                        :prepend-icon="isPublishedIcon"
+                      />
                       <v-text-field
                         name="price"
                         label="Price"
@@ -52,11 +57,6 @@
                         id="description"
                         v-model="description"
                         :prepend-icon="descriptionIcon"
-                      />
-                      <v-checkbox
-                        v-model="isPublished"
-                        :label="`Is Published?: ${isPublished.toString()}`"
-                        :prepend-icon="isPublishedIcon"
                       />
                     </div>
                   </v-flex>
@@ -131,11 +131,11 @@
           icon: 'mdi-plus'
         },
         titleIcon: 'mdi-format-title',
+        isPublishedIcon: 'mdi-eye-check',
         priceIcon: 'mdi-currency-usd',
         atHeroIcon: 'mdi-bat',
         heroColorIcon: 'mdi-palette',
         descriptionIcon: 'mdi-text-subject',
-        isPublishedIcon: 'mdi-eye-check-outline',
         title: '',
         description: '',
         price: '',

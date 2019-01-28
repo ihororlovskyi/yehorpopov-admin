@@ -18,7 +18,7 @@
                   <v-list two-line>
                     <v-list-tile
                       v-for="i in loadedSocialLinksSortedByOld"
-                      @click="onLoadSocialLink(i.id)"
+                      @click="onLoad(i.id)"
                       :key="i.id"
                       v-ripple
                     >
@@ -66,7 +66,7 @@
       }
     },
     methods: {
-      onLoadSocialLink (id) {
+      onLoad (id) {
         this.$router.push('/social/' + id)
       }
     }

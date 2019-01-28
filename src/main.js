@@ -44,6 +44,7 @@ new Vue({
       }
     })
     this.$store.dispatch('loadProjects')
+    this.$store.dispatch('loadFeatures')
     this.$store.dispatch('loadTeamMembers')
     this.$store.dispatch('loadSocialLinks')
   }

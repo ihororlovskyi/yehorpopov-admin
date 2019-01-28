@@ -20,7 +20,7 @@
                   <v-list two-line>
                     <v-list-tile
                       v-for="i in loadedProjectsSortedByOld"
-                      @click="onLoadProject(i.id)"
+                      @click="onLoad(i.id)"
                       :key="i.id"
                       v-ripple
                     >
@@ -28,7 +28,11 @@
                         <img :src="i.imgCover">
                       </v-list-tile-avatar>
                       <v-list-tile-content>
-                        <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+                        <v-list-tile-title>
+                          <v-icon v-if="i.isPublished" small color="green darken-3">mdi-eye</v-icon>
+                          <v-icon v-else small color="yellow darken-3">mdi-eye-off</v-icon>
+                          {{ i.title }}
+                        </v-list-tile-title>
                         <v-list-tile-sub-title>{{ i.price }}</v-list-tile-sub-title>
                       </v-list-tile-content>
                     </v-list-tile>
@@ -68,7 +72,7 @@
       }
     },
     methods: {
-      onLoadProject (id) {
+      onLoad (id) {
         this.$router.push('/projects/' + id)
       }
     }

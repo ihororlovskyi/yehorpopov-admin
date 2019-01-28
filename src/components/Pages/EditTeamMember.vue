@@ -170,9 +170,6 @@
     computed: {
       item () {
         return this.$store.getters.loadedTeamMember(this.id)
-      },
-      userIsAdmin () {
-        return this.$store.getters.userIsAdmin
       }
     },
     methods: {

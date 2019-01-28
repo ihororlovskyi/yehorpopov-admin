@@ -22,20 +22,17 @@
                       v-model="item.title"
                       :prepend-icon="titleIcon"
                     />
-                    <v-text-field
-                      name="link"
-                      label="Link"
-                      id="link"
-                      v-model="item.link"
-                      :prepend-icon="linkIcon"
+                    <v-checkbox
+                      v-model="item.isPublished"
+                      :label="`Is Published?: ${item.isPublished.toString()}`"
+                      :prepend-icon="isPublishedIcon"
                     />
-                    <v-select
-                      name="icon"
-                      label="Icon"
-                      id="icon"
-                      :items="icons"
-                      v-model="item.icon"
-                      :prepend-icon="iconIcon"
+                    <v-textarea
+                      name="description"
+                      label="Description"
+                      id="description"
+                      v-model="item.description"
+                      :prepend-icon="descriptionIcon"
                     />
 
                   </div>
@@ -45,34 +42,16 @@
                   <v-card>
                     <v-list two-line class="py-0">
                       <v-list-tile>
-                        <v-list-tile-avatar>
-                          <v-icon>{{ item.icon }}</v-icon>
-                        </v-list-tile-avatar>
                         <v-list-tile-content>
-                          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                          <v-list-tile-sub-title>{{ item.link }}</v-list-tile-sub-title>
+                          <v-list-tile-title>
+                            <v-icon v-if="item.isPublished" small color="green darken-3">mdi-eye</v-icon>
+                            <v-icon v-else small color="yellow darken-3">mdi-eye-off</v-icon>
+                            {{ item.title }}
+                          </v-list-tile-title>
+                          <v-list-tile-sub-title>{{ item.description }}</v-list-tile-sub-title>
                         </v-list-tile-content>
                         <v-list-tile-action>
                           <v-layout row>
-                            <v-tooltip
-                              top
-                              slot="activator"
-                              color="primary"
-                              open-delay="0"
-                            >
-                              <v-btn
-                                fab
-                                color="primary"
-                                slot="activator"
-                                small
-                                :href="item.link"
-                                target="_blank"
-                                class="mr-2"
-                              >
-                                <v-icon>{{ iconIcon }}</v-icon>
-                              </v-btn>
-                              <span>Test Link</span>
-                            </v-tooltip>
                             <v-dialog v-model="deleteTicketDialog" max-width="440">
                               <v-tooltip
                                 top
@@ -136,44 +115,39 @@
     data () {
       return {
         page: {
-          title: 'Edit Social Link',
+          title: 'Edit Feature',
           icon: 'mdi-pencil'
         },
-        deleteText: 'This Social Link will be deleted permanently.<br>Are you sure you want to delete this Social Link?',
+        deleteText: 'This Feature will be deleted permanently.<br>Are you sure you want to delete this Feature?',
         deleteTicketDialog: false,
         titleIcon: 'mdi-format-title',
-        linkIcon: 'mdi-link',
-        iconIcon: 'mdi-hinduism',
-        icons: [
-          'mdi-facebook',
-          'mdi-instagram',
-          'mdi-telegram'
-        ]
+        isPublishedIcon: 'mdi-eye-check-outline',
+        descriptionIcon: 'mdi-text-subject'
       }
     },
     computed: {
       item () {
-        return this.$store.getters.loadedSocialLink(this.id)
+        return this.$store.getters.loadedFeature(this.id)
       }
     },
     methods: {
       onCancel () {
-        this.$router.push('/social')
+        this.$router.push('/features')
       },
       onSave () {
-        this.$store.dispatch('updateSocialLink', {
+        this.$store.dispatch('updateFeature', {
           id: this.item.id,
           title: this.item.title,
-          link: this.item.link,
-          icon: this.item.icon
+          isPublished: this.item.isPublished,
+          description: this.item.description
         })
-        this.$router.push('/social')
+        this.$router.push('/features')
       },
       onDelete () {
-        this.$store.dispatch('deleteSocialLink', {
+        this.$store.dispatch('deleteFeature', {
           id: this.item.id
         })
-        this.$router.push('/social')
+        this.$router.push('/features')
       }
     }
   }

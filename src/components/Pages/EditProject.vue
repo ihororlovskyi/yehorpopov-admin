@@ -19,6 +19,11 @@
                       v-model="item.title"
                       :prepend-icon="titleIcon"
                     />
+                    <v-checkbox
+                      v-model="item.isPublished"
+                      :label="`Is Published?: ${item.isPublished.toString()}`"
+                      :prepend-icon="isPublishedIcon"
+                    />
                     <v-text-field
                       name="price"
                       label="Price"
@@ -57,11 +62,6 @@
                       id="description"
                       v-model="item.description"
                       :prepend-icon="descriptionIcon"
-                    />
-                    <v-checkbox
-                      v-model="item.isPublished"
-                      :label="`Is Published?: ${item.isPublished.toString()}`"
-                      :prepend-icon="isPublishedIcon"
                     />
                   </div>
                 </v-flex>
@@ -182,11 +182,11 @@
         deleteText: 'This Project will be deleted permanently.<br>Are you sure you want to delete this Project?',
         deleteTicketDialog: false,
         titleIcon: 'mdi-format-title',
+        isPublishedIcon: 'mdi-eye-check',
         priceIcon: 'mdi-currency-usd',
         atHeroIcon: 'mdi-bat',
         heroColorIcon: 'mdi-palette',
         descriptionIcon: 'mdi-text-subject',
-        isPublishedIcon: 'mdi-eye-check-outline',
         imgCoverIcon: 'mdi-image',
         photoIsVisible: true,
         image: null,
@@ -196,9 +196,6 @@
     computed: {
       item () {
         return this.$store.getters.loadedProject(this.id)
-      },
-      userIsAdmin () {
-        return this.$store.getters.userIsAdmin
       }
     },
     methods: {

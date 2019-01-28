@@ -19,7 +19,7 @@
                   <v-list two-line>
                     <v-list-tile
                       v-for="i in loadedTeamMembersSortedByOld"
-                      @click="onLoadTeamMember(i.id)"
+                      @click="onLoad(i.id)"
                       :key="i.id"
                       v-ripple
                     >
@@ -67,7 +67,7 @@
       }
     },
     methods: {
-      onLoadTeamMember (id) {
+      onLoad (id) {
         this.$router.push('/team/' + id)
       }
     }
