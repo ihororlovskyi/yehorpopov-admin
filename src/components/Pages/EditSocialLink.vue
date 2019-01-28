@@ -147,7 +147,7 @@
         deleteText: 'This Social Link will be deleted permanently.<br>Are you sure you want to delete this Social Link?',
         deleteTicketDialog: false,
         titleIcon: 'mdi-format-title',
-        isPublishedIcon: 'mdi-eye-check-outline',
+        isPublishedIcon: 'mdi-eye-check',
         linkIcon: 'mdi-link',
         iconIcon: 'mdi-hinduism',
         icons: [

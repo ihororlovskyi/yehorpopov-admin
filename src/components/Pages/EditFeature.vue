@@ -118,7 +118,7 @@
         deleteText: 'This Feature will be deleted permanently.<br>Are you sure you want to delete this Feature?',
         deleteTicketDialog: false,
         titleIcon: 'mdi-format-title',
-        isPublishedIcon: 'mdi-eye-check-outline',
+        isPublishedIcon: 'mdi-eye-check',
         descriptionIcon: 'mdi-text-subject'
       }
     },

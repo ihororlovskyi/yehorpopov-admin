@@ -165,7 +165,7 @@
         deleteText: 'This Team Member will be deleted permanently.<br>Are you sure you want to delete this Team Member?',
         deleteTicketDialog: false,
         nameIcon: 'mdi-account-card-details',
-        isPublishedIcon: 'mdi-eye-check-outline',
+        isPublishedIcon: 'mdi-eye-check',
         positionIcon: 'mdi-android-studio',
         photoIcon: 'mdi-image',
         quoteIcon: 'mdi-format-quote-close',
@@ -194,6 +194,7 @@
           this.$store.dispatch('updateTeamMember', {
             id: this.item.id,
             name: this.item.name,
+            isPublished: this.item.isPublished,
             position: this.item.position,
             photo: this.item.photo,
             quote: this.item.quote
