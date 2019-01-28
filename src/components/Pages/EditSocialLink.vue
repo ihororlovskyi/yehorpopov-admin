@@ -6,11 +6,9 @@
     <v-container>
       <v-layout>
         <v-flex xs12>
-
           <v-card>
             <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
-
               <v-layout row wrap>
                 <v-flex xs12 sm6>
                   <div class="pr-4">
@@ -21,6 +19,11 @@
                       id="title"
                       v-model="item.title"
                       :prepend-icon="titleIcon"
+                    />
+                    <v-checkbox
+                      v-model="item.isPublished"
+                      :label="`Is Published?: ${item.isPublished.toString()}`"
+                      :prepend-icon="isPublishedIcon"
                     />
                     <v-text-field
                       name="link"
@@ -49,7 +52,11 @@
                           <v-icon>{{ item.icon }}</v-icon>
                         </v-list-tile-avatar>
                         <v-list-tile-content>
-                          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                          <v-list-tile-title>
+                            <v-icon v-if="item.isPublished" small color="green darken-3">mdi-eye</v-icon>
+                            <v-icon v-else small color="yellow darken-3">mdi-eye-off</v-icon>
+                            {{ item.title }}
+                          </v-list-tile-title>
                           <v-list-tile-sub-title>{{ item.link }}</v-list-tile-sub-title>
                         </v-list-tile-content>
                         <v-list-tile-action>
@@ -106,7 +113,6 @@
                       </v-list-tile>
                     </v-list>
                   </v-card>
-
                 </v-flex>
               </v-layout>
             </v-card-text>
@@ -123,7 +129,6 @@
               >Save</v-btn>
             </v-card-actions>
           </v-card>
-
         </v-flex>
       </v-layout>
     </v-container>
@@ -142,6 +147,7 @@
         deleteText: 'This Social Link will be deleted permanently.<br>Are you sure you want to delete this Social Link?',
         deleteTicketDialog: false,
         titleIcon: 'mdi-format-title',
+        isPublishedIcon: 'mdi-eye-check-outline',
         linkIcon: 'mdi-link',
         iconIcon: 'mdi-hinduism',
         icons: [
@@ -164,6 +170,7 @@
         this.$store.dispatch('updateSocialLink', {
           id: this.item.id,
           title: this.item.title,
+          isPublished: this.item.isPublished,
           link: this.item.link,
           icon: this.item.icon
         })

@@ -12,6 +12,7 @@
               <v-layout row wrap>
                 <v-flex xs12 sm6>
                   <div class="pr-4">
+
                     <v-text-field
                       name="title"
                       label="Title"
@@ -64,6 +65,7 @@
                       :prepend-icon="descriptionIcon"
                     />
                   </div>
+
                 </v-flex>
                 <v-flex xs12 sm6>
                   <v-card>
@@ -163,7 +165,6 @@
               >Save</v-btn>
             </v-card-actions>
           </v-card>
-
         </v-flex>
       </v-layout>
     </v-container>
@@ -234,10 +235,10 @@
               const itemData = {
                 id: this.item.id,
                 title: this.item.title,
+                isPublished: this.item.isPublished,
                 price: this.item.price,
                 atHero: this.item.atHero,
                 heroColor: this.item.heroColor,
-                isPublished: this.item.isPublished,
                 imgCover: this.item.imgCover,
                 description: this.item.description,
                 image: file,

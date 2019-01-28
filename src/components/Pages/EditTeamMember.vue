@@ -12,12 +12,18 @@
               <v-layout row wrap>
                 <v-flex xs12 sm6>
                   <div class="pr-4">
+
                     <v-text-field
                       name="name"
                       label="Name"
                       id="name"
                       v-model="item.name"
                       :prepend-icon="nameIcon"
+                    />
+                    <v-checkbox
+                      v-model="item.isPublished"
+                      :label="`Is Published?: ${item.isPublished.toString()}`"
+                      :prepend-icon="isPublishedIcon"
                     />
                     <v-text-field
                       name="position"
@@ -40,6 +46,7 @@
                       v-model="item.quote"
                       :prepend-icon="quoteIcon"
                     />
+
                   </div>
                 </v-flex>
                 <v-flex xs12 sm6>
@@ -140,7 +147,6 @@
               >Save</v-btn>
             </v-card-actions>
           </v-card>
-
         </v-flex>
       </v-layout>
     </v-container>
@@ -159,6 +165,7 @@
         deleteText: 'This Team Member will be deleted permanently.<br>Are you sure you want to delete this Team Member?',
         deleteTicketDialog: false,
         nameIcon: 'mdi-account-card-details',
+        isPublishedIcon: 'mdi-eye-check-outline',
         positionIcon: 'mdi-android-studio',
         photoIcon: 'mdi-image',
         quoteIcon: 'mdi-format-quote-close',
@@ -205,6 +212,7 @@
               const itemData = {
                 id: this.item.id,
                 name: this.item.name,
+                isPublished: this.item.isPublished,
                 position: this.item.position,
                 photo: this.item.photo,
                 quote: this.item.quote,

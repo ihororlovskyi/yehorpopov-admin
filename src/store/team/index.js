@@ -18,6 +18,7 @@ export default {
         return item.id === payload.id
       })
       item.name = payload.name
+      item.isPublished = payload.isPublished
       item.position = payload.position
       item.photo = payload.photo
       item.quote = payload.quote
@@ -43,6 +44,7 @@ export default {
             items.push({
               id: key,
               name: obj[key].name,
+              isPublished: obj[key].isPublished,
               position: obj[key].position,
               photo: obj[key].photo,
               quote: obj[key].quote,
@@ -62,6 +64,7 @@ export default {
     createTeamMember ({ commit, getters }, payload) {
       const item = {
         name: payload.name,
+        isPublished: payload.isPublished,
         position: payload.position,
         photo: payload.photo,
         quote: payload.quote,
@@ -97,6 +100,7 @@ export default {
     updateTeamMember ({ commit }, payload) {
       const updateObj = {}
       updateObj.name = payload.name
+      updateObj.isPublished = payload.isPublished
       updateObj.position = payload.position
       updateObj.quote = payload.quote
       let photo

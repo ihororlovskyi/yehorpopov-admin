@@ -6,11 +6,9 @@
     <v-container>
       <v-layout>
         <v-flex xs12>
-
           <v-card>
             <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
-
               <v-layout row wrap>
                 <v-flex xs12 sm6>
                   <div class="pr-4">
@@ -85,7 +83,6 @@
                       </v-list-tile>
                     </v-list>
                   </v-card>
-
                 </v-flex>
               </v-layout>
             </v-card-text>

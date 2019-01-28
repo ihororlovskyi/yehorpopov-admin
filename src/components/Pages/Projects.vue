@@ -7,16 +7,14 @@
             <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
-                <v-flex xs12 v-if="userIsAdmin" class="mb-2">
 
+                <v-flex xs12 v-if="userIsAdmin" class="mb-2">
                   <v-btn large color="success" class="mx-0" :to="addProjectBtn.url">
                     <v-icon left>{{ addProjectBtn.icon }}</v-icon>
                     {{ addProjectBtn.title }}
                   </v-btn>
-
                 </v-flex>
                 <v-flex xs12>
-
                   <v-list two-line>
                     <v-list-tile
                       v-for="i in loadedProjectsSortedByOld"

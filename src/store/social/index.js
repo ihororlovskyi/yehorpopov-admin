@@ -18,6 +18,7 @@ export default {
         return item.id === payload.id
       })
       item.title = payload.title
+      item.isPublished = payload.isPublished
       item.link = payload.link
       item.icon = payload.icon
     },
@@ -42,6 +43,7 @@ export default {
             items.push({
               id: key,
               title: obj[key].title,
+              isPublished: obj[key].isPublished,
               link: obj[key].link,
               icon: obj[key].icon,
               date: obj[key].date
@@ -60,6 +62,7 @@ export default {
     createSocialLink ({ commit, getters }, payload) {
       const item = {
         title: payload.title,
+        isPublished: payload.isPublished,
         link: payload.link,
         icon: payload.icon,
         date: payload.date.toISOString()
@@ -83,6 +86,7 @@ export default {
     updateSocialLink ({ commit }, payload) {
       const updateObj = {}
       updateObj.title = payload.title
+      updateObj.isPublished = payload.isPublished
       updateObj.link = payload.link
       updateObj.icon = payload.icon
       firebase.database().ref('social').child(payload.id).update(updateObj)

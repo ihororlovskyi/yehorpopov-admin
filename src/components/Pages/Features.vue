@@ -7,6 +7,7 @@
             <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
+
                 <v-flex xs12 v-if="userIsAdmin" class="mb-2">
                   <v-btn large color="success" class="mx-0" :to="addFeatureBtn.url">
                     <v-icon left>{{ addFeatureBtn.icon }}</v-icon>
@@ -14,7 +15,6 @@
                   </v-btn>
                 </v-flex>
                 <v-flex xs12>
-
                   <v-list two-line>
                     <v-list-tile
                       v-for="i in loadedFeaturesSortedByOld"
@@ -32,8 +32,8 @@
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
-
                 </v-flex>
+
               </v-layout>
             </v-card-text>
           </v-card>

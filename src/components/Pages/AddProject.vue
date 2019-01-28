@@ -14,6 +14,7 @@
                 <v-layout row wrap>
                   <v-flex xs12 sm6>
                     <div class="pr-4">
+
                       <v-text-field
                         name="title"
                         label="Title"
@@ -53,11 +54,12 @@
                       </v-layout>
                       <v-textarea
                         name="description"
-                        label="Description"
+                        label="Description (HTML)"
                         id="description"
                         v-model="description"
                         :prepend-icon="descriptionIcon"
                       />
+
                     </div>
                   </v-flex>
                   <v-flex xs12 sm6>
@@ -130,18 +132,18 @@
           title: 'Add Project',
           icon: 'mdi-plus'
         },
-        titleIcon: 'mdi-format-title',
-        isPublishedIcon: 'mdi-eye-check',
-        priceIcon: 'mdi-currency-usd',
-        atHeroIcon: 'mdi-bat',
-        heroColorIcon: 'mdi-palette',
-        descriptionIcon: 'mdi-text-subject',
         title: '',
-        description: '',
-        price: '',
-        atHero: false,
-        heroColor: '#f2f2f2',
+        titleIcon: 'mdi-format-title',
         isPublished: false,
+        isPublishedIcon: 'mdi-eye-check',
+        price: '',
+        priceIcon: 'mdi-currency-usd',
+        atHero: false,
+        atHeroIcon: 'mdi-bat',
+        heroColor: '#f2f2f2',
+        heroColorIcon: 'mdi-palette',
+        description: '',
+        descriptionIcon: 'mdi-text-subject',
         image: null,
         filePicked: false,
         croppa: {}
@@ -177,11 +179,11 @@
           })
           const itemData = {
             title: this.title,
+            isPublished: this.isPublished,
             description: this.description,
             price: this.price,
             atHero: this.atHero,
             heroColor: this.heroColor,
-            isPublished: this.isPublished,
             image: file,
             date: new Date()
           }

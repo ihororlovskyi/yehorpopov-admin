@@ -10,6 +10,9 @@
                 <v-flex xs12>
                   <p v-if="userIsAdmin">You are an admin. You can edit content :)</p>
                   <p v-else>You are not an admin. You cant edit content :(</p>
+                  <!-- <a v-if="userIsAdmin" href="https://app.netlify.com/start/deploy?repository=https://github.com/ihororlovskyi/yehorpopov-nuxt">
+                    <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify">
+                  </a> -->
                 </v-flex>
               </v-layout>
             </v-card-text>

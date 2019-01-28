@@ -14,6 +14,7 @@
                 <v-layout row wrap>
                   <v-flex xs12 sm6>
                     <div class="pr-4">
+
                       <v-text-field
                         name="title"
                         label="Title"
@@ -28,11 +29,12 @@
                       />
                       <v-textarea
                         name="description"
-                        label="Description"
+                        label="Description (HTML)"
                         id="description"
                         v-model="description"
                         :prepend-icon="descriptionIcon"
                       />
+
                     </div>
                   </v-flex>
                   <v-flex xs12 sm6>

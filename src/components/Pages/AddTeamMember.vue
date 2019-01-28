@@ -14,12 +14,18 @@
                 <v-layout row wrap>
                   <v-flex xs12 sm6>
                     <div class="pr-4">
+
                       <v-text-field
                         name="name"
                         label="Name"
                         id="name"
                         v-model="name"
                         :prepend-icon="nameIcon"
+                      />
+                      <v-checkbox
+                        v-model="isPublished"
+                        :label="`Is Published?: ${isPublished.toString()}`"
+                        :prepend-icon="isPublishedIcon"
                       />
                       <v-text-field
                         name="position"
@@ -28,15 +34,14 @@
                         v-model="position"
                         :prepend-icon="positionIcon"
                       />
-                      <v-layout>
-                        <v-textarea
-                          name="quote"
-                          label="Quote (HTML)"
-                          id="quote"
-                          v-model="quote"
-                          :prepend-icon="quoteIcon"
-                        />
-                      </v-layout>
+                      <v-textarea
+                        name="quote"
+                        label="Quote (HTML)"
+                        id="quote"
+                        v-model="quote"
+                        :prepend-icon="quoteIcon"
+                      />
+
                     </div>
                   </v-flex>
                   <v-flex xs12 sm6>
@@ -109,14 +114,16 @@
           title: 'Add Team Member',
           icon: 'mdi-account-plus'
         },
-        nameIcon: 'mdi-account-card-details',
-        positionIcon: 'mdi-android-studio',
-        photoIcon: 'mdi-image',
-        quoteIcon: 'mdi-format-quote-close',
         name: '',
+        nameIcon: 'mdi-account-card-details',
+        isPublished: false,
+        isPublishedIcon: 'mdi-eye-check',
         position: '',
+        positionIcon: 'mdi-android-studio',
         photo: '',
+        photoIcon: 'mdi-image',
         quote: '',
+        quoteIcon: 'mdi-format-quote-close',
         image: null,
         filePicked: false,
         croppa: {}
@@ -152,6 +159,7 @@
           })
           const itemData = {
             name: this.name,
+            isPublished: this.isPublished,
             position: this.position,
             photo: this.photo,
             quote: this.quote,

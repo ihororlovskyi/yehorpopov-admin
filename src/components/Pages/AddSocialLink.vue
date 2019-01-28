@@ -14,12 +14,18 @@
                 <v-layout row wrap>
                   <v-flex xs12 sm6>
                     <div class="pr-4">
+
                       <v-text-field
                         name="title"
                         label="Title"
                         id="title"
                         v-model="title"
                         :prepend-icon="titleIcon"
+                      />
+                      <v-checkbox
+                        v-model="isPublished"
+                        :label="`Is Published?: ${isPublished.toString()}`"
+                        :prepend-icon="isPublishedIcon"
                       />
                       <v-text-field
                         name="link"
@@ -36,6 +42,7 @@
                         v-model="icon"
                         :prepend-icon="iconIcon"
                       />
+
                     </div>
                   </v-flex>
                   <v-flex xs12 sm6>
@@ -46,7 +53,11 @@
                             <v-icon>{{ icon }}</v-icon>
                           </v-list-tile-avatar>
                           <v-list-tile-content>
-                            <v-list-tile-title>{{ title }}</v-list-tile-title>
+                            <v-list-tile-title>
+                              <v-icon v-if="isPublished" small color="green darken-3">mdi-eye</v-icon>
+                              <v-icon v-else small color="yellow darken-3">mdi-eye-off</v-icon>
+                              {{ title }}
+                            </v-list-tile-title>
                             <v-list-tile-sub-title>{{ link }}</v-list-tile-sub-title>
                           </v-list-tile-content>
                           <v-list-tile-action>
@@ -107,12 +118,14 @@
           title: 'Add Social Link',
           icon: 'mdi-plus'
         },
-        titleIcon: 'mdi-format-title',
-        linkIcon: 'mdi-link',
-        iconIcon: 'mdi-hinduism',
         title: '',
+        titleIcon: 'mdi-format-title',
+        isPublished: false,
+        isPublishedIcon: 'mdi-eye-check',
         link: '',
+        linkIcon: 'mdi-link',
         icon: '',
+        iconIcon: 'mdi-hinduism',
         icons: [
           'mdi-facebook',
           'mdi-instagram',
@@ -135,6 +148,7 @@
         }
         const itemData = {
           title: this.title,
+          isPublished: this.isPublished,
           link: this.link,
           icon: this.icon,
           date: new Date()

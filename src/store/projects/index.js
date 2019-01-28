@@ -18,12 +18,12 @@ export default {
         return item.id === payload.id
       })
       item.title = payload.title
+      item.isPublished = payload.isPublished
       item.description = payload.description
       item.price = payload.price
       item.atHero = payload.atHero
       item.heroColor = payload.heroColor
       item.imgCover = payload.imgCover
-      item.isPublished = payload.isPublished
     },
     deleteProject (state, payload) {
       const index = state.loadedProjects.findIndex(item => {
@@ -46,12 +46,12 @@ export default {
             items.push({
               id: key,
               title: obj[key].title,
+              isPublished: obj[key].isPublished,
               description: obj[key].description,
               price: obj[key].price,
               atHero: obj[key].atHero,
               heroColor: obj[key].heroColor,
               imgCover: obj[key].imgCover,
-              isPublished: obj[key].isPublished,
               date: obj[key].date
             })
           }
@@ -68,11 +68,11 @@ export default {
     createProject ({ commit, getters }, payload) {
       const item = {
         title: payload.title,
+        isPublished: payload.isPublished,
         description: payload.description,
         price: payload.price,
         atHero: payload.atHero,
         heroColor: payload.heroColor,
-        isPublished: payload.isPublished,
         date: payload.date.toISOString()
       }
       let imgCover
@@ -105,11 +105,11 @@ export default {
     updateProject ({ commit }, payload) {
       const updateObj = {}
       updateObj.title = payload.title
+      updateObj.isPublished = payload.isPublished
       updateObj.description = payload.description
       updateObj.price = payload.price
       updateObj.atHero = payload.atHero
       updateObj.heroColor = payload.heroColor
-      updateObj.isPublished = payload.isPublished
       let imgCover
       let key
       firebase.database().ref('projects').child(payload.id).update(updateObj)
