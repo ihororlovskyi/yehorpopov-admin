@@ -108,14 +108,14 @@
                           <div v-else>
                             <croppa
                               v-model="croppa"
-                              :width="240"
-                              :height="360"
+                              :width="400"
+                              :height="700"
                               :quality="2"
                               :accept="'image/*'"
                               :canvas-color="'#ccc'"
                               initial-size="cover"
                               :zoom-speed="2"
-                              :placeholder="'photo 240x360'"
+                              :placeholder="'photo 400x700'"
                               :placeholder-font-size="16"
                               :placeholder-color="'rgba(0,0,0,.54)'"
                               :prevent-white-space="true"
