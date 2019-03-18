@@ -15,8 +15,6 @@ import Team from '@/components/Pages/Team'
 import AddTeamMember from '@/components/Pages/AddTeamMember'
 import EditTeamMember from '@/components/Pages/EditTeamMember'
 
-import Contacts from '@/components/Pages/Contacts'
-
 import SocialLinks from '@/components/Pages/SocialLinks'
 import AddSocialLink from '@/components/Pages/AddSocialLink'
 import EditSocialLink from '@/components/Pages/EditSocialLink'
@@ -30,6 +28,9 @@ import EditHero from '@/components/Pages/EditHero'
 
 import Instaworks from '@/components/Pages/Instaworks'
 import EditInstaworks from '@/components/Pages/EditInstaworks'
+
+import Contacts from '@/components/Pages/Contacts'
+import EditContacts from '@/components/Pages/EditContacts'
 
 import PopupContact from '@/components/Pages/PopupContact'
 import PopupThanks from '@/components/Pages/PopupThanks'
@@ -109,12 +110,6 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/contacts',
-      name: 'Contacts',
-      component: Contacts,
-      beforeEnter: AdminGuard
-    },
-    {
       path: '/social',
       name: 'SocialLinks',
       component: SocialLinks,
@@ -174,6 +169,18 @@ export default new Router({
       path: '/edit-instaworks',
       name: 'EditInstaworks',
       component: EditInstaworks,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/contacts',
+      name: 'Contacts',
+      component: Contacts,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/edit-contacts',
+      name: 'EditContacts',
+      component: EditContacts,
       beforeEnter: AdminGuard
     },
     {

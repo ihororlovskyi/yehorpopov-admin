@@ -9,6 +9,7 @@ import projects from './projects'
 import team from './team'
 import social from './social'
 import instaworks from './instaworks'
+import contacts from './contacts'
 import loading from './loading'
 
 Vue.use(Vuex)
@@ -24,6 +25,7 @@ export const store = new Vuex.Store({
     team,
     social,
     instaworks,
+    contacts,
     loading
   }
 

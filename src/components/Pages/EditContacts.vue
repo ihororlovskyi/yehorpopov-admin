@@ -16,25 +16,37 @@
                     name="title"
                     label="title"
                     id="title"
-                    v-model="loadedInstaworks.title"
+                    v-model="loadedContacts.title"
                     :prepend-icon="descriptionIcon"
                   />
                   <v-text-field
-                    name="description"
-                    label="description"
-                    id="description"
-                    v-model="loadedInstaworks.description"
+                    name="email"
+                    label="email"
+                    id="email"
+                    v-model="loadedContacts.email"
                     :prepend-icon="descriptionIcon"
                   />
                   <v-text-field
-                    name="access_token"
-                    label="access_token"
-                    id="access_token"
-                    v-model="loadedInstaworks.access_token"
+                    name="phone"
+                    label="phone"
+                    id="phone"
+                    v-model="loadedContacts.phone"
                     :prepend-icon="descriptionIcon"
                   />
-                  <p>ihrororlovskyi: 176908350.1677ed0.3c30032e917a430e8d1f65eae2223b1e</p>
-                  <p>yehor_reality: 9623749496.1677ed0.5cccdc1243a64052b555b888c62b7770</p>
+                  <v-text-field
+                    name="mapLocation"
+                    label="mapLocation"
+                    id="mapLocation"
+                    v-model="loadedContacts.mapLocation"
+                    :prepend-icon="descriptionIcon"
+                  />
+                  <v-textarea
+                    name="address"
+                    label="address (HTML)"
+                    id="address"
+                    v-model="loadedContacts.address"
+                    :prepend-icon="descriptionIcon"
+                  />
                 </v-flex>
 
               </v-layout>
@@ -63,28 +75,30 @@
     data () {
       return {
         page: {
-          title: 'Edit Instaworks',
-          icon: 'mdi-instagram'
+          title: 'Edit Contacts',
+          icon: 'mdi-google-maps'
         },
         descriptionIcon: 'mdi-text-subject'
       }
     },
     computed: {
-      loadedInstaworks () {
-        return this.$store.getters.loadedInstaworks
+      loadedContacts () {
+        return this.$store.getters.loadedContacts
       }
     },
     methods: {
       onCancel () {
-        this.$router.push('/instaworks')
+        this.$router.push('/contacts')
       },
       onSave () {
-        this.$store.dispatch('updateInstaworks', {
-          title: this.loadedInstaworks.title,
-          description: this.loadedInstaworks.description,
-          access_token: this.loadedInstaworks.access_token
+        this.$store.dispatch('updateContacts', {
+          title: this.loadedContacts.title,
+          phone: this.loadedContacts.phone,
+          email: this.loadedContacts.email,
+          mapLocation: this.loadedContacts.mapLocation,
+          address: this.loadedContacts.address
         })
-        this.$router.push('/instaworks')
+        this.$router.push('/contacts')
       }
     }
   }

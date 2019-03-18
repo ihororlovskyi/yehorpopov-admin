@@ -7,9 +7,39 @@
             <page-title :icon="page.icon" :title="page.title"/>
             <v-card-text>
               <v-layout row wrap>
-                <v-flex xs12>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                <v-flex xs12 v-if="userIsAdmin" class="mb-2">
+                  <v-btn large color="warning" class="mx-0" :to="editContactsBtn.url">
+                    <v-icon left>{{ editContactsBtn.icon }}</v-icon>
+                    {{ editContactsBtn.title }}
+                  </v-btn>
+                  <p v-if="loadedContacts.title">
+                    <b>title:</b>
+                    <br>
+                    {{ loadedContacts.title }}
+                  </p>
+                  <p v-if="loadedContacts.phone">
+                    <b>phone:</b>
+                    <br>
+                    {{ loadedContacts.phone }}
+                  </p>
+                  <p v-if="loadedContacts.email">
+                    <b>email:</b>
+                    <br>
+                    {{ loadedContacts.email }}
+                  </p>
+                  <p v-if="loadedContacts.mapLocation">
+                    <b>mapLocation:</b>
+                    <br>
+                    {{ loadedContacts.mapLocation }}
+                  </p>
+                  <p v-if="loadedContacts.address">
+                    <b>address:</b>
+                    <br>
+                    <span v-html="loadedContacts.address"/>
+                  </p>
                 </v-flex>
+
               </v-layout>
             </v-card-text>
           </v-card>
@@ -26,7 +56,20 @@
         page: {
           title: 'Contacts',
           icon: 'mdi-google-maps'
+        },
+        editContactsBtn: {
+          title: 'Edit Contacts',
+          icon: 'mdi-pencil',
+          url: '/edit-contacts'
         }
+      }
+    },
+    computed: {
+      loadedContacts () {
+        return this.$store.getters.loadedContacts
+      },
+      userIsAdmin () {
+        return this.$store.getters.userIsAdmin
       }
     }
   }

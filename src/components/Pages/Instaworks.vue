@@ -9,9 +9,9 @@
               <v-layout row wrap>
 
                 <v-flex xs12 v-if="userIsAdmin" class="mb-2">
-                  <v-btn large color="warning" class="mx-0" :to="editHeroBtn.url">
-                    <v-icon left>{{ editHeroBtn.icon }}</v-icon>
-                    {{ editHeroBtn.title }}
+                  <v-btn large color="warning" class="mx-0" :to="EditInstaworksBtn.url">
+                    <v-icon left>{{ EditInstaworksBtn.icon }}</v-icon>
+                    {{ EditInstaworksBtn.title }}
                   </v-btn>
                   <p v-if="loadedInstaworks.title">
                     <b>title:</b>
@@ -47,7 +47,7 @@
           title: 'Instaworks',
           icon: 'mdi-instagram'
         },
-        editHeroBtn: {
+        EditInstaworksBtn: {
           title: 'Edit Instaworks',
           icon: 'mdi-pencil',
           url: '/edit-instaworks'

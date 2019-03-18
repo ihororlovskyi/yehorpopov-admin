@@ -49,5 +49,6 @@ new Vue({
     this.$store.dispatch('loadSocialLinks')
     this.$store.dispatch('loadHero')
     this.$store.dispatch('loadInstaworks')
+    this.$store.dispatch('loadContacts')
   }
 })

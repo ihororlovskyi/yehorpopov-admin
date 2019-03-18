@@ -142,12 +142,12 @@
             url: '/features'
           },
           projects: {
-            title: 'Projects',
+            title: 'Projects [WIP]',
             icon: 'mdi-cannabis',
             url: '/projects'
           },
           howItWorks: {
-            title: 'How It Works',
+            title: 'How It Works [WIP]',
             icon: 'mdi-format-list-numbered',
             url: '/how-it-works'
           },
@@ -174,12 +174,12 @@
             url: '/social'
           },
           popupContact: {
-            title: 'Popup Contact',
+            title: 'Popup Contact [WIP]',
             icon: 'mdi-barley',
             url: '/popup-contact'
           },
           popupThanks: {
-            title: 'Popup Thanks',
+            title: 'Popup Thanks [WIP]',
             icon: 'mdi-heart',
             url: '/popup-thanks'
           }
