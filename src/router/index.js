@@ -4,7 +4,6 @@ import Home from '@/components/Pages/Home'
 import Register from '@/components/Pages/Register'
 import Login from '@/components/Pages/Login'
 import Profile from '@/components/Pages/Profile'
-import Hero from '@/components/Pages/Hero'
 
 import Projects from '@/components/Pages/Projects'
 import AddProject from '@/components/Pages/AddProject'
@@ -26,6 +25,9 @@ import EditSocialLink from '@/components/Pages/EditSocialLink'
 import Features from '@/components/Pages/Features'
 import AddFeature from '@/components/Pages/AddFeature'
 import EditFeature from '@/components/Pages/EditFeature'
+
+import Hero from '@/components/Pages/Hero'
+import EditHero from '@/components/Pages/EditHero'
 
 import PopupContact from '@/components/Pages/PopupContact'
 import PopupThanks from '@/components/Pages/PopupThanks'
@@ -59,12 +61,6 @@ export default new Router({
       name: 'Profile',
       component: Profile,
       beforeEnter: AuthGuard
-    },
-    {
-      path: '/hero',
-      name: 'Hero',
-      component: Hero,
-      beforeEnter: AdminGuard
     },
     {
       path: '/projects',
@@ -158,6 +154,18 @@ export default new Router({
       name: 'EditFeature',
       props: true,
       component: EditFeature,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/hero',
+      name: 'Hero',
+      component: Hero,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/edit-hero',
+      name: 'EditHero',
+      component: EditHero,
       beforeEnter: AdminGuard
     },
     {

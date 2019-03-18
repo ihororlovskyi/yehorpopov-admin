@@ -27,7 +27,7 @@
                     />
                     <v-textarea
                       name="description"
-                      label="Description"
+                      label="Description (HTML)"
                       id="description"
                       v-model="item.description"
                       :prepend-icon="descriptionIcon"

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import user from './user'
 import error from './error'
+import hero from './hero'
 import features from './features'
 import projects from './projects'
 import team from './team'
@@ -14,13 +15,14 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
 
   modules: {
-    features: features,
-    user: user,
-    error: error,
-    projects: projects,
-    team: team,
-    social: social,
-    loading: loading
+    user,
+    error,
+    hero,
+    features,
+    projects,
+    team,
+    social,
+    loading
   }
 
 })
