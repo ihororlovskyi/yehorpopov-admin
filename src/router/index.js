@@ -10,7 +10,6 @@ import AddProject from '@/components/Pages/AddProject'
 import EditProject from '@/components/Pages/EditProject'
 
 import HowItWorks from '@/components/Pages/HowItWorks'
-import Works from '@/components/Pages/Works'
 
 import Team from '@/components/Pages/Team'
 import AddTeamMember from '@/components/Pages/AddTeamMember'
@@ -28,6 +27,9 @@ import EditFeature from '@/components/Pages/EditFeature'
 
 import Hero from '@/components/Pages/Hero'
 import EditHero from '@/components/Pages/EditHero'
+
+import Instaworks from '@/components/Pages/Instaworks'
+import EditInstaworks from '@/components/Pages/EditInstaworks'
 
 import PopupContact from '@/components/Pages/PopupContact'
 import PopupThanks from '@/components/Pages/PopupThanks'
@@ -85,12 +87,6 @@ export default new Router({
       path: '/how-it-works',
       name: 'HowItWorks',
       component: HowItWorks,
-      beforeEnter: AdminGuard
-    },
-    {
-      path: '/works',
-      name: 'Works',
-      component: Works,
       beforeEnter: AdminGuard
     },
     {
@@ -166,6 +162,18 @@ export default new Router({
       path: '/edit-hero',
       name: 'EditHero',
       component: EditHero,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/instaworks',
+      name: 'Instaworks',
+      component: Instaworks,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/edit-instaworks',
+      name: 'EditInstaworks',
+      component: EditInstaworks,
       beforeEnter: AdminGuard
     },
     {

@@ -13,15 +13,20 @@
                     <v-icon left>{{ editHeroBtn.icon }}</v-icon>
                     {{ editHeroBtn.title }}
                   </v-btn>
-                  <p v-if="loadedHero.messageHome">
-                    <b>messageHome:</b>
+                  <p v-if="loadedInstaworks.title">
+                    <b>title:</b>
                     <br>
-                    {{ loadedHero.messageHome }}
+                    {{ loadedInstaworks.title }}
                   </p>
-                  <p v-if="loadedHero.messageZaglushka">
-                    <b>messageZaglushka:</b>
+                  <p v-if="loadedInstaworks.description">
+                    <b>description:</b>
                     <br>
-                    {{ loadedHero.messageZaglushka }}
+                    {{ loadedInstaworks.description }}
+                  </p>
+                  <p v-if="loadedInstaworks.access_token">
+                    <b>access_token:</b>
+                    <br>
+                    {{ loadedInstaworks.access_token }}
                   </p>
                 </v-flex>
 
@@ -39,19 +44,19 @@
     data () {
       return {
         page: {
-          title: 'Hero',
-          icon: 'mdi-bat'
+          title: 'Instaworks',
+          icon: 'mdi-instagram'
         },
         editHeroBtn: {
-          title: 'Edit Hero',
+          title: 'Edit Instaworks',
           icon: 'mdi-pencil',
-          url: '/edit-hero'
+          url: '/edit-instaworks'
         }
       }
     },
     computed: {
-      loadedHero () {
-        return this.$store.getters.loadedHero
+      loadedInstaworks () {
+        return this.$store.getters.loadedInstaworks
       },
       userIsAdmin () {
         return this.$store.getters.userIsAdmin

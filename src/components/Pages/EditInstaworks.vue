@@ -12,20 +12,29 @@
               <v-layout row wrap>
 
                 <v-flex xs12>
-                  <v-textarea
-                    name="messageHome"
-                    label="messageHome (HTML)"
-                    id="messageHome"
-                    v-model="loadedHero.messageHome"
+                  <v-text-field
+                    name="title"
+                    label="title"
+                    id="title"
+                    v-model="loadedInstaworks.title"
                     :prepend-icon="descriptionIcon"
                   />
-                  <v-textarea
-                    name="messageZaglushka"
-                    label="messageZaglushka (HTML)"
-                    id="messageZaglushka"
-                    v-model="loadedHero.messageZaglushka"
+                  <v-text-field
+                    name="description"
+                    label="description"
+                    id="description"
+                    v-model="loadedInstaworks.description"
                     :prepend-icon="descriptionIcon"
                   />
+                  <v-text-field
+                    name="access_token"
+                    label="access_token"
+                    id="access_token"
+                    v-model="loadedInstaworks.access_token"
+                    :prepend-icon="descriptionIcon"
+                  />
+                  <p>ihrororlovskyi: 176908350.1677ed0.3c30032e917a430e8d1f65eae2223b1e</p>
+                  <p>yehor_reality: 9623749496.1677ed0.5cccdc1243a64052b555b888c62b7770</p>
                 </v-flex>
 
               </v-layout>
@@ -54,27 +63,28 @@
     data () {
       return {
         page: {
-          title: 'Edit Hero',
-          icon: 'mdi-bat'
+          title: 'Edit Instaworks',
+          icon: 'mdi-instagram'
         },
         descriptionIcon: 'mdi-text-subject'
       }
     },
     computed: {
-      loadedHero () {
-        return this.$store.getters.loadedHero
+      loadedInstaworks () {
+        return this.$store.getters.loadedInstaworks
       }
     },
     methods: {
       onCancel () {
-        this.$router.push('/hero')
+        this.$router.push('/instaworks')
       },
       onSave () {
         this.$store.dispatch('updateHero', {
-          messageHome: this.loadedHero.messageHome,
-          messageZaglushka: this.loadedHero.messageZaglushka
+          title: this.loadedInstaworks.title,
+          description: this.loadedInstaworks.description,
+          access_token: this.loadedInstaworks.access_token
         })
-        this.$router.push('/hero')
+        this.$router.push('/instaworks')
       }
     }
   }

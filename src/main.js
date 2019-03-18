@@ -48,5 +48,6 @@ new Vue({
     this.$store.dispatch('loadTeamMembers')
     this.$store.dispatch('loadSocialLinks')
     this.$store.dispatch('loadHero')
+    this.$store.dispatch('loadInstaworks')
   }
 })

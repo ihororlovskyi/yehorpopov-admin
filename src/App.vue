@@ -151,10 +151,10 @@
             icon: 'mdi-format-list-numbered',
             url: '/how-it-works'
           },
-          works: {
-            title: 'Works',
+          instaworks: {
+            title: 'Instaworks',
             icon: 'mdi-instagram',
-            url: '/works'
+            url: '/instaworks'
           },
           team: {
             title: 'Team',

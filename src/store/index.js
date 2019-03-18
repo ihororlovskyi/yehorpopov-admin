@@ -8,6 +8,7 @@ import features from './features'
 import projects from './projects'
 import team from './team'
 import social from './social'
+import instaworks from './instaworks'
 import loading from './loading'
 
 Vue.use(Vuex)
@@ -22,6 +23,7 @@ export const store = new Vuex.Store({
     projects,
     team,
     social,
+    instaworks,
     loading
   }
 
