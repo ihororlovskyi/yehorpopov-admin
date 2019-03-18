@@ -9,6 +9,24 @@
               <v-layout row wrap>
 
                 <v-flex xs12 v-if="userIsAdmin" class="mb-2">
+                  <v-btn large color="warning" class="mx-0" :to="editTeamBtn.url">
+                    <v-icon left>{{ editTeamBtn.icon }}</v-icon>
+                    {{ editTeamBtn.title }}
+                  </v-btn>
+                </v-flex>
+                <v-flex xs12>
+                  <p v-if="loadedTeam.widgetTitle">
+                    <b>Widget Title:</b>
+                    <br>
+                    {{ loadedTeam.widgetTitle }}
+                  </p>
+                  <p>
+                    <b>Widget Is Published:</b>
+                    <br>
+                    {{ loadedTeam.widgetIsPublished }}
+                  </p>
+                </v-flex>
+                <v-flex xs12 v-if="userIsAdmin" class="mb-2">
                   <v-btn large color="success" class="mx-0" :to="addTeamMemberBtn.url">
                     <v-icon left>{{ addTeamMemberBtn.icon }}</v-icon>
                     {{ addTeamMemberBtn.title }}
@@ -58,10 +76,18 @@
           title: 'Add Team Member',
           icon: 'mdi-account-plus',
           url: '/team/add-team-member'
+        },
+        editTeamBtn: {
+          title: 'Edit Team',
+          icon: 'mdi-pencil',
+          url: '/team/edit'
         }
       }
     },
     computed: {
+      loadedTeam () {
+        return this.$store.getters.loadedTeam
+      },
       loadedTeamMembersSortedByOld () {
         return this.$store.getters.loadedTeamMembersSortedByOld
       },

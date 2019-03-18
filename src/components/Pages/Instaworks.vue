@@ -13,6 +13,8 @@
                     <v-icon left>{{ EditInstaworksBtn.icon }}</v-icon>
                     {{ EditInstaworksBtn.title }}
                   </v-btn>
+                </v-flex>
+                <v-flex xs12>
                   <p v-if="loadedInstaworks.title">
                     <b>title:</b>
                     <br>
@@ -50,7 +52,7 @@
         EditInstaworksBtn: {
           title: 'Edit Instaworks',
           icon: 'mdi-pencil',
-          url: '/edit-instaworks'
+          url: '/instaworks/edit'
         }
       }
     },

@@ -13,6 +13,8 @@
                     <v-icon left>{{ editContactsBtn.icon }}</v-icon>
                     {{ editContactsBtn.title }}
                   </v-btn>
+                </v-flex>
+                <v-flex xs12>
                   <p v-if="loadedContacts.title">
                     <b>title:</b>
                     <br>
@@ -60,7 +62,7 @@
         editContactsBtn: {
           title: 'Edit Contacts',
           icon: 'mdi-pencil',
-          url: '/edit-contacts'
+          url: '/contacts/edit'
         }
       }
     },

@@ -10,10 +10,10 @@ export default {
     setLoadedInstaworks (state, payload) {
       state.loadedInstaworks = payload
     },
-    updateHero (state, payload) {
-      state.loadedHero.title = payload.title
-      state.loadedHero.description = payload.description
-      state.loadedHero.access_token = payload.access_token
+    updateInstaworks (state, payload) {
+      state.loadedInstaworks.title = payload.title
+      state.loadedInstaworks.description = payload.description
+      state.loadedInstaworks.access_token = payload.access_token
     }
   },
 

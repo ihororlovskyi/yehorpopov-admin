@@ -13,17 +13,10 @@
 
                 <v-flex xs12>
                   <v-textarea
-                    name="messageHome"
-                    label="messageHome (HTML)"
-                    id="messageHome"
-                    v-model="loadedHero.messageHome"
-                    :prepend-icon="descriptionIcon"
-                  />
-                  <v-textarea
-                    name="messageZaglushka"
-                    label="messageZaglushka (HTML)"
-                    id="messageZaglushka"
-                    v-model="loadedHero.messageZaglushka"
+                    name="quote"
+                    label="quote (HTML)"
+                    id="quote"
+                    v-model="loadedHero.quote"
                     :prepend-icon="descriptionIcon"
                   />
                   <v-text-field
@@ -92,8 +85,7 @@
       },
       onSave () {
         this.$store.dispatch('updateHero', {
-          messageHome: this.loadedHero.messageHome,
-          messageZaglushka: this.loadedHero.messageZaglushka,
+          quote: this.loadedHero.quote,
           person: this.loadedHero.person,
           userpic: this.loadedHero.userpic,
           position: this.loadedHero.position

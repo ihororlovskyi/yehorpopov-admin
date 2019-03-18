@@ -13,15 +13,12 @@
                     <v-icon left>{{ editHeroBtn.icon }}</v-icon>
                     {{ editHeroBtn.title }}
                   </v-btn>
-                  <p v-if="loadedHero.messageHome">
-                    <b>messageHome:</b>
+                </v-flex>
+                <v-flex xs12>
+                  <p v-if="loadedHero.quote">
+                    <b>quote:</b>
                     <br>
-                    {{ loadedHero.messageHome }}
-                  </p>
-                  <p v-if="loadedHero.messageZaglushka">
-                    <b>messageZaglushka:</b>
-                    <br>
-                    {{ loadedHero.messageZaglushka }}
+                    {{ loadedHero.quote }}
                   </p>
                   <p v-if="loadedHero.person">
                     <b>person:</b>
@@ -60,7 +57,7 @@
         editHeroBtn: {
           title: 'Edit Hero',
           icon: 'mdi-pencil',
-          url: '/edit-hero'
+          url: '/hero/edit'
         }
       }
     },

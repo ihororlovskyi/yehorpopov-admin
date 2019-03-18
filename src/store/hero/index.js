@@ -11,8 +11,7 @@ export default {
       state.loadedHero = payload
     },
     updateHero (state, payload) {
-      state.loadedHero.messageHome = payload.messageHome
-      state.loadedHero.messageZaglushka = payload.messageZaglushka
+      state.loadedHero.quote = payload.quote
       state.loadedHero.person = payload.person
       state.loadedHero.userpic = payload.userpic
       state.loadedHero.position = payload.position
@@ -37,8 +36,7 @@ export default {
     },
     updateHero ({ commit }, payload) {
       const updateObj = {}
-      updateObj.messageHome = payload.messageHome
-      updateObj.messageZaglushka = payload.messageZaglushka
+      updateObj.quote = payload.quote
       updateObj.person = payload.person
       updateObj.userpic = payload.userpic
       updateObj.position = payload.position

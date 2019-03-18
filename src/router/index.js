@@ -12,6 +12,7 @@ import EditProject from '@/components/Pages/EditProject'
 import HowItWorks from '@/components/Pages/HowItWorks'
 
 import Team from '@/components/Pages/Team'
+import EditTeam from '@/components/Pages/EditTeam'
 import AddTeamMember from '@/components/Pages/AddTeamMember'
 import EditTeamMember from '@/components/Pages/EditTeamMember'
 
@@ -97,6 +98,12 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
+      path: '/team/edit',
+      name: 'EditTeam',
+      component: EditTeam,
+      beforeEnter: AdminGuard
+    },
+    {
       path: '/team/add-team-member',
       name: 'AddTeamMember',
       component: AddTeamMember,
@@ -154,7 +161,7 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/edit-hero',
+      path: '/hero/edit',
       name: 'EditHero',
       component: EditHero,
       beforeEnter: AdminGuard
@@ -166,7 +173,7 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/edit-instaworks',
+      path: '/instaworks/edit',
       name: 'EditInstaworks',
       component: EditInstaworks,
       beforeEnter: AdminGuard
@@ -178,7 +185,7 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/edit-contacts',
+      path: '/contacts/edit',
       name: 'EditContacts',
       component: EditContacts,
       beforeEnter: AdminGuard
