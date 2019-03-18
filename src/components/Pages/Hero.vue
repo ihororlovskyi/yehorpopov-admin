@@ -23,6 +23,21 @@
                     <br>
                     {{ loadedHero.messageZaglushka }}
                   </p>
+                  <p v-if="loadedHero.person">
+                    <b>person:</b>
+                    <br>
+                    {{ loadedHero.person }}
+                  </p>
+                  <p v-if="loadedHero.userpic">
+                    <b>userpic:</b>
+                    <br>
+                    {{ loadedHero.userpic }}
+                  </p>
+                  <p v-if="loadedHero.position">
+                    <b>position:</b>
+                    <br>
+                    {{ loadedHero.position }}
+                  </p>
                 </v-flex>
 
               </v-layout>

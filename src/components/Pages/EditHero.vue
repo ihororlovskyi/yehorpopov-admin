@@ -26,6 +26,27 @@
                     v-model="loadedHero.messageZaglushka"
                     :prepend-icon="descriptionIcon"
                   />
+                  <v-text-field
+                    name="person"
+                    label="person"
+                    id="person"
+                    v-model="loadedHero.person"
+                    :prepend-icon="descriptionIcon"
+                  />
+                  <v-text-field
+                    name="userpic"
+                    label="userpic"
+                    id="userpic"
+                    v-model="loadedHero.userpic"
+                    :prepend-icon="descriptionIcon"
+                  />
+                  <v-text-field
+                    name="position"
+                    label="position"
+                    id="position"
+                    v-model="loadedHero.position"
+                    :prepend-icon="descriptionIcon"
+                  />
                 </v-flex>
 
               </v-layout>
@@ -72,7 +93,10 @@
       onSave () {
         this.$store.dispatch('updateHero', {
           messageHome: this.loadedHero.messageHome,
-          messageZaglushka: this.loadedHero.messageZaglushka
+          messageZaglushka: this.loadedHero.messageZaglushka,
+          person: this.loadedHero.person,
+          userpic: this.loadedHero.userpic,
+          position: this.loadedHero.position
         })
         this.$router.push('/hero')
       }

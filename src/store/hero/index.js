@@ -13,6 +13,9 @@ export default {
     updateHero (state, payload) {
       state.loadedHero.messageHome = payload.messageHome
       state.loadedHero.messageZaglushka = payload.messageZaglushka
+      state.loadedHero.person = payload.person
+      state.loadedHero.userpic = payload.userpic
+      state.loadedHero.position = payload.position
     }
   },
 
@@ -36,6 +39,9 @@ export default {
       const updateObj = {}
       updateObj.messageHome = payload.messageHome
       updateObj.messageZaglushka = payload.messageZaglushka
+      updateObj.person = payload.person
+      updateObj.userpic = payload.userpic
+      updateObj.position = payload.position
       firebase.database().ref('hero').update(updateObj)
         .then(() => {
           commit('updateHero', payload)
