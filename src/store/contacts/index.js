@@ -14,8 +14,10 @@ export default {
       state.loadedContacts.title = payload.title
       state.loadedContacts.phone = payload.phone
       state.loadedContacts.email = payload.email
-      state.loadedContacts.mapLocation = payload.mapLocation
       state.loadedContacts.address = payload.address
+      state.loadedContacts.mapLat = payload.mapLat
+      state.loadedContacts.mapLng = payload.mapLng
+      state.loadedContacts.mapZoom = payload.mapZoom
     }
   },
 
@@ -40,8 +42,10 @@ export default {
       updateObj.title = payload.title
       updateObj.phone = payload.phone
       updateObj.email = payload.email
-      updateObj.mapLocation = payload.mapLocation
       updateObj.address = payload.address
+      updateObj.mapLat = payload.mapLat
+      updateObj.mapLng = payload.mapLng
+      updateObj.mapZoom = payload.mapZoom
       firebase.database().ref('contacts').update(updateObj)
         .then(() => {
           commit('updateContacts', payload)

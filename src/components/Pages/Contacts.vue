@@ -30,16 +30,26 @@
                     <br>
                     {{ loadedContacts.email }}
                   </p>
-                  <p v-if="loadedContacts.mapLocation">
-                    <b>mapLocation:</b>
-                    <br>
-                    {{ loadedContacts.mapLocation }}
-                  </p>
                   <p v-if="loadedContacts.address">
                     <b>address:</b>
                     <br>
                     <span v-html="loadedContacts.address"/>
                   </p>
+                  <!-- <p v-if="loadedContacts.mapLat">
+                    <b>mapLat:</b>
+                    <br>
+                    {{ loadedContacts.mapLat }}
+                  </p>
+                  <p v-if="loadedContacts.mapLng">
+                    <b>mapLng:</b>
+                    <br>
+                    {{ loadedContacts.mapLng }}
+                  </p>
+                  <p v-if="loadedContacts.mapZoom">
+                    <b>mapZoom:</b>
+                    <br>
+                    {{ loadedContacts.mapZoom }}
+                  </p> -->
                 </v-flex>
 
               </v-layout>

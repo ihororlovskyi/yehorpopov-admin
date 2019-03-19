@@ -33,13 +33,6 @@
                     v-model="loadedContacts.phone"
                     :prepend-icon="descriptionIcon"
                   />
-                  <v-text-field
-                    name="mapLocation"
-                    label="mapLocation"
-                    id="mapLocation"
-                    v-model="loadedContacts.mapLocation"
-                    :prepend-icon="descriptionIcon"
-                  />
                   <v-textarea
                     name="address"
                     label="address (HTML)"
@@ -47,6 +40,27 @@
                     v-model="loadedContacts.address"
                     :prepend-icon="descriptionIcon"
                   />
+                  <!-- <v-text-field
+                    name="map.lat"
+                    label="map.lat"
+                    id="map.lat"
+                    v-model="loadedContacts.mapLat"
+                    :prepend-icon="descriptionIcon"
+                  />
+                  <v-text-field
+                    name="map.lng"
+                    label="map.lng"
+                    id="map.lng"
+                    v-model="loadedContacts.mapLng"
+                    :prepend-icon="descriptionIcon"
+                  />
+                  <v-text-field
+                    name="map.zoom"
+                    label="map.zoom"
+                    id="map.zoom"
+                    v-model="loadedContacts.mapZoom"
+                    :prepend-icon="descriptionIcon"
+                  /> -->
                 </v-flex>
 
               </v-layout>
@@ -95,8 +109,10 @@
           title: this.loadedContacts.title,
           phone: this.loadedContacts.phone,
           email: this.loadedContacts.email,
-          mapLocation: this.loadedContacts.mapLocation,
-          address: this.loadedContacts.address
+          address: this.loadedContacts.address,
+          mapLat: this.loadedContacts.mapLat,
+          mapLng: this.loadedContacts.mapLng,
+          mapZoom: this.loadedContacts.mapZoom
         })
         this.$router.push('/contacts')
       }
