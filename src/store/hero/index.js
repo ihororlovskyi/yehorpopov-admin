@@ -23,8 +23,8 @@ export default {
       commit('setLoading', true)
       firebase.database().ref('hero').once('value')
         .then((data) => {
-          const heroContent = data.val()
-          commit('setLoadedHero', heroContent)
+          const content = data.val()
+          commit('setLoadedHero', content)
           commit('setLoading', false)
         })
         .catch(

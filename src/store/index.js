@@ -6,6 +6,7 @@ import error from './error'
 import hero from './hero'
 import features from './features'
 import projects from './projects'
+import customProject from './customProject'
 import team from './team'
 import teamMembers from './teamMembers'
 import social from './social'
@@ -23,6 +24,7 @@ export const store = new Vuex.Store({
     hero,
     features,
     projects,
+    customProject,
     team,
     teamMembers,
     social,

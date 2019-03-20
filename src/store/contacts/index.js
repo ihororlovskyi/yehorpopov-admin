@@ -26,8 +26,8 @@ export default {
       commit('setLoading', true)
       firebase.database().ref('contacts').once('value')
         .then((data) => {
-          const contactsContent = data.val()
-          commit('setLoadedContacts', contactsContent)
+          const content = data.val()
+          commit('setLoadedContacts', content)
           commit('setLoading', false)
         })
         .catch(

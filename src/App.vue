@@ -146,6 +146,11 @@
             icon: 'mdi-cannabis',
             url: '/projects'
           },
+          customProject: {
+            title: 'Custom Project',
+            icon: 'mdi-rocket',
+            url: '/custom-project'
+          },
           howItWorks: {
             title: 'How It Works [WIP]',
             icon: 'mdi-format-list-numbered',
@@ -175,7 +180,7 @@
           },
           popupContact: {
             title: 'Popup Contact [WIP]',
-            icon: 'mdi-barley',
+            icon: 'mdi-message',
             url: '/popup-contact'
           },
           popupThanks: {

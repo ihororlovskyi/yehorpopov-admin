@@ -22,8 +22,8 @@ export default {
       commit('setLoading', true)
       firebase.database().ref('instaworks').once('value')
         .then((data) => {
-          const instaworksContent = data.val()
-          commit('setLoadedInstaworks', instaworksContent)
+          const content = data.val()
+          commit('setLoadedInstaworks', content)
           commit('setLoading', false)
         })
         .catch(
