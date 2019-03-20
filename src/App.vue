@@ -154,7 +154,7 @@
           howItWorks: {
             title: 'How It Works [WIP]',
             icon: 'mdi-format-list-numbered',
-            url: '/how-it-works'
+            url: '/hiw'
           },
           instaworks: {
             title: 'Instaworks',

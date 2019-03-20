@@ -13,6 +13,8 @@ import social from './social'
 import instaworks from './instaworks'
 import contacts from './contacts'
 import loading from './loading'
+import hiwWidget from './hiwWidget'
+import hiwItems from './hiwItems'
 
 Vue.use(Vuex)
 
@@ -30,7 +32,9 @@ export const store = new Vuex.Store({
     social,
     instaworks,
     contacts,
-    loading
+    loading,
+    hiwWidget,
+    hiwItems
   }
 
 })

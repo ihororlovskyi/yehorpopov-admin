@@ -52,5 +52,7 @@ new Vue({
     this.$store.dispatch('loadHero')
     this.$store.dispatch('loadInstaworks')
     this.$store.dispatch('loadContacts')
+    this.$store.dispatch('loadHiwWidget')
+    this.$store.dispatch('loadHiwList')
   }
 })

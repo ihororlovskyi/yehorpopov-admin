@@ -9,7 +9,10 @@ import Projects from '@/components/Pages/Projects'
 import AddProject from '@/components/Pages/AddProject'
 import EditProject from '@/components/Pages/EditProject'
 
-import HowItWorks from '@/components/Pages/HowItWorks'
+import Hiw from '@/components/Pages/Hiw/Widget'
+import HiwEditWidget from '@/components/Pages/Hiw/EditWidget'
+import HiwAddItem from '@/components/Pages/Hiw/AddItem'
+import HiwEditItem from '@/components/Pages/Hiw/EditItem'
 
 import Team from '@/components/Pages/Team'
 import EditTeam from '@/components/Pages/EditTeam'
@@ -89,9 +92,28 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/how-it-works',
-      name: 'HowItWorks',
-      component: HowItWorks,
+      path: '/hiw',
+      name: 'Hiw',
+      component: Hiw,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/hiw/edit-widget',
+      name: 'HiwEditWidget',
+      component: HiwEditWidget,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/hiw/add-item',
+      name: 'HiwAddItem',
+      component: HiwAddItem,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/hiw/edit-item',
+      name: 'HiwEditItem',
+      props: true,
+      component: HiwEditItem,
       beforeEnter: AdminGuard
     },
     {
