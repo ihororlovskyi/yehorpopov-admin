@@ -110,7 +110,7 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/hiw/edit-item',
+      path: '/hiw/:id',
       name: 'HiwEditItem',
       props: true,
       component: HiwEditItem,

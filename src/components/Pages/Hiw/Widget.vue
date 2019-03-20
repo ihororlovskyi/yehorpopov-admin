@@ -32,28 +32,28 @@
                     {{ addTeamMemberBtn.title }}
                   </v-btn>
                 </v-flex>
-                <!-- <v-flex xs12>
+                <v-flex xs12>
                   <v-list two-line>
                     <v-list-tile
-                      v-for="i in loadedTeamMembersSortedByOld"
+                      v-for="i in loadedHiwItemsSortedByOld"
                       @click="onLoad(i.id)"
                       :key="i.id"
                       v-ripple
                     >
                       <v-list-tile-avatar>
-                        <v-img :src="i.photo" :alt="i.name"/>
+                        <v-img :src="i.img" :alt="i.title"/>
                       </v-list-tile-avatar>
                       <v-list-tile-content>
                         <v-list-tile-title>
                           <v-icon v-if="i.isPublished" small color="green darken-3">mdi-eye</v-icon>
                           <v-icon v-else small color="yellow darken-3">mdi-eye-off</v-icon>
-                          {{ i.name }}
+                          {{ i.title }}
                         </v-list-tile-title>
-                        <v-list-tile-sub-title>{{ i.position }}</v-list-tile-sub-title>
+                        <v-list-tile-sub-title>{{ i.description }}</v-list-tile-sub-title>
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
-                </v-flex> -->
+                </v-flex>
 
               </v-layout>
             </v-card-text>

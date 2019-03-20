@@ -152,7 +152,7 @@
             url: '/custom-project'
           },
           howItWorks: {
-            title: 'How It Works [WIP]',
+            title: 'How It Works',
             icon: 'mdi-format-list-numbered',
             url: '/hiw'
           },

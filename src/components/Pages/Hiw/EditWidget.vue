@@ -52,8 +52,8 @@
     data () {
       return {
         page: {
-          title: 'Edit Hero',
-          icon: 'mdi-bat'
+          title: 'Edit How It Works',
+          icon: 'mdi-format-list-numbered'
         },
         descriptionIcon: 'mdi-text-subject',
         isPublishedIcon: 'mdi-eye-check'

@@ -17,11 +17,10 @@ export default {
       const item = state.loadedHiwItems.find(item => {
         return item.id === payload.id
       })
-      item.name = payload.name
+      item.title = payload.title
       item.isPublished = payload.isPublished
-      item.position = payload.position
-      item.photo = payload.photo
-      item.quote = payload.quote
+      item.img = payload.img
+      item.description = payload.description
     },
     deleteHiwItem (state, payload) {
       const index = state.loadedHiwItems.findIndex(item => {
@@ -43,11 +42,10 @@ export default {
           for (let key in obj) {
             items.push({
               id: key,
-              name: obj[key].name,
+              title: obj[key].title,
               isPublished: obj[key].isPublished,
-              position: obj[key].position,
-              photo: obj[key].photo,
-              quote: obj[key].quote,
+              img: obj[key].img,
+              description: obj[key].description,
               date: obj[key].date
             })
           }
@@ -63,33 +61,21 @@ export default {
     },
     createHiwItem ({ commit, getters }, payload) {
       const item = {
-        name: payload.name,
+        title: payload.title,
         isPublished: payload.isPublished,
-        position: payload.position,
-        photo: payload.photo,
-        quote: payload.quote,
+        img: payload.img,
+        description: payload.description,
         date: payload.date.toISOString()
       }
-      let photo
       let key
       firebase.database().ref('hiwItems').push(item)
         .then((data) => {
           key = data.key
           return key
         })
-        .then(key => {
-          const filename = payload.image.name
-          const ext = filename.slice(filename.lastIndexOf('.'))
-          return firebase.storage().ref('team/' + key + '/photo' + ext).put(payload.image)
-        })
-        .then(fileData => {
-          photo = fileData.metadata.downloadURLs[0]
-          return firebase.database().ref('hiwItems').child(key).update({ photo: photo })
-        })
         .then(() => {
           commit('createHiwItem', {
             ...item,
-            photo: photo,
             id: key
           })
         })
@@ -99,32 +85,13 @@ export default {
     },
     updateHiwItem ({ commit }, payload) {
       const updateObj = {}
-      updateObj.name = payload.name
+      updateObj.title = payload.title
       updateObj.isPublished = payload.isPublished
-      updateObj.position = payload.position
-      updateObj.quote = payload.quote
-      let photo
-      let key
+      updateObj.img = payload.img
+      updateObj.description = payload.description
       firebase.database().ref('hiwItems').child(payload.id).update(updateObj)
-        .then((data) => {
-          key = payload.id
-          return key
-        })
-        .then(key => {
-          const filename = payload.image.name
-          const ext = filename.slice(filename.lastIndexOf('.'))
-          return firebase.storage().ref('team/' + key + '/photo' + ext).put(payload.image)
-        })
-        .then(fileData => {
-          photo = fileData.metadata.downloadURLs[0]
-          return firebase.database().ref('hiwItems').child(key).update({ photo: photo })
-        })
         .then(() => {
-          commit('updateHiwItem', {
-            ...updateObj,
-            photo: photo,
-            id: key
-          })
+          commit('updateFeature', payload)
         })
         .catch((error) => {
           console.log(error)
@@ -132,12 +99,6 @@ export default {
     },
     deleteHiwItem ({ commit }, payload) {
       firebase.database().ref('hiwItems').child(payload.id).remove()
-        .then(() => {
-          const photo = payload.photo
-          const extWithMeta = photo.slice(photo.lastIndexOf('.'))
-          const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
-          return firebase.storage().ref('team/' + payload.id + '/photo' + ext).delete()
-        })
         .then(() => {
           commit('deleteHiwItem', payload.id)
         })

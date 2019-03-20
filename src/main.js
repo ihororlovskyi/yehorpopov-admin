@@ -53,6 +53,6 @@ new Vue({
     this.$store.dispatch('loadInstaworks')
     this.$store.dispatch('loadContacts')
     this.$store.dispatch('loadHiwWidget')
-    this.$store.dispatch('loadHiwList')
+    this.$store.dispatch('loadHiwItems')
   }
 })
