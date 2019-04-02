@@ -22,6 +22,25 @@
 
         <v-divider v-if="userIsAdmin"/>
 
+        <v-subheader v-if="userIsAdmin">Modules</v-subheader>
+
+        <v-list-tile
+          v-if="userIsAdmin"
+          v-for="i in modules"
+          :key="i.url"
+          :to="i.url"
+          v-ripple
+        >
+          <v-list-tile-action>
+            <v-icon>{{ i.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-divider v-if="userIsAdmin"/>
+
         <v-subheader v-if="userIsAdmin">Widgets</v-subheader>
 
         <v-list-tile
@@ -128,6 +147,13 @@
             title: 'Profile',
             icon: 'mdi-account',
             url: '/user/profile'
+          }
+        },
+        modules: {
+          images: {
+            title: 'Images',
+            icon: 'mdi-image',
+            url: '/images'
           }
         },
         widgets: {

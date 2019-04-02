@@ -3,12 +3,12 @@
   "short_name": "YehorPopovAdmin",
   "icons": [
     {
-      "src": "https://firebasestorage.googleapis.com/v0/b/yehorpopov-db.appspot.com/o/favi%2Ffavicon-32.png?alt=media&token=a9c4f475-4997-46de-84d0-db23786177dc",
+      "src": "https://firebasestorage.googleapis.com/v0/b/yehorpopov-db.appspot.com/o/favi%2Fadmin-32.png?alt=media&token=cc12f93f-28ef-4732-979d-0e1f293f3675",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "https://firebasestorage.googleapis.com/v0/b/yehorpopov-db.appspot.com/o/favi%2Ffavicon-144.jpg?alt=media&token=ce62c329-c57c-438d-9910-f9167c8f51c2",
+      "src": "https://firebasestorage.googleapis.com/v0/b/yehorpopov-db.appspot.com/o/favi%2Fadmin-144.jpg?alt=media&token=ef2247a9-a61b-4fae-b5c9-238c4c978a66",
       "sizes": "144x144",
       "type": "image/png"
     }

@@ -45,6 +45,10 @@ import PopupThanks from '@/components/Pages/PopupThanks'
 import AuthGuard from './auth-guard'
 import AdminGuard from './admin-guard'
 
+import ImgList from '@/components/Pages/Images/ImgList'
+import AddImg from '@/components/Pages/Images/AddImg'
+import EditImg from '@/components/Pages/Images/EditImg'
+
 Vue.use(Router)
 
 export default new Router({
@@ -213,6 +217,25 @@ export default new Router({
       path: '/instaworks/edit',
       name: 'EditInstaworks',
       component: EditInstaworks,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/images',
+      name: 'ImgList',
+      component: ImgList,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/images/add',
+      name: 'AddImg',
+      component: AddImg,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/images/:id',
+      name: 'EditImg',
+      props: true,
+      component: EditImg,
       beforeEnter: AdminGuard
     },
     {
