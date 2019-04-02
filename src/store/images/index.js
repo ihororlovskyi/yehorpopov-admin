@@ -19,6 +19,7 @@ export default {
       })
       item.title = payload.title
       item.isPublished = payload.isPublished
+      item.imageUrl = payload.imageUrl
       item.src = payload.src
       item.description = payload.description
     },
@@ -45,6 +46,7 @@ export default {
               title: obj[key].title,
               isPublished: obj[key].isPublished,
               description: obj[key].description,
+              imageUrl: obj[key].imageUrl,
               src: obj[key].src,
               date: obj[key].date
             })
@@ -67,15 +69,26 @@ export default {
         src: payload.src,
         date: payload.date.toISOString()
       }
+      let imageUrl
       let key
       firebase.database().ref('images').push(item)
         .then((data) => {
           key = data.key
           return key
         })
+        .then(key => {
+          const filename = payload.image.name
+          const ext = filename.slice(filename.lastIndexOf('.'))
+          return firebase.storage().ref('images/' + key + ext).put(payload.image)
+        })
+        .then(fileData => {
+          imageUrl = fileData.metadata.downloadURLs[0]
+          return firebase.database().ref('images').child(key).update({imageUrl: imageUrl})
+        })
         .then(() => {
-          commit('uploadImage', {
+          commit('createItem', {
             ...item,
+            imageUrl: imageUrl,
             id: key
           })
         })

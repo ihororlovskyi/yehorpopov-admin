@@ -23,6 +23,9 @@
                       v-ripple
                     >
                       <v-list-tile-avatar>
+                        <v-img :src="i.imageUrl" :alt="i.title"/>
+                      </v-list-tile-avatar>
+                      <v-list-tile-avatar>
                         <v-img :src="i.src" :alt="i.title"/>
                       </v-list-tile-avatar>
                       <v-list-tile-content>

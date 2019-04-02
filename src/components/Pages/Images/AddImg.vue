@@ -27,6 +27,29 @@
                         :label="`Is Published?: ${isPublished.toString()}`"
                         :prepend-icon="isPublishedIcon"
                       />
+                      <div>
+                        <v-btn
+                          @click="onPickFile"
+                          class="ml-0"
+                        >
+                          <v-icon left>mdi-image</v-icon>
+                          Choose Image
+                        </v-btn>
+                        <input
+                          type="file"
+                          style="display: none"
+                          ref="fileInput"
+                          accept="image/*"
+                          @change="onFilePicked"
+                        >
+                      </div>
+                      <v-card v-if="imageUrl" width="150">
+                        <img
+                          :src="imageUrl"
+                          class="d-block mb-4"
+                          width="150"
+                        >
+                      </v-card>
                       <v-text-field
                         name="src"
                         label="Image Src"
@@ -34,7 +57,7 @@
                         v-model="src"
                         :prepend-icon="srcIcon"
                       />
-                    <v-textarea
+                      <v-textarea
                         name="description"
                         label="Description (HTML)"
                         id="description"
@@ -48,6 +71,9 @@
                     <v-card>
                       <v-list two-line class="py-0">
                         <v-list-tile>
+                          <v-list-tile-avatar v-if="imageUrl">
+                            <v-img :src="imageUrl" :alt="title"/>
+                          </v-list-tile-avatar>
                           <v-list-tile-avatar v-if="src">
                             <v-img :src="src" :alt="title"/>
                           </v-list-tile-avatar>
@@ -100,13 +126,16 @@
         isPublishedIcon: 'mdi-eye-check',
         src: '',
         srcIcon: 'mdi-image',
+        imageUrl: '',
+        image: null,
+        imageUrlIcon: 'mdi-image',
         description: '',
         descriptionIcon: 'mdi-text-subject'
       }
     },
     computed: {
       formIsValid () {
-        return this.title !== ''
+        return this.imageUrl !== ''
       }
     },
     methods: {
@@ -115,6 +144,9 @@
       },
       onPublish () {
         if (!this.formIsValid) {
+          return
+        }
+        if (!this.image) {
           return
         }
         const itemData = {
@@ -126,6 +158,22 @@
         }
         this.$store.dispatch('uploadImage', itemData)
         this.$router.push('/images')
+      },
+      onPickFile () {
+        this.$refs.fileInput.click()
+      },
+      onFilePicked (event) {
+        const files = event.target.files
+        let filename = files[0].name
+        if (filename.lastIndexOf('.') <= 0) {
+          return alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил')
+        }
+        const fileReader = new FileReader()
+        fileReader.addEventListener('load', () => {
+          this.imageUrl = fileReader.result
+        })
+        fileReader.readAsDataURL(files[0])
+        this.image = files[0]
       }
     }
   }
