@@ -19,11 +19,17 @@ export default {
       })
       item.title = payload.title
       item.isPublished = payload.isPublished
-      item.description = payload.description
       item.price = payload.price
       item.atHero = payload.atHero
       item.heroColor = payload.heroColor
       item.imgCover = payload.imgCover
+      item.pageColor1 = payload.pageColor1
+      item.pageColor2 = payload.pageColor2
+      item.pageColor3 = payload.pageColor3
+      item.pageColor4 = payload.pageColor4
+      item.pageColor5 = payload.pageColor5
+      item.pageColor6 = payload.pageColor6
+      item.description = payload.description
     },
     deleteProject (state, payload) {
       const index = state.loadedProjects.findIndex(item => {
@@ -47,11 +53,17 @@ export default {
               id: key,
               title: obj[key].title,
               isPublished: obj[key].isPublished,
-              description: obj[key].description,
               price: obj[key].price,
               atHero: obj[key].atHero,
               heroColor: obj[key].heroColor,
               imgCover: obj[key].imgCover,
+              pageColor1: obj[key].pageColor1,
+              pageColor2: obj[key].pageColor2,
+              pageColor3: obj[key].pageColor3,
+              pageColor4: obj[key].pageColor4,
+              pageColor5: obj[key].pageColor5,
+              pageColor6: obj[key].pageColor6,
+              description: obj[key].description,
               date: obj[key].date
             })
           }
@@ -69,10 +81,16 @@ export default {
       const item = {
         title: payload.title,
         isPublished: payload.isPublished,
-        description: payload.description,
         price: payload.price,
         atHero: payload.atHero,
         heroColor: payload.heroColor,
+        pageColor1: payload.pageColor1,
+        pageColor2: payload.pageColor2,
+        pageColor3: payload.pageColor3,
+        pageColor4: payload.pageColor4,
+        pageColor5: payload.pageColor5,
+        pageColor6: payload.pageColor6,
+        description: payload.description,
         date: payload.date.toISOString()
       }
       let imgCover
@@ -106,10 +124,16 @@ export default {
       const updateObj = {}
       updateObj.title = payload.title
       updateObj.isPublished = payload.isPublished
-      updateObj.description = payload.description
       updateObj.price = payload.price
       updateObj.atHero = payload.atHero
       updateObj.heroColor = payload.heroColor
+      updateObj.pageColor1 = payload.pageColor1
+      updateObj.pageColor2 = payload.pageColor2
+      updateObj.pageColor3 = payload.pageColor3
+      updateObj.pageColor4 = payload.pageColor4
+      updateObj.pageColor5 = payload.pageColor5
+      updateObj.pageColor6 = payload.pageColor6
+      updateObj.description = payload.description
       let imgCover
       let key
       firebase.database().ref('projects').child(payload.id).update(updateObj)

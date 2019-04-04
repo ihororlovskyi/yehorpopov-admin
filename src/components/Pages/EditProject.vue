@@ -33,19 +33,63 @@
                       :prepend-icon="priceIcon"
                     />
                     <v-layout row wrap>
-                      <v-flex xs12 sm6>
+                      <v-flex xs6>
                         <v-checkbox
                           v-model="item.atHero"
                           :label="`Show at Hero?: ${item.atHero.toString()}`"
                           :prepend-icon="atHeroIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6 v-if="item.atHero">
+                      <v-flex xs6 v-if="item.atHero">
                         <v-text-field
                           name="heroColor"
                           label="Hero Color"
                           id="heroColor"
                           v-model="item.heroColor"
+                          :prepend-icon="heroColorIcon"
+                        />
+                      </v-flex>
+                    </v-layout>
+                    <v-layout row wrap>
+                      <v-flex xs6 sm4>
+                        <v-text-field
+                          label="Page Color 1"
+                          v-model="item.pageColor1"
+                          :prepend-icon="heroColorIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs6 sm4>
+                        <v-text-field
+                          label="Page Color 2"
+                          v-model="item.pageColor2"
+                          :prepend-icon="heroColorIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs6 sm4>
+                        <v-text-field
+                          label="Page Color 3"
+                          v-model="item.pageColor3"
+                          :prepend-icon="heroColorIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs6 sm4>
+                        <v-text-field
+                          label="Page Color 4"
+                          v-model="item.pageColor4"
+                          :prepend-icon="heroColorIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs6 sm4>
+                        <v-text-field
+                          label="Page Color 5"
+                          v-model="item.pageColor5"
+                          :prepend-icon="heroColorIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs6 sm4>
+                        <v-text-field
+                          label="Page Color 6"
+                          v-model="item.pageColor6"
                           :prepend-icon="heroColorIcon"
                         />
                       </v-flex>
@@ -219,6 +263,12 @@
             heroColor: this.item.heroColor,
             isPublished: this.item.isPublished,
             imgCover: this.item.imgCover,
+            pageColor1: this.item.pageColor1,
+            pageColor2: this.item.pageColor2,
+            pageColor3: this.item.pageColor3,
+            pageColor4: this.item.pageColor4,
+            pageColor5: this.item.pageColor5,
+            pageColor6: this.item.pageColor6,
             description: this.item.description
           })
           this.$router.push('/projects')
@@ -240,6 +290,12 @@
                 atHero: this.item.atHero,
                 heroColor: this.item.heroColor,
                 imgCover: this.item.imgCover,
+                pageColor1: this.item.pageColor1,
+                pageColor2: this.item.pageColor2,
+                pageColor3: this.item.pageColor3,
+                pageColor4: this.item.pageColor4,
+                pageColor5: this.item.pageColor5,
+                pageColor6: this.item.pageColor6,
                 description: this.item.description,
                 image: file,
                 date: new Date()
