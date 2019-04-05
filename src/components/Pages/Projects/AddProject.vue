@@ -40,8 +40,8 @@
                         <v-flex xs12 sm6>
                           <v-text-field
                             label="Kuula ID"
-                            v-model="kullaId"
-                            :prepend-icon="kullaIdIcon"
+                            v-model="kuulaId"
+                            :prepend-icon="kuulaIdIcon"
                           />
                         </v-flex>
                       </v-layout>
@@ -265,8 +265,8 @@
         pageColor5: '#f2f2f2',
         pageColor6: '#f2f2f2',
         heroColorIcon: 'mdi-palette',
-        kullaId: '',
-        kullaIdIcon: 'mdi-virtual-reality',
+        kuulaId: '',
+        kuulaIdIcon: 'mdi-virtual-reality',
         descriptionHero1: '',
         descriptionHero2: '',
         descriptionPlan: '',

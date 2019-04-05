@@ -31,8 +31,8 @@
                       <v-flex xs12 sm6>
                         <v-text-field
                           label="Kulla Id"
-                          v-model="item.kullaId"
-                          :prepend-icon="kullaIdIcon"
+                          v-model="item.kuulaId"
+                          :prepend-icon="kuulaIdIcon"
                         />
                       </v-flex>
                       <v-flex xs12 sm6>
@@ -303,7 +303,7 @@
         heroColorIcon: 'mdi-palette',
         descriptionIcon: 'mdi-text-subject',
         imgCoverIcon: 'mdi-image',
-        kullaIdIcon: 'mdi-virtual-reality',
+        kuulaIdIcon: 'mdi-virtual-reality',
         photoIsVisible: true,
         image: null,
         croppa: {}
@@ -340,6 +340,7 @@
             pageColor4: this.item.pageColor4,
             pageColor5: this.item.pageColor5,
             pageColor6: this.item.pageColor6,
+            kuulaId: this.item.kuulaId,
             descriptionHero1: this.item.descriptionHero1,
             descriptionHero2: this.item.descriptionHero2,
             descriptionPlan: this.item.descriptionPlan,
@@ -372,6 +373,7 @@
                 pageColor4: this.item.pageColor4,
                 pageColor5: this.item.pageColor5,
                 pageColor6: this.item.pageColor6,
+                kuulaId: this.item.kuulaId,
                 descriptionHero1: this.item.descriptionHero1,
                 descriptionHero2: this.item.descriptionHero2,
                 descriptionPlan: this.item.descriptionPlan,

@@ -119,6 +119,7 @@ export default {
         pageColor4: payload.pageColor4,
         pageColor5: payload.pageColor5,
         pageColor6: payload.pageColor6,
+        kuulaId: payload.kuulaId,
         descriptionHero1: payload.descriptionHero1,
         descriptionHero2: payload.descriptionHero2,
         descriptionPlan: payload.descriptionPlan,
@@ -166,6 +167,7 @@ export default {
       updateObj.pageColor4 = payload.pageColor4
       updateObj.pageColor5 = payload.pageColor5
       updateObj.pageColor6 = payload.pageColor6
+      updateObj.kuulaId = payload.kuulaId
       updateObj.descriptionHero1 = payload.descriptionHero1
       updateObj.descriptionHero2 = payload.descriptionHero2
       updateObj.descriptionPlan = payload.descriptionPlan

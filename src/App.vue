@@ -168,7 +168,7 @@
             url: '/features'
           },
           projects: {
-            title: 'Projects [WIP]',
+            title: 'Projects',
             icon: 'mdi-cannabis',
             url: '/projects'
           },
