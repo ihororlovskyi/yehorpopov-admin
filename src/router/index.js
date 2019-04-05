@@ -5,9 +5,9 @@ import Register from '@/components/Pages/Register'
 import Login from '@/components/Pages/Login'
 import Profile from '@/components/Pages/Profile'
 
-import Projects from '@/components/Pages/Projects'
-import AddProject from '@/components/Pages/AddProject'
-import EditProject from '@/components/Pages/EditProject'
+import Projects from '@/components/Pages/Projects/Projects'
+import AddProject from '@/components/Pages/Projects/AddProject'
+import EditProject from '@/components/Pages/Projects/EditProject'
 
 import Hiw from '@/components/Pages/Hiw/Widget'
 import HiwEditWidget from '@/components/Pages/Hiw/EditWidget'

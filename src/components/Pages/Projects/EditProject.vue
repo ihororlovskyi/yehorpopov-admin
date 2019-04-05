@@ -13,25 +13,36 @@
                 <v-flex xs12 sm6>
                   <div class="pr-4">
 
-                    <v-text-field
-                      name="title"
-                      label="Title"
-                      id="title"
-                      v-model="item.title"
-                      :prepend-icon="titleIcon"
-                    />
-                    <v-checkbox
-                      v-model="item.isPublished"
-                      :label="`Is Published?: ${item.isPublished.toString()}`"
-                      :prepend-icon="isPublishedIcon"
-                    />
-                    <v-text-field
-                      name="price"
-                      label="Price"
-                      id="price"
-                      v-model="item.price"
-                      :prepend-icon="priceIcon"
-                    />
+                    <v-layout row wrap>
+                      <v-flex xs12 sm6>
+                        <v-text-field
+                          label="Title"
+                          v-model="item.title"
+                          :prepend-icon="titleIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-checkbox
+                          v-model="item.isPublished"
+                          :label="`Is Published?: ${item.isPublished.toString()}`"
+                          :prepend-icon="isPublishedIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-text-field
+                          label="Kulla Id"
+                          v-model="item.kullaId"
+                          :prepend-icon="kullaIdIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-text-field
+                          label="Price"
+                          v-model="item.price"
+                          :prepend-icon="priceIcon"
+                        />
+                      </v-flex>
+                    </v-layout>
                     <v-layout row wrap>
                       <v-flex xs6>
                         <v-checkbox
@@ -42,9 +53,7 @@
                       </v-flex>
                       <v-flex xs6 v-if="item.atHero">
                         <v-text-field
-                          name="heroColor"
                           label="Hero Color"
-                          id="heroColor"
                           v-model="item.heroColor"
                           :prepend-icon="heroColorIcon"
                         />
@@ -94,67 +103,75 @@
                         />
                       </v-flex>
                     </v-layout>
-                    <v-text-field
-                      name="imgCover"
+                    <!-- <v-text-field
                       label="imgCover"
-                      id="imgCover"
                       v-model="item.imgCover"
                       :prepend-icon="imgCoverIcon"
-                    />
-                    <v-textarea
-                      name="description"
-                      label="Description (HTML)"
-                      id="description"
-                      v-model="item.description"
-                      :prepend-icon="descriptionIcon"
-                    />
+                    /> -->
+                    <v-layout row wrap>
+                      <v-flex xs12 sm6>
+                        <v-textarea
+                          label="Description Hero 1 (HTML)"
+                          v-model="item.descriptionHero1"
+                          :prepend-icon="descriptionIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-textarea
+                          label="Description Hero 2 (HTML)"
+                          v-model="item.descriptionHero2"
+                          :prepend-icon="descriptionIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-textarea
+                          label="Description Plan (HTML)"
+                          v-model="item.descriptionPlan"
+                          :prepend-icon="descriptionIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-textarea
+                          label="Description Feature 1 (HTML)"
+                          v-model="item.descriptionFeature1"
+                          :prepend-icon="descriptionIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-textarea
+                          label="Description Feature 2 (HTML)"
+                          v-model="item.descriptionFeature2"
+                          :prepend-icon="descriptionIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-textarea
+                          label="Description Feature 3 (HTML)"
+                          v-model="item.descriptionFeature3"
+                          :prepend-icon="descriptionIcon"
+                        />
+                      </v-flex>
+                    </v-layout>
                   </div>
 
                 </v-flex>
                 <v-flex xs12 sm6>
                   <v-card>
-                    <v-card-title class="light-blue lighten-1">
+                    <!-- <v-card-title class="light-blue lighten-1">
                       <h1 class="white--text">
                         <v-icon class="white--text">{{ titleIcon }}</v-icon>
                         {{ item.title }}
                       </h1>
                       <v-spacer/>
-                      <v-dialog v-model="deleteTicketDialog" max-width="440">
-                        <v-tooltip
-                          top
-                          slot="activator"
-                          color="error"
-                          open-delay="0"
-                        >
-                          <v-btn
-                            fab
-                            color="error"
-                            slot="activator"
-                            small
-                            class="ma-0"
-                          >
-                            <v-icon>mdi-delete</v-icon>
-                          </v-btn>
-                          <span>Delete</span>
-                        </v-tooltip>
-                        <v-card>
-                          <v-container pa-1>
-                            <v-card-text pa-1 v-html="deleteText"/>
-                            <v-card-actions>
-                              <v-spacer/>
-                              <v-btn @click.stop="deleteTicketDialog=false">Cancel</v-btn>
-                              <v-btn color="error" @click="onDelete">Delete</v-btn>
-                            </v-card-actions>
-                          </v-container>
-                        </v-card>
-                      </v-dialog>
-                    </v-card-title>
+
+                    </v-card-title> -->
                     <v-card-text>
-                      <p>
+                      <!-- <p>
                         <v-icon>{{ priceIcon }}</v-icon>
                         {{ item.price }}
-                      </p>
-                      <p>
+                      </p> -->
+                      <div class="mb-2">
+                        <div>imgCover:</div>
                         <div class="ImageContainer">
                           <div v-if="photoIsVisible">
                             <v-img :src="item.imgCover"/>
@@ -186,17 +203,70 @@
                             />
                           </div>
                         </div>
-                      </p>
-                      <p>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgSlide1:</div>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgSlide2:</div>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgSlide3:</div>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgSlide4:</div>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgPlan:</div>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgFeature1:</div>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgFeature2:</div>
+                      </div>
+                      <div class="mb-2">
+                        <div>imgFeature3:</div>
+                      </div>
+                      <!-- <p>
                         <v-icon>{{ descriptionIcon }}</v-icon>
                         <span v-html="item.description"/>
-                      </p>
+                      </p> -->
                     </v-card-text>
                   </v-card>
                 </v-flex>
               </v-layout>
             </v-card-text>
             <v-card-actions>
+              <v-dialog v-model="deleteTicketDialog" max-width="440">
+                <v-tooltip
+                  top
+                  slot="activator"
+                  color="error"
+                  open-delay="0"
+                >
+                  <v-btn
+                    fab
+                    color="error"
+                    slot="activator"
+                    small
+                    class="ma-0"
+                  >
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                  <span>Delete</span>
+                </v-tooltip>
+                <v-card>
+                  <v-container pa-1>
+                    <v-card-text pa-1 v-html="deleteText"/>
+                    <v-card-actions>
+                      <v-spacer/>
+                      <v-btn @click.stop="deleteTicketDialog=false">Cancel</v-btn>
+                      <v-btn color="error" @click="onDelete">Delete</v-btn>
+                    </v-card-actions>
+                  </v-container>
+                </v-card>
+              </v-dialog>
               <v-spacer/>
               <v-btn
                 large
@@ -233,6 +303,7 @@
         heroColorIcon: 'mdi-palette',
         descriptionIcon: 'mdi-text-subject',
         imgCoverIcon: 'mdi-image',
+        kullaIdIcon: 'mdi-virtual-reality',
         photoIsVisible: true,
         image: null,
         croppa: {}
@@ -269,7 +340,12 @@
             pageColor4: this.item.pageColor4,
             pageColor5: this.item.pageColor5,
             pageColor6: this.item.pageColor6,
-            description: this.item.description
+            descriptionHero1: this.item.descriptionHero1,
+            descriptionHero2: this.item.descriptionHero2,
+            descriptionPlan: this.item.descriptionPlan,
+            descriptionFeature1: this.item.descriptionFeature1,
+            descriptionFeature2: this.item.descriptionFeature2,
+            descriptionFeature3: this.item.descriptionFeature3
           })
           this.$router.push('/projects')
         } else {
@@ -296,7 +372,12 @@
                 pageColor4: this.item.pageColor4,
                 pageColor5: this.item.pageColor5,
                 pageColor6: this.item.pageColor6,
-                description: this.item.description,
+                descriptionHero1: this.item.descriptionHero1,
+                descriptionHero2: this.item.descriptionHero2,
+                descriptionPlan: this.item.descriptionPlan,
+                descriptionFeature1: this.item.descriptionFeature1,
+                descriptionFeature2: this.item.descriptionFeature2,
+                descriptionFeature3: this.item.descriptionFeature3,
                 image: file,
                 date: new Date()
               }
