@@ -13,37 +13,38 @@
 
                 <v-flex xs12>
                   <v-text-field
-                    name="widgetTitle"
                     label="widgetTitle"
-                    id="widgetTitle"
                     v-model="loadedCustomProject.widgetTitle"
                     :prepend-icon="descriptionIcon"
                   />
+                </v-flex>
+                <v-flex xs12>
                   <v-textarea
-                    name="description"
                     label="description (HTML)"
-                    id="description"
                     v-model="loadedCustomProject.description"
                     :prepend-icon="descriptionIcon"
                   />
+                </v-flex>
+                <v-flex xs12>
                   <v-text-field
-                    name="img"
                     label="img"
-                    id="img"
                     v-model="loadedCustomProject.img"
-                    :prepend-icon="descriptionIcon"
+                    :prepend-icon="imageIcon"
                   />
+                </v-flex>
+                <v-flex xs12 sm6 md4 class="mb-4">
+                  <v-img :src="loadedCustomProject.img" alt="Custom Project Image" class="ml-4"/>
+                </v-flex>
+                <v-flex xs12>
                   <v-text-field
-                    name="prePriceText"
                     label="prePriceText"
-                    id="prePriceText"
                     v-model="loadedCustomProject.prePriceText"
                     :prepend-icon="descriptionIcon"
                   />
+                </v-flex>
+                <v-flex xs12>
                   <v-text-field
-                    name="price"
                     label="price"
-                    id="price"
                     v-model="loadedCustomProject.price"
                     :prepend-icon="descriptionIcon"
                   />
@@ -78,10 +79,14 @@
           title: 'Edit Custom Project',
           icon: 'mdi-rocket'
         },
-        descriptionIcon: 'mdi-text-subject'
+        descriptionIcon: 'mdi-text-subject',
+        imageIcon: 'mdi-image'
       }
     },
     computed: {
+      loadedImagesSortedByNew () {
+        return this.$store.getters.loadedImagesSortedByNew
+      },
       loadedCustomProject () {
         return this.$store.getters.loadedCustomProject
       }

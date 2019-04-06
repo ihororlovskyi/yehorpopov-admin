@@ -36,14 +36,14 @@ export default {
       item.descriptionFeature2 = payload.descriptionFeature2
       item.descriptionFeature3 = payload.descriptionFeature3
       item.imgCover = payload.imgCover
-      // item.imgSlide1 = payload.imgSlide1
-      // item.imgSlide2 = payload.imgSlide2
-      // item.imgSlide3 = payload.imgSlide3
-      // item.imgSlide4 = payload.imgSlide4
-      // item.imgPlan = payload.imgPlan
-      // item.imgFeature1 = payload.imgFeature1
-      // item.imgFeature2 = payload.imgFeature2
-      // item.imgFeature3 = payload.imgFeature3
+      item.imgSlide1 = payload.imgSlide1
+      item.imgSlide2 = payload.imgSlide2
+      item.imgSlide3 = payload.imgSlide3
+      item.imgSlide4 = payload.imgSlide4
+      item.imgPlan = payload.imgPlan
+      item.imgFeature1 = payload.imgFeature1
+      item.imgFeature2 = payload.imgFeature2
+      item.imgFeature3 = payload.imgFeature3
     },
     deleteProject (state, payload) {
       const index = state.loadedProjects.findIndex(item => {
@@ -125,28 +125,37 @@ export default {
         descriptionPlan: payload.descriptionPlan,
         descriptionFeature1: payload.descriptionFeature1,
         descriptionFeature2: payload.descriptionFeature2,
-        descriptionFeature3: payload.descriptionFeature3
+        descriptionFeature3: payload.descriptionFeature3,
+        imgCover: payload.imgCover,
+        imgSlide1: payload.imgSlide1,
+        imgSlide2: payload.imgSlide2,
+        imgSlide3: payload.imgSlide3,
+        imgSlide4: payload.imgSlide4,
+        imgPlan: payload.imgPlan,
+        imgFeature1: payload.imgFeature1,
+        imgFeature2: payload.imgFeature2,
+        imgFeature3: payload.imgFeature3
       }
-      let imgCover
+      // let imgCover
       let key
       firebase.database().ref('projects').push(item)
         .then((data) => {
           key = data.key
           return key
         })
-        .then(key => {
-          const filename = payload.image.name
-          const ext = filename.slice(filename.lastIndexOf('.'))
-          return firebase.storage().ref('projects/' + key + '/imgCover' + ext).put(payload.image)
-        })
-        .then(fileData => {
-          imgCover = fileData.metadata.downloadURLs[0]
-          return firebase.database().ref('projects').child(key).update({ imgCover: imgCover })
-        })
+      //   .then(key => {
+      //     const filename = payload.imageCover.name
+      //     const ext = filename.slice(filename.lastIndexOf('.'))
+      //     return firebase.storage().ref('projects/' + key + '/imgCover' + ext).put(payload.imageCover)
+      //   })
+      //   .then(fileData => {
+      //     imgCover = fileData.metadata.downloadURLs[0]
+      //     return firebase.database().ref('projects').child(key).update({ imgCover: imgCover })
+      //   })
         .then(() => {
           commit('createProject', {
             ...item,
-            imgCover: imgCover,
+            // imgCover: imgCover,
             id: key
           })
         })
@@ -174,28 +183,44 @@ export default {
       updateObj.descriptionFeature1 = payload.descriptionFeature1
       updateObj.descriptionFeature2 = payload.descriptionFeature2
       updateObj.descriptionFeature3 = payload.descriptionFeature3
-      let imgCover
-      let key
+      updateObj.imgCover = payload.imgCover
+      updateObj.imgSlide1 = payload.imgSlide1
+      updateObj.imgSlide2 = payload.imgSlide2
+      updateObj.imgSlide3 = payload.imgSlide3
+      updateObj.imgSlide4 = payload.imgSlide4
+      updateObj.imgPlan = payload.imgPlan
+      updateObj.imgFeature1 = payload.imgFeature1
+      updateObj.imgFeature2 = payload.imgFeature2
+      updateObj.imgFeature3 = payload.imgFeature3
+      // let imgCover
+      // let key
+      // firebase.database().ref('projects').child(payload.id).update(updateObj)
+      //   .then((data) => {
+      //     key = payload.id
+      //     return key
+      //   })
+      //   .then(key => {
+      //     const filename = payload.image.name
+      //     const ext = filename.slice(filename.lastIndexOf('.'))
+      //     return firebase.storage().ref('projects/' + key + '/imgCover' + ext).put(payload.image)
+      //   })
+      //   .then(fileData => {
+      //     imgCover = fileData.metadata.downloadURLs[0]
+      //     return firebase.database().ref('projects').child(key).update({ imgCover: imgCover })
+      //   })
+      //   .then(() => {
+      //     commit('updateProject', {
+      //       ...updateObj,
+      //       imgCover: imgCover,
+      //       id: key
+      //     })
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
       firebase.database().ref('projects').child(payload.id).update(updateObj)
-        .then((data) => {
-          key = payload.id
-          return key
-        })
-        .then(key => {
-          const filename = payload.image.name
-          const ext = filename.slice(filename.lastIndexOf('.'))
-          return firebase.storage().ref('projects/' + key + '/imgCover' + ext).put(payload.image)
-        })
-        .then(fileData => {
-          imgCover = fileData.metadata.downloadURLs[0]
-          return firebase.database().ref('projects').child(key).update({ imgCover: imgCover })
-        })
         .then(() => {
-          commit('updateProject', {
-            ...updateObj,
-            imgCover: imgCover,
-            id: key
-          })
+          commit('updateProject', payload)
         })
         .catch((error) => {
           console.log(error)
@@ -203,12 +228,12 @@ export default {
     },
     deleteProject ({ commit }, payload) {
       firebase.database().ref('projects').child(payload.id).remove()
-        .then(() => {
-          const imgCover = payload.imgCover
-          const extWithMeta = imgCover.slice(imgCover.lastIndexOf('.'))
-          const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
-          return firebase.storage().ref('projects/' + payload.id + '/imgCover' + ext).delete()
-        })
+        // .then(() => {
+        //   const imgCover = payload.imgCover
+        //   const extWithMeta = imgCover.slice(imgCover.lastIndexOf('.'))
+        //   const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
+        //   return firebase.storage().ref('projects/' + payload.id + '/imgCover' + ext).delete()
+        // })
         .then(() => {
           commit('deleteProject', payload.id)
         })

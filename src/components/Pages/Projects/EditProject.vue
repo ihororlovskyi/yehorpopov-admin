@@ -28,19 +28,15 @@
                           :prepend-icon="isPublishedIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6>
+                      <v-flex xs12>
                         <v-text-field
-                          label="Kulla Id"
-                          v-model="item.kuulaId"
-                          :prepend-icon="kuulaIdIcon"
+                          label="Image Cover"
+                          v-model="item.imgCover"
+                          :prepend-icon="imgIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6>
-                        <v-text-field
-                          label="Price"
-                          v-model="item.price"
-                          :prepend-icon="priceIcon"
-                        />
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgCover">
+                        <v-img :src="item.imgCover" alt="Cover Image" class="ml-4"/>
                       </v-flex>
                     </v-layout>
                     <v-layout row wrap>
@@ -55,8 +51,48 @@
                         <v-text-field
                           label="Hero Color"
                           v-model="item.heroColor"
-                          :prepend-icon="heroColorIcon"
+                          :prepend-icon="colorIcon"
                         />
+                      </v-flex>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Slider 1"
+                          v-model="item.imgSlider1"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider1">
+                        <v-img :src="item.imgSlider1" alt="Plan imgSlider 1" class="ml-4"/>
+                      </v-flex>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Slider 2"
+                          v-model="item.imgSlider2"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider2">
+                        <v-img :src="item.imgSlider2" alt="Plan imgSlider 2" class="ml-4"/>
+                      </v-flex>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Slider 3"
+                          v-model="item.imgSlider3"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider3">
+                        <v-img :src="item.imgSlider3" alt="Plan imgSlider 3" class="ml-4"/>
+                      </v-flex>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Slider 4"
+                          v-model="item.imgSlider4"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider4">
+                        <v-img :src="item.imgSlider4" alt="Plan imgSlider 4" class="ml-4"/>
                       </v-flex>
                     </v-layout>
                     <v-layout row wrap>
@@ -64,87 +100,136 @@
                         <v-text-field
                           label="Page Color 1"
                           v-model="item.pageColor1"
-                          :prepend-icon="heroColorIcon"
+                          :prepend-icon="colorIcon"
                         />
                       </v-flex>
                       <v-flex xs6 sm4>
                         <v-text-field
                           label="Page Color 2"
                           v-model="item.pageColor2"
-                          :prepend-icon="heroColorIcon"
+                          :prepend-icon="colorIcon"
                         />
                       </v-flex>
                       <v-flex xs6 sm4>
                         <v-text-field
                           label="Page Color 3"
                           v-model="item.pageColor3"
-                          :prepend-icon="heroColorIcon"
+                          :prepend-icon="colorIcon"
                         />
                       </v-flex>
                       <v-flex xs6 sm4>
                         <v-text-field
                           label="Page Color 4"
                           v-model="item.pageColor4"
-                          :prepend-icon="heroColorIcon"
+                          :prepend-icon="colorIcon"
                         />
                       </v-flex>
                       <v-flex xs6 sm4>
                         <v-text-field
                           label="Page Color 5"
                           v-model="item.pageColor5"
-                          :prepend-icon="heroColorIcon"
+                          :prepend-icon="colorIcon"
                         />
                       </v-flex>
                       <v-flex xs6 sm4>
                         <v-text-field
                           label="Page Color 6"
                           v-model="item.pageColor6"
-                          :prepend-icon="heroColorIcon"
+                          :prepend-icon="colorIcon"
                         />
                       </v-flex>
                     </v-layout>
-                    <!-- <v-text-field
-                      label="imgCover"
-                      v-model="item.imgCover"
-                      :prepend-icon="imgCoverIcon"
-                    /> -->
                     <v-layout row wrap>
                       <v-flex xs12 sm6>
+                        <v-text-field
+                          label="Price"
+                          v-model="item.price"
+                          :prepend-icon="priceIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6>
+                        <v-text-field
+                          label="Kulla Id"
+                          v-model="item.kuulaId"
+                          :prepend-icon="kuulaIdIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12>
                         <v-textarea
                           label="Description Hero 1 (HTML)"
                           v-model="item.descriptionHero1"
                           :prepend-icon="descriptionIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6>
+                      <v-flex xs12>
                         <v-textarea
                           label="Description Hero 2 (HTML)"
                           v-model="item.descriptionHero2"
                           :prepend-icon="descriptionIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Plan"
+                          v-model="item.imgPlan"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgPlan">
+                        <v-img :src="item.imgPlan" alt="Plan Image" class="ml-4"/>
+                      </v-flex>
+                      <v-flex xs12>
                         <v-textarea
                           label="Description Plan (HTML)"
                           v-model="item.descriptionPlan"
                           :prepend-icon="descriptionIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Feature 1"
+                          v-model="item.imgFeature1"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgFeature1">
+                        <v-img :src="item.imgFeature1" alt="Feature 1 Image" class="ml-4"/>
+                      </v-flex>
+                      <v-flex xs12>
                         <v-textarea
                           label="Description Feature 1 (HTML)"
                           v-model="item.descriptionFeature1"
                           :prepend-icon="descriptionIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Feature 1"
+                          v-model="item.imgFeature1"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgFeature2">
+                        <v-img :src="item.imgFeature2" alt="Feature 2 Image" class="ml-4"/>
+                      </v-flex>
+                      <v-flex xs12>
                         <v-textarea
                           label="Description Feature 2 (HTML)"
                           v-model="item.descriptionFeature2"
                           :prepend-icon="descriptionIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6>
+                      <v-flex xs12>
+                        <v-text-field
+                          label="Image Feature 3"
+                          v-model="item.imgFeature3"
+                          :prepend-icon="imgIcon"
+                        />
+                      </v-flex>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgFeature3">
+                        <v-img :src="item.imgFeature3" alt="Feature 3 Image" class="ml-4"/>
+                      </v-flex>
+                      <v-flex xs12>
                         <v-textarea
                           label="Description Feature 3 (HTML)"
                           v-model="item.descriptionFeature3"
@@ -172,8 +257,8 @@
                       </p> -->
                       <div class="mb-2">
                         <div>imgCover:</div>
-                        <div class="ImageContainer">
-                          <div v-if="photoIsVisible">
+                        <!-- <div class="ImageContainer">
+                          <div v-if="imgCoverIsVisible">
                             <v-img :src="item.imgCover"/>
                             <v-btn
                               small
@@ -202,7 +287,7 @@
                               @file-type-mismatch="onFileTypeMismatch"
                             />
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                       <div class="mb-2">
                         <div>imgSlide1:</div>
@@ -218,6 +303,7 @@
                       </div>
                       <div class="mb-2">
                         <div>imgPlan:</div>
+                      </div>
                       </div>
                       <div class="mb-2">
                         <div>imgFeature1:</div>
@@ -300,13 +386,13 @@
         isPublishedIcon: 'mdi-eye-check',
         priceIcon: 'mdi-currency-usd',
         atHeroIcon: 'mdi-bat',
-        heroColorIcon: 'mdi-palette',
+        colorIcon: 'mdi-palette',
         descriptionIcon: 'mdi-text-subject',
-        imgCoverIcon: 'mdi-image',
         kuulaIdIcon: 'mdi-virtual-reality',
-        photoIsVisible: true,
-        image: null,
-        croppa: {}
+        imgIcon: 'mdi-image'
+        // imgCoverIsVisible: true,
+        // image: null,
+        // croppa: {}
       }
     },
     computed: {
@@ -315,84 +401,123 @@
       }
     },
     methods: {
-      onClosePhoto () {
-        this.photoIsVisible = false
-      },
-      onFileTypeMismatch (file) {
-        alert('This file is not valid. Please upload a valid file jpg/jpeg/png.')
-      },
+      // onClosePhoto () {
+      //   this.imgCoverIsVisible = false
+      // },
+      // onFileTypeMismatch (file) {
+      //   alert('This file is not valid. Please upload a valid file jpg/jpeg/png.')
+      // },
       onCancel () {
         this.$router.push('/projects')
       },
+      // onSave () {
+      //   if (this.photoIsVisible) {
+      //     this.$store.dispatch('updateProject', {
+      //       id: this.item.id,
+      //       title: this.item.title,
+      //       price: this.item.price,
+      //       atHero: this.item.atHero,
+      //       heroColor: this.item.heroColor,
+      //       isPublished: this.item.isPublished,
+      //       imgCover: this.item.imgCover,
+      //       pageColor1: this.item.pageColor1,
+      //       pageColor2: this.item.pageColor2,
+      //       pageColor3: this.item.pageColor3,
+      //       pageColor4: this.item.pageColor4,
+      //       pageColor5: this.item.pageColor5,
+      //       pageColor6: this.item.pageColor6,
+      //       kuulaId: this.item.kuulaId,
+      //       descriptionHero1: this.item.descriptionHero1,
+      //       descriptionHero2: this.item.descriptionHero2,
+      //       descriptionPlan: this.item.descriptionPlan,
+      //       descriptionFeature1: this.item.descriptionFeature1,
+      //       descriptionFeature2: this.item.descriptionFeature2,
+      //       descriptionFeature3: this.item.descriptionFeature3
+      //     })
+      //     this.$router.push('/projects')
+      //   } else {
+      //     if (!this.croppa.hasImage()) {
+      //       alert('No image.')
+      //       return
+      //     } else {
+      //       this.croppa.generateBlob((blob) => {
+      //         var file = new File([blob], 'name.jpeg', {
+      //           lastModifiedDate: new Date(),
+      //           type: 'image/jpeg'
+      //         })
+      //         const itemData = {
+      //           id: this.item.id,
+      //           title: this.item.title,
+      //           isPublished: this.item.isPublished,
+      //           price: this.item.price,
+      //           atHero: this.item.atHero,
+      //           heroColor: this.item.heroColor,
+      //           imgCover: this.item.imgCover,
+      //           pageColor1: this.item.pageColor1,
+      //           pageColor2: this.item.pageColor2,
+      //           pageColor3: this.item.pageColor3,
+      //           pageColor4: this.item.pageColor4,
+      //           pageColor5: this.item.pageColor5,
+      //           pageColor6: this.item.pageColor6,
+      //           kuulaId: this.item.kuulaId,
+      //           descriptionHero1: this.item.descriptionHero1,
+      //           descriptionHero2: this.item.descriptionHero2,
+      //           descriptionPlan: this.item.descriptionPlan,
+      //           descriptionFeature1: this.item.descriptionFeature1,
+      //           descriptionFeature2: this.item.descriptionFeature2,
+      //           descriptionFeature3: this.item.descriptionFeature3,
+      //           image: file,
+      //           date: new Date()
+      //         }
+      //         this.$store.dispatch('updateProject', itemData)
+      //       }, 'image/jpeg', 0.8)
+      //     }
+      //     this.$router.push('/projects')
+      //   }
+      // },
+      // onDelete () {
+      //   this.$store.dispatch('deleteProject', {
+      //     id: this.item.id,
+      //     imgCover: this.item.imgCover
+      //   })
+      //   this.$router.push('/projects')
+      // }
       onSave () {
-        if (this.photoIsVisible) {
-          this.$store.dispatch('updateProject', {
-            id: this.item.id,
-            title: this.item.title,
-            price: this.item.price,
-            atHero: this.item.atHero,
-            heroColor: this.item.heroColor,
-            isPublished: this.item.isPublished,
-            imgCover: this.item.imgCover,
-            pageColor1: this.item.pageColor1,
-            pageColor2: this.item.pageColor2,
-            pageColor3: this.item.pageColor3,
-            pageColor4: this.item.pageColor4,
-            pageColor5: this.item.pageColor5,
-            pageColor6: this.item.pageColor6,
-            kuulaId: this.item.kuulaId,
-            descriptionHero1: this.item.descriptionHero1,
-            descriptionHero2: this.item.descriptionHero2,
-            descriptionPlan: this.item.descriptionPlan,
-            descriptionFeature1: this.item.descriptionFeature1,
-            descriptionFeature2: this.item.descriptionFeature2,
-            descriptionFeature3: this.item.descriptionFeature3
-          })
-          this.$router.push('/projects')
-        } else {
-          if (!this.croppa.hasImage()) {
-            alert('No image.')
-            return
-          } else {
-            this.croppa.generateBlob((blob) => {
-              var file = new File([blob], 'name.jpeg', {
-                lastModifiedDate: new Date(),
-                type: 'image/jpeg'
-              })
-              const itemData = {
-                id: this.item.id,
-                title: this.item.title,
-                isPublished: this.item.isPublished,
-                price: this.item.price,
-                atHero: this.item.atHero,
-                heroColor: this.item.heroColor,
-                imgCover: this.item.imgCover,
-                pageColor1: this.item.pageColor1,
-                pageColor2: this.item.pageColor2,
-                pageColor3: this.item.pageColor3,
-                pageColor4: this.item.pageColor4,
-                pageColor5: this.item.pageColor5,
-                pageColor6: this.item.pageColor6,
-                kuulaId: this.item.kuulaId,
-                descriptionHero1: this.item.descriptionHero1,
-                descriptionHero2: this.item.descriptionHero2,
-                descriptionPlan: this.item.descriptionPlan,
-                descriptionFeature1: this.item.descriptionFeature1,
-                descriptionFeature2: this.item.descriptionFeature2,
-                descriptionFeature3: this.item.descriptionFeature3,
-                image: file,
-                date: new Date()
-              }
-              this.$store.dispatch('updateProject', itemData)
-            }, 'image/jpeg', 0.8)
-          }
-          this.$router.push('/projects')
-        }
+        this.$store.dispatch('updateProject', {
+          id: this.item.id,
+          title: this.item.title,
+          isPublished: this.item.isPublished,
+          price: this.item.price,
+          atHero: this.item.atHero,
+          heroColor: this.item.heroColor,
+          pageColor1: this.item.pageColor1,
+          pageColor2: this.item.pageColor2,
+          pageColor3: this.item.pageColor3,
+          pageColor4: this.item.pageColor4,
+          pageColor5: this.item.pageColor5,
+          pageColor6: this.item.pageColor6,
+          kuulaId: this.item.kuulaId,
+          descriptionHero1: this.item.descriptionHero1,
+          descriptionHero2: this.item.descriptionHero2,
+          descriptionPlan: this.item.descriptionPlan,
+          descriptionFeature1: this.item.descriptionFeature1,
+          descriptionFeature2: this.item.descriptionFeature2,
+          descriptionFeature3: this.item.descriptionFeature3,
+          imgCover: this.item.imgCover,
+          imgSlide1: this.item.imgSlide1,
+          imgSlide2: this.item.imgSlide2,
+          imgSlide3: this.item.imgSlide3,
+          imgSlide4: this.item.imgSlide4,
+          imgPlan: this.item.imgPlan,
+          imgFeature1: this.item.imgFeature1,
+          imgFeature2: this.item.imgFeature2,
+          imgFeature3: this.item.imgFeature3
+        })
+        this.$router.push('/projects')
       },
       onDelete () {
         this.$store.dispatch('deleteProject', {
-          id: this.item.id,
-          imgCover: this.item.imgCover
+          id: this.item.id
         })
         this.$router.push('/projects')
       }
@@ -401,7 +526,7 @@
 </script>
 
 <style>
-  .ImageContainer {
+  /* .ImageContainer {
     max-width: 200px;
     position: relative;
   }
@@ -419,5 +544,5 @@
   .ImageContainer .croppa-container canvas {
     width: 100% !important;
     height: auto !important;
-  }
+  } */
 </style>

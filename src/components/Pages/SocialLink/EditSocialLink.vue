@@ -26,18 +26,19 @@
                       :prepend-icon="isPublishedIcon"
                     />
                     <v-text-field
-                      name="img"
-                      label="Img"
-                      id="img"
-                      v-model="item.img"
-                      :prepend-icon="imgIcon"
+                      name="link"
+                      label="Link"
+                      id="link"
+                      v-model="item.link"
+                      :prepend-icon="linkIcon"
                     />
-                    <v-textarea
-                      name="description"
-                      label="Description (HTML)"
-                      id="description"
-                      v-model="item.description"
-                      :prepend-icon="descriptionIcon"
+                    <v-select
+                      name="icon"
+                      label="Icon"
+                      id="icon"
+                      :items="icons"
+                      v-model="item.icon"
+                      :prepend-icon="item.icon"
                     />
 
                   </div>
@@ -47,8 +48,8 @@
                   <v-card>
                     <v-list two-line class="py-0">
                       <v-list-tile>
-                        <v-list-tile-avatar v-if="item.img">
-                          <v-img :src="item.img"/>
+                        <v-list-tile-avatar>
+                          <v-icon>{{ item.icon }}</v-icon>
                         </v-list-tile-avatar>
                         <v-list-tile-content>
                           <v-list-tile-title>
@@ -56,7 +57,7 @@
                             <v-icon v-else small color="yellow darken-3">mdi-eye-off</v-icon>
                             {{ item.title }}
                           </v-list-tile-title>
-                          <v-list-tile-sub-title>{{ item.description }}</v-list-tile-sub-title>
+                          <v-list-tile-sub-title>{{ item.link }}</v-list-tile-sub-title>
                         </v-list-tile-content>
                         <v-list-tile-action>
                           <v-layout row>
@@ -109,7 +110,6 @@
               >Save</v-btn>
             </v-card-actions>
           </v-card>
-
         </v-flex>
       </v-layout>
     </v-container>
@@ -122,41 +122,45 @@
     data () {
       return {
         page: {
-          title: 'Edit How It Works Item',
+          title: 'Edit Social Link',
           icon: 'mdi-pencil'
         },
-        deleteText: 'This Feature will be deleted permanently.<br>Are you sure you want to delete this Feature?',
+        deleteText: 'This Social Link will be deleted permanently.<br>Are you sure you want to delete this Social Link?',
         deleteTicketDialog: false,
         titleIcon: 'mdi-format-title',
         isPublishedIcon: 'mdi-eye-check',
-        imgIcon: 'mdi-image',
-        descriptionIcon: 'mdi-text-subject'
+        linkIcon: 'mdi-link',
+        icons: [
+          'mdi-facebook',
+          'mdi-instagram',
+          'mdi-telegram'
+        ]
       }
     },
     computed: {
       item () {
-        return this.$store.getters.loadedHiwItem(this.id)
+        return this.$store.getters.loadedSocialLink(this.id)
       }
     },
     methods: {
       onCancel () {
-        this.$router.push('/hiw')
+        this.$router.push('/social')
       },
       onSave () {
-        this.$store.dispatch('updateHiwItem', {
+        this.$store.dispatch('updateSocialLink', {
           id: this.item.id,
           title: this.item.title,
           isPublished: this.item.isPublished,
-          img: this.item.img,
-          description: this.item.description
+          link: this.item.link,
+          icon: this.item.icon
         })
-        this.$router.push('/hiw')
+        this.$router.push('/social')
       },
       onDelete () {
-        this.$store.dispatch('deleteHiwItem', {
+        this.$store.dispatch('deleteSocialLink', {
           id: this.item.id
         })
-        this.$router.push('/hiw')
+        this.$router.push('/social')
       }
     }
   }

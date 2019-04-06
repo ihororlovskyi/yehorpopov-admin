@@ -15,30 +15,26 @@
                   </v-btn>
                 </v-flex>
                 <v-flex xs12>
-                  <p v-if="loadedCustomProject.widgetTitle">
-                    <b>widgetTitle:</b>
+                  <p v-if="loadedHero.quote">
+                    <b>quote:</b>
                     <br>
-                    {{ loadedCustomProject.widgetTitle }}
+                    {{ loadedHero.quote }}
                   </p>
-                  <p v-if="loadedCustomProject.description">
-                    <b>description (HTML):</b>
+                  <p v-if="loadedHero.person">
+                    <b>person:</b>
                     <br>
-                    <span v-html="loadedCustomProject.description"/>
+                    {{ loadedHero.person }}
                   </p>
-                  <p v-if="loadedCustomProject.img">
-                    <b>img:</b>
+                </v-flex>
+                <v-flex xs12 sm6 md4 class="mb-4">
+                  <div><b>userpic:</b></div>
+                  <v-img :src="loadedHero.userpic" alt="Hero Userpic Image"/>
+                </v-flex>
+                <v-flex xs12>
+                  <p v-if="loadedHero.position">
+                    <b>position:</b>
                     <br>
-                    {{ loadedCustomProject.img }}
-                  </p>
-                  <p v-if="loadedCustomProject.prePriceText">
-                    <b>prePriceText:</b>
-                    <br>
-                    {{ loadedCustomProject.prePriceText }}
-                  </p>
-                  <p v-if="loadedCustomProject.price">
-                    <b>price:</b>
-                    <br>
-                    {{ loadedCustomProject.price }}
+                    {{ loadedHero.position }}
                   </p>
                 </v-flex>
 
@@ -56,19 +52,19 @@
     data () {
       return {
         page: {
-          title: 'Custom Project',
-          icon: 'mdi-rocket'
+          title: 'Hero',
+          icon: 'mdi-bat'
         },
         editHeroBtn: {
-          title: 'Edit Custom Project',
+          title: 'Edit Hero',
           icon: 'mdi-pencil',
-          url: '/custom-project/edit'
+          url: '/hero/edit'
         }
       }
     },
     computed: {
-      loadedCustomProject () {
-        return this.$store.getters.loadedCustomProject
+      loadedHero () {
+        return this.$store.getters.loadedHero
       },
       userIsAdmin () {
         return this.$store.getters.userIsAdmin

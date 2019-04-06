@@ -22,7 +22,7 @@
 
         <v-divider v-if="userIsAdmin"/>
 
-        <!-- <v-subheader v-if="userIsAdmin">Modules</v-subheader>
+        <v-subheader v-if="userIsAdmin">Modules</v-subheader>
 
         <v-list-tile
           v-if="userIsAdmin"
@@ -37,7 +37,7 @@
           <v-list-tile-content>
             <v-list-tile-title>{{ i.title }}</v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile> -->
+        </v-list-tile>
 
         <v-divider v-if="userIsAdmin"/>
 

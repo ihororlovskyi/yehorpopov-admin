@@ -13,30 +13,31 @@
 
                 <v-flex xs12>
                   <v-textarea
-                    name="quote"
                     label="quote (HTML)"
-                    id="quote"
                     v-model="loadedHero.quote"
                     :prepend-icon="descriptionIcon"
                   />
+                </v-flex>
+                <v-flex xs12>
                   <v-text-field
-                    name="person"
                     label="person"
-                    id="person"
                     v-model="loadedHero.person"
                     :prepend-icon="descriptionIcon"
                   />
+                </v-flex>
+                <v-flex xs12>
                   <v-text-field
-                    name="userpic"
-                    label="userpic"
-                    id="userpic"
+                    label="img"
                     v-model="loadedHero.userpic"
-                    :prepend-icon="descriptionIcon"
+                    :prepend-icon="imageIcon"
                   />
+                </v-flex>
+                <v-flex xs12 sm6 md4 class="mb-4">
+                  <v-img :src="loadedHero.userpic" alt="Custom Project Image" class="ml-4"/>
+                </v-flex>
+                <v-flex xs12>
                   <v-text-field
-                    name="position"
                     label="position"
-                    id="position"
                     v-model="loadedHero.position"
                     :prepend-icon="descriptionIcon"
                   />
@@ -71,7 +72,8 @@
           title: 'Edit Hero',
           icon: 'mdi-bat'
         },
-        descriptionIcon: 'mdi-text-subject'
+        descriptionIcon: 'mdi-text-subject',
+        imageIcon: 'mdi-image'
       }
     },
     computed: {

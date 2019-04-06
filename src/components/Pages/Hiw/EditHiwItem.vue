@@ -11,45 +11,55 @@
             <v-card-text>
               <v-layout row wrap>
                 <v-flex xs12 sm6>
-                  <div class="pr-4">
+                  <v-layout row wrap class="pr-4">
 
-                    <v-text-field
-                      name="title"
-                      label="Title"
-                      id="title"
-                      v-model="item.title"
-                      :prepend-icon="titleIcon"
-                    />
-                    <v-checkbox
-                      v-model="item.isPublished"
-                      :label="`Is Published?: ${item.isPublished.toString()}`"
-                      :prepend-icon="isPublishedIcon"
-                    />
-                    <v-text-field
-                      name="link"
-                      label="Link"
-                      id="link"
-                      v-model="item.link"
-                      :prepend-icon="linkIcon"
-                    />
-                    <v-select
-                      name="icon"
-                      label="Icon"
-                      id="icon"
-                      :items="icons"
-                      v-model="item.icon"
-                      :prepend-icon="iconIcon"
-                    />
+                    <v-flex xs12>
+                      <v-text-field
+                        name="title"
+                        label="Title"
+                        id="title"
+                        v-model="item.title"
+                        :prepend-icon="titleIcon"
+                      />
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-checkbox
+                        v-model="item.isPublished"
+                        :label="`Is Published?: ${item.isPublished.toString()}`"
+                        :prepend-icon="isPublishedIcon"
+                      />
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-text-field
+                        name="img"
+                        label="Img"
+                        id="img"
+                        v-model="item.img"
+                        :prepend-icon="imgIcon"
+                      />
+                    </v-flex>
+                    <v-flex xs12 sm6 class="mb-4" v-if="item.img">
+                      <v-img :src="item.img" alt="Hiw Item Image" class="ml-4"/>
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-textarea
+                        name="description"
+                        label="Description (HTML)"
+                        id="description"
+                        v-model="item.description"
+                        :prepend-icon="descriptionIcon"
+                      />
+                    </v-flex>
 
-                  </div>
+                  </v-layout>
                 </v-flex>
                 <v-flex xs12 sm6>
 
                   <v-card>
                     <v-list two-line class="py-0">
                       <v-list-tile>
-                        <v-list-tile-avatar>
-                          <v-icon>{{ item.icon }}</v-icon>
+                        <v-list-tile-avatar v-if="item.img">
+                          <v-img :src="item.img"/>
                         </v-list-tile-avatar>
                         <v-list-tile-content>
                           <v-list-tile-title>
@@ -57,29 +67,10 @@
                             <v-icon v-else small color="yellow darken-3">mdi-eye-off</v-icon>
                             {{ item.title }}
                           </v-list-tile-title>
-                          <v-list-tile-sub-title>{{ item.link }}</v-list-tile-sub-title>
+                          <v-list-tile-sub-title>{{ item.description }}</v-list-tile-sub-title>
                         </v-list-tile-content>
                         <v-list-tile-action>
                           <v-layout row>
-                            <v-tooltip
-                              top
-                              slot="activator"
-                              color="primary"
-                              open-delay="0"
-                            >
-                              <v-btn
-                                fab
-                                color="primary"
-                                slot="activator"
-                                small
-                                :href="item.link"
-                                target="_blank"
-                                class="mr-2"
-                              >
-                                <v-icon>{{ iconIcon }}</v-icon>
-                              </v-btn>
-                              <span>Test Link</span>
-                            </v-tooltip>
                             <v-dialog v-model="deleteTicketDialog" max-width="440">
                               <v-tooltip
                                 top
@@ -129,6 +120,7 @@
               >Save</v-btn>
             </v-card-actions>
           </v-card>
+
         </v-flex>
       </v-layout>
     </v-container>
@@ -141,46 +133,41 @@
     data () {
       return {
         page: {
-          title: 'Edit Social Link',
+          title: 'Edit How It Works Item',
           icon: 'mdi-pencil'
         },
-        deleteText: 'This Social Link will be deleted permanently.<br>Are you sure you want to delete this Social Link?',
+        deleteText: 'This Feature will be deleted permanently.<br>Are you sure you want to delete this Feature?',
         deleteTicketDialog: false,
         titleIcon: 'mdi-format-title',
         isPublishedIcon: 'mdi-eye-check',
-        linkIcon: 'mdi-link',
-        iconIcon: 'mdi-hinduism',
-        icons: [
-          'mdi-facebook',
-          'mdi-instagram',
-          'mdi-telegram'
-        ]
+        imgIcon: 'mdi-image',
+        descriptionIcon: 'mdi-text-subject'
       }
     },
     computed: {
       item () {
-        return this.$store.getters.loadedSocialLink(this.id)
+        return this.$store.getters.loadedHiwItem(this.id)
       }
     },
     methods: {
       onCancel () {
-        this.$router.push('/social')
+        this.$router.push('/hiw')
       },
       onSave () {
-        this.$store.dispatch('updateSocialLink', {
+        this.$store.dispatch('updateHiwItem', {
           id: this.item.id,
           title: this.item.title,
           isPublished: this.item.isPublished,
-          link: this.item.link,
-          icon: this.item.icon
+          img: this.item.img,
+          description: this.item.description
         })
-        this.$router.push('/social')
+        this.$router.push('/hiw')
       },
       onDelete () {
-        this.$store.dispatch('deleteSocialLink', {
+        this.$store.dispatch('deleteHiwItem', {
           id: this.item.id
         })
-        this.$router.push('/social')
+        this.$router.push('/hiw')
       }
     }
   }

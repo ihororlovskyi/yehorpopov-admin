@@ -34,7 +34,7 @@
                         v-model="img"
                         :prepend-icon="imgIcon"
                       />
-                    <v-textarea
+                      <v-textarea
                         name="description"
                         label="Description (HTML)"
                         id="description"

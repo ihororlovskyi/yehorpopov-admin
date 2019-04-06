@@ -17,11 +17,7 @@ export default {
       const item = state.loadedImages.find(item => {
         return item.id === payload.id
       })
-      item.title = payload.title
-      item.isPublished = payload.isPublished
       item.imageUrl = payload.imageUrl
-      item.src = payload.src
-      item.description = payload.description
     },
     deleteImage (state, payload) {
       const index = state.loadedImages.findIndex(item => {
@@ -43,11 +39,7 @@ export default {
           for (let key in obj) {
             items.push({
               id: key,
-              title: obj[key].title,
-              isPublished: obj[key].isPublished,
-              description: obj[key].description,
               imageUrl: obj[key].imageUrl,
-              src: obj[key].src,
               date: obj[key].date
             })
           }
@@ -63,10 +55,6 @@ export default {
     },
     uploadImage ({ commit, getters }, payload) {
       const item = {
-        title: payload.title,
-        isPublished: payload.isPublished,
-        description: payload.description,
-        src: payload.src,
         date: payload.date.toISOString()
       }
       let imageUrl
@@ -86,7 +74,7 @@ export default {
           return firebase.database().ref('images').child(key).update({imageUrl: imageUrl})
         })
         .then(() => {
-          commit('createItem', {
+          commit('uploadImage', {
             ...item,
             imageUrl: imageUrl,
             id: key
@@ -98,13 +86,28 @@ export default {
     },
     updateImage ({ commit }, payload) {
       const updateObj = {}
-      updateObj.title = payload.title
-      updateObj.isPublished = payload.isPublished
-      updateObj.src = payload.src
-      updateObj.description = payload.description
+      let imageUrl
+      let key
       firebase.database().ref('images').child(payload.id).update(updateObj)
+        .then((data) => {
+          key = payload.id
+          return key
+        })
+        .then(key => {
+          const filename = payload.image.name
+          const ext = filename.slice(filename.lastIndexOf('.'))
+          return firebase.storage().ref('images/' + key + ext).put(payload.image)
+        })
+        .then(fileData => {
+          imageUrl = fileData.metadata.downloadURLs[0]
+          return firebase.database().ref('images').child(key).update({ imageUrl: imageUrl })
+        })
         .then(() => {
-          commit('updateImage', payload)
+          commit('updateImage', {
+            ...updateObj,
+            imageUrl: imageUrl,
+            id: key
+          })
         })
         .catch((error) => {
           console.log(error)
@@ -112,6 +115,12 @@ export default {
     },
     deleteImage ({ commit }, payload) {
       firebase.database().ref('images').child(payload.id).remove()
+        .then(() => {
+          const imageUrl = payload.imageUrl
+          const extWithMeta = imageUrl.slice(imageUrl.lastIndexOf('.'))
+          const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
+          return firebase.storage().ref('images/' + payload.id + ext).delete()
+        })
         .then(() => {
           commit('deleteImage', payload.id)
         })
