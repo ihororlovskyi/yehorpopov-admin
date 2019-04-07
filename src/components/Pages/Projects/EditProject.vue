@@ -205,7 +205,7 @@
                       <v-flex xs12>
                         <v-text-field
                           label="Image Feature 1"
-                          v-model="item.imgFeature1"
+                          v-model="item.imgFeature2"
                           :prepend-icon="imgIcon"
                         />
                       </v-flex>
