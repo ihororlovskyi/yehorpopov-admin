@@ -57,42 +57,42 @@
                       <v-flex xs12>
                         <v-text-field
                           label="Image Slider 1"
-                          v-model="item.imgSlider1"
+                          v-model="item.imgSlide1"
                           :prepend-icon="imgIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider1">
-                        <v-img :src="item.imgSlider1" alt="Plan imgSlider 1" class="ml-4"/>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlide1">
+                        <v-img :src="item.imgSlide1" alt="Slider 1 Image" class="ml-4"/>
                       </v-flex>
                       <v-flex xs12>
                         <v-text-field
                           label="Image Slider 2"
-                          v-model="item.imgSlider2"
+                          v-model="item.imgSlide2"
                           :prepend-icon="imgIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider2">
-                        <v-img :src="item.imgSlider2" alt="Plan imgSlider 2" class="ml-4"/>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlide2">
+                        <v-img :src="item.imgSlide2" alt="Slider 2 Image" class="ml-4"/>
                       </v-flex>
                       <v-flex xs12>
                         <v-text-field
                           label="Image Slider 3"
-                          v-model="item.imgSlider3"
+                          v-model="item.imgSlide3"
                           :prepend-icon="imgIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider3">
-                        <v-img :src="item.imgSlider3" alt="Plan imgSlider 3" class="ml-4"/>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlide3">
+                        <v-img :src="item.imgSlide3" alt="Slider 3 Image" class="ml-4"/>
                       </v-flex>
                       <v-flex xs12>
                         <v-text-field
                           label="Image Slider 4"
-                          v-model="item.imgSlider4"
+                          v-model="item.imgSlide4"
                           :prepend-icon="imgIcon"
                         />
                       </v-flex>
-                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlider4">
-                        <v-img :src="item.imgSlider4" alt="Plan imgSlider 4" class="ml-4"/>
+                      <v-flex xs12 sm6 class="mb-4" v-if="item.imgSlide4">
+                        <v-img :src="item.imgSlide4" alt="Slider 4 Image" class="ml-4"/>
                       </v-flex>
                     </v-layout>
                     <v-layout row wrap>
