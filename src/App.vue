@@ -187,6 +187,11 @@
             icon: 'mdi-instagram',
             url: '/instaworks'
           },
+          about: {
+            title: 'About',
+            icon: 'mdi-mushroom',
+            url: '/about'
+          },
           team: {
             title: 'Team',
             icon: 'mdi-account-group',

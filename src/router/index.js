@@ -34,6 +34,9 @@ import EditHero from '@/components/Pages/Hero/EditHero'
 import CustomProject from '@/components/Pages/CustomProject/CustomProject'
 import EditCustomProject from '@/components/Pages/CustomProject/EditCustomProject'
 
+import About from '@/components/Pages/About/About'
+import EditAbout from '@/components/Pages/About/EditAbout'
+
 import Instaworks from '@/components/Pages/Instaworks/Instaworks'
 import EditInstaworks from '@/components/Pages/Instaworks/EditInstaworks'
 
@@ -188,6 +191,18 @@ export default new Router({
       path: '/hero',
       name: 'Hero',
       component: Hero,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
+      beforeEnter: AdminGuard
+    },
+    {
+      path: '/about/edit',
+      name: 'EditAbout',
+      component: EditAbout,
       beforeEnter: AdminGuard
     },
     {

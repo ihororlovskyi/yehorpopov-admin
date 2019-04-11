@@ -14,6 +14,7 @@ import instaworks from './instaworks'
 import contacts from './contacts'
 import images from './images'
 import loading from './loading'
+import about from './about'
 import hiwWidget from './hiwWidget'
 import hiwItems from './hiwItems'
 
@@ -35,6 +36,7 @@ export const store = new Vuex.Store({
     contacts,
     images,
     loading,
+    about,
     hiwWidget,
     hiwItems
   }
