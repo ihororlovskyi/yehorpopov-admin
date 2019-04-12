@@ -1,0 +1,20 @@
+{
+  "name": "Yehor Popov Admin",
+  "short_name": "YehorPopovAdmin",
+  "icons": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/yehorpopov-db.appspot.com/o/favi%2Fadmin-32.png?alt=media&token=cc12f93f-28ef-4732-979d-0e1f293f3675",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/yehorpopov-db.appspot.com/o/favi%2Fadmin-144.jpg?alt=media&token=ef2247a9-a61b-4fae-b5c9-238c4c978a66",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#4DBA87"
+}
