@@ -1,0 +1,21 @@
+<template name="Header">
+  <div class="under-construction">Our website is currently under construction. Please come back soon.</div>
+  <hr>
+
+  <header>
+    <nav>
+      <a href="/"><i class="fa fa-home"></i> Home</a>
+      <a href="/releases"><i class="fa fa-headphones"></i> Releases</a>
+      <a href="/artists"><i class="fa fa-users"></i> Artists</a>
+
+      <span style="float:right;">
+        {{#if currentUser }}
+          <a href="/admin"><i class="fa fa-cogs"></i> Admin</a>
+        {{/if}}
+        {{> loginButtons}}
+      </span>
+
+    </nav>
+  </header>
+  <hr>
+</template>
