@@ -13,29 +13,27 @@
 
                 <v-flex xs12>
                   <v-text-field
-                    name="title"
                     label="title"
-                    id="title"
                     v-model="loadedInstaworks.title"
                     :prepend-icon="descriptionIcon"
                   />
+                </v-flex>
+                <v-flex xs12>
                   <v-text-field
-                    name="description"
                     label="description"
-                    id="description"
                     v-model="loadedInstaworks.description"
                     :prepend-icon="descriptionIcon"
                   />
+                </v-flex>
+                <!-- <v-flex xs12>
                   <v-text-field
-                    name="access_token"
                     label="access_token"
-                    id="access_token"
                     v-model="loadedInstaworks.access_token"
                     :prepend-icon="descriptionIcon"
                   />
                   <p>ihrororlovskyi: 176908350.1677ed0.3c30032e917a430e8d1f65eae2223b1e</p>
                   <p>yehor_reality: 9623749496.1677ed0.5cccdc1243a64052b555b888c62b7770</p>
-                </v-flex>
+                </v-flex> -->
 
               </v-layout>
             </v-card-text>

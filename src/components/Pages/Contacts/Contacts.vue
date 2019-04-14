@@ -30,11 +30,11 @@
                     <br>
                     {{ loadedContacts.email }}
                   </p>
-                  <p v-if="loadedContacts.address">
+                  <!-- <p v-if="loadedContacts.address">
                     <b>address:</b>
                     <br>
                     <span v-html="loadedContacts.address"/>
-                  </p>
+                  </p> -->
                   <!-- <p v-if="loadedContacts.mapLat">
                     <b>mapLat:</b>
                     <br>

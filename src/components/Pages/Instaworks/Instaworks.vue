@@ -20,17 +20,21 @@
                     <br>
                     {{ loadedInstaworks.title }}
                   </p>
+                </v-flex>
+                <v-flex xs12>
                   <p v-if="loadedInstaworks.description">
                     <b>description:</b>
                     <br>
                     {{ loadedInstaworks.description }}
                   </p>
+                </v-flex>
+                <!-- <v-flex xs12>
                   <p v-if="loadedInstaworks.access_token">
                     <b>access_token:</b>
                     <br>
                     {{ loadedInstaworks.access_token }}
                   </p>
-                </v-flex>
+                </v-flex> -->
 
               </v-layout>
             </v-card-text>

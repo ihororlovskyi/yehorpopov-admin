@@ -113,6 +113,10 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-lg-and-up">
         <v-icon>mdi-menu</v-icon>
       </v-toolbar-side-icon>
+      <v-spacer/>
+      <v-toolbar-side-icon :href="prod.url" target="_blank">
+        <v-icon>{{ prod.icon }}</v-icon>
+      </v-toolbar-side-icon>
     </v-toolbar>
 
     <v-content>
@@ -127,6 +131,11 @@
     data () {
       return {
         drawer: true,
+        prod: {
+          title: 'Prod',
+          icon: 'mdi-earth',
+          url: 'https://yehorpopov-nuxt.netlify.com'
+        },
         home: {
           title: 'Admin',
           icon: 'mdi-security',

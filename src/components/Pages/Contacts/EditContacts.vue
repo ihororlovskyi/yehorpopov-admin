@@ -13,33 +13,27 @@
 
                 <v-flex xs12>
                   <v-text-field
-                    name="title"
                     label="title"
-                    id="title"
                     v-model="loadedContacts.title"
                     :prepend-icon="descriptionIcon"
                   />
                   <v-text-field
-                    name="email"
-                    label="email"
-                    id="email"
-                    v-model="loadedContacts.email"
-                    :prepend-icon="descriptionIcon"
-                  />
-                  <v-text-field
-                    name="phone"
                     label="phone"
-                    id="phone"
                     v-model="loadedContacts.phone"
                     :prepend-icon="descriptionIcon"
                   />
-                  <v-textarea
+                  <v-text-field
+                    label="email"
+                    v-model="loadedContacts.email"
+                    :prepend-icon="descriptionIcon"
+                  />
+                  <!-- <v-textarea
                     name="address"
                     label="address (HTML)"
                     id="address"
                     v-model="loadedContacts.address"
                     :prepend-icon="descriptionIcon"
-                  />
+                  /> -->
                   <!-- <v-text-field
                     name="map.lat"
                     label="map.lat"
