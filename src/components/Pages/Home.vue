@@ -15,10 +15,10 @@
                   <p>
                     <ul>
                       <li>
-                        гугл <a htef="https://docs.google.com/spreadsheets/d/1ppfxeSO4XCZMDZ6y0kk1-ZCaqyITUJCtgShj17I9isE/edit" target="_blank">табличка</a>
+                        гугл <a href="https://docs.google.com/spreadsheets/d/1ppfxeSO4XCZMDZ6y0kk1-ZCaqyITUJCtgShj17I9isE/edit" target="_blank">табличка</a>
                       </li>
                       <li>
-                        сервис <a htef="https://sheetdb.io" target="_blank">sheetdb</a>
+                        сервис <a href="https://sheetdb.io" target="_blank">sheetdb</a>
                       </li>
                     </ul>
                   </p>
