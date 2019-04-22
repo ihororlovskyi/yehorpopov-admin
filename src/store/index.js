@@ -17,6 +17,7 @@ import loading from './loading'
 import about from './about'
 import hiwWidget from './hiwWidget'
 import hiwItems from './hiwItems'
+import popupUserContacted from './popupUserContacted'
 
 Vue.use(Vuex)
 
@@ -38,7 +39,8 @@ export const store = new Vuex.Store({
     loading,
     about,
     hiwWidget,
-    hiwItems
+    hiwItems,
+    popupUserContacted
   }
 
 })

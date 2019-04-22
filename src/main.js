@@ -56,5 +56,6 @@ new Vue({
     this.$store.dispatch('loadHiwWidget')
     this.$store.dispatch('loadHiwItems')
     this.$store.dispatch('loadImages')
+    this.$store.dispatch('loadPopupUserContacted')
   }
 })

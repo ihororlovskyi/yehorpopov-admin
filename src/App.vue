@@ -219,14 +219,9 @@
             url: '/social'
           },
           popupContact: {
-            title: 'Popup Contact [WIP]',
+            title: 'Popup User Contacted',
             icon: 'mdi-message',
-            url: '/popup-contact'
-          },
-          popupThanks: {
-            title: 'Popup Thanks [WIP]',
-            icon: 'mdi-heart',
-            url: '/popup-thanks'
+            url: '/popup-user-contacted'
           }
         }
       }

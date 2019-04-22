@@ -37,14 +37,14 @@ import EditCustomProject from '@/components/Pages/CustomProject/EditCustomProjec
 import About from '@/components/Pages/About/About'
 import EditAbout from '@/components/Pages/About/EditAbout'
 
+import PopupUserContacted from '@/components/Pages/PopupUserContacted/PopupUserContacted'
+import EditPopupUserContacted from '@/components/Pages/PopupUserContacted/EditPopupUserContacted'
+
 import Instaworks from '@/components/Pages/Instaworks/Instaworks'
 import EditInstaworks from '@/components/Pages/Instaworks/EditInstaworks'
 
 import Contacts from '@/components/Pages/Contacts/Contacts'
 import EditContacts from '@/components/Pages/Contacts/EditContacts'
-
-import PopupContact from '@/components/Pages/PopupContact'
-import PopupThanks from '@/components/Pages/PopupThanks'
 
 import AuthGuard from './auth-guard'
 import AdminGuard from './admin-guard'
@@ -267,15 +267,15 @@ export default new Router({
       beforeEnter: AdminGuard
     },
     {
-      path: '/popup-contact',
-      name: 'PopupContact',
-      component: PopupContact,
+      path: '/popup-user-contacted',
+      name: 'PopupUserContacted',
+      component: PopupUserContacted,
       beforeEnter: AdminGuard
     },
     {
-      path: '/popup-thanks',
-      name: 'PopupThanks',
-      component: PopupThanks,
+      path: '/popup-user-contacted/edit',
+      name: 'EditPopupUserContacted',
+      component: EditPopupUserContacted,
       beforeEnter: AdminGuard
     }
   ],
