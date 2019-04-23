@@ -51,7 +51,7 @@
                   />
                 </v-flex>
 
-                <v-flex xs12>
+                <!-- <v-flex xs12>
                   <v-text-field
                     label="popupDownloadTitle"
                     v-model="loadedPopupUserContacted.popupDownloadTitle"
@@ -71,7 +71,7 @@
                     v-model="loadedPopupUserContacted.popupDownloadMessageThanks"
                     :prepend-icon="descriptionIcon"
                   />
-                </v-flex>
+                </v-flex> -->
 
               </v-layout>
             </v-card-text>

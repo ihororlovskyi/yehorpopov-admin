@@ -37,7 +37,7 @@
                   <div><span v-html="loadedPopupUserContacted.popupOrderMessageThanks"/></div>
                 </v-flex>
 
-                <v-flex xs12 class="mb-4" v-if="loadedPopupUserContacted.popupDownloadTitle">
+                <!-- <v-flex xs12 class="mb-4" v-if="loadedPopupUserContacted.popupDownloadTitle">
                   <div><b>popupDownloadTitle:</b></div>
                   <div>{{ loadedPopupUserContacted.popupDownloadTitle }}</div>
                 </v-flex>
@@ -48,7 +48,7 @@
                 <v-flex xs12 class="mb-4" v-if="loadedPopupUserContacted.popupDownloadMessageThanks">
                   <div><b>popupDownloadMessageThanks (HTML):</b></div>
                   <div><span v-html="loadedPopupUserContacted.popupDownloadMessageThanks"/></div>
-                </v-flex>
+                </v-flex> -->
 
               </v-layout>
             </v-card-text>
